@@ -22,3 +22,7 @@ This is an authenticated single-page application. A search-engine sitemap would 
 The guide invokes existing navigation buttons, excludes hidden/disabled buttons and rechecks visibility on click. It does not assign roles or grant permissions. Firebase rules remain the cloud access boundary. Desktop File System Access restrictions still apply.
 
 The legacy layers also create auxiliary screens (account management, health, CEO reports, record editors and CLAIRE) dynamically. Their code is catalogued in [MODULE_MAP.md](MODULE_MAP.md); they are not separate URLs.
+
+## Home and tool search
+
+Home is the session landing workspace. Its task cards route through existing sidebar controls. The top-bar tool search only lists enabled, visible tools. Recent tools are session-only and cleared at sign-out. Mobile navigation uses a dismissible sidebar.

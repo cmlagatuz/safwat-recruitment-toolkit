@@ -14,7 +14,7 @@
 
 <meta charset="UTF-8">
 
-<title>Recruitment Team Dev Toolkit</title>
+<title>Safwat · Recruitment Workspace</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -57,20 +57,21 @@
       </div>
     </div>
     <div class="ent-auth-foot">
-      Firebase Auth · safwat-recruitment-toolkit · europe-west1
+      Safwat Recruitment · Your secure team workspace
     </div>
   </div>
 </div>
 
 <div class="app">
 
-  <aside class="sidebar">
+  <aside class="sidebar" id="wsSidebar">
     <div class="brand">
-      <span class="stamp">REC · INTERNAL USE ONLY</span>
-      <h1>Recruitment Dev Toolkit</h1>
-      <p>File handling and offer-letter generation, running locally in your browser.<br><br> Created by SAFWAT Recruitment Team</p>
+      <span class="stamp">SAFWAT / WORKSPACE</span>
+      <h1>Your team. Connected.</h1>
+      <p>Recruitment, operations and documents.<br>One place to move work forward.</p>
     </div>
-    <nav>
+    <nav aria-label="Workspace navigation">
+      <button class="tab" data-tab="home"><span class="idx">⌂</span> Home</button>
       <div class="navgroup-label">Reports &amp; Dashboards</div>
       <button class="tab active" data-tab="database"><span class="idx">R-00</span> Database</button>
       <button class="tab" data-tab="visa"><span class="idx">R-01</span> Visa Report</button>
@@ -98,6 +99,23 @@
   </aside>
 
   <main>
+    <header class="ws-toolbar">
+      <button id="wsMenu" class="ws-menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="wsSidebar">☰</button>
+      <div class="ws-breadcrumb"><span>Workspace /</span><strong id="wsLocation">Home</strong></div>
+      <button id="wsFind" aria-haspopup="dialog">Find a tool <span>⌕</span></button>
+    </header>
+    <section class="panel" id="panel-home" aria-label="Workspace home">
+      <div class="ws-home-head"><div><div class="ws-overline">A little clarity. A lot of progress.</div><h2>Make room for great work.</h2><p>Your people, your tools, your next move.</p></div><time id="wsDate" class="ws-date"></time></div>
+      <div class="ws-hero"><div><div class="ws-overline">THE SAFWAT WORKSPACE</div><h3>Every next step,<br>a little more connected.</h3><p>Start with what needs attention. Bring your recruitment, visa follow-ups and client delivery into focus.</p><button data-ws-open="operations">Open Operations ↗</button></div><div class="ws-orbit" aria-hidden="true"><div class="ws-orbit-center">S</div><span class="ws-orbit-label">People</span><span class="ws-orbit-label">Possibilities</span><span class="ws-orbit-label">Progress</span></div></div>
+      <div class="ws-section-head"><h3>Where would you like to start?</h3><button data-ws-open="guide">Explore all tools ↗</button></div>
+      <div class="ws-launch-grid">
+        <button class="ws-launch" data-ws-open="pipeline"><span class="ws-icon" aria-hidden="true">↗</span><strong>Move people forward</strong><small>Open your recruitment pipeline, review candidates and update their progress.</small></button>
+        <button class="ws-launch" data-ws-open="visa"><span class="ws-icon" aria-hidden="true">◎</span><strong>See the bigger picture</strong><small>Explore visa inventory, assignments and upcoming expiry dates.</small></button>
+        <button class="ws-launch" data-ws-open="offer"><span class="ws-icon" aria-hidden="true">▤</span><strong>Create something ready</strong><small>Build an offer letter from your template and candidate details.</small></button>
+      </div>
+      <div class="ws-bottom"><div class="card"><h3>Pick up where you left off</h3><p id="wsRecentEmpty">Your recently opened tools appear here during this session. Choose a workspace to get started.</p><div id="wsRecent"></div></div><div class="card"><h3>A clearer daily rhythm</h3><ol class="ws-steps"><li><button data-ws-open="operations">Review follow-ups and deadlines →</button></li><li><button data-ws-open="pipeline">Update candidate progress →</button></li><li><button data-ws-open="operations">Prepare a client summary →</button></li></ol></div></div>
+      <p class="ws-footer">Built for the Safwat team · Recent tools stay in this session. Check your save confirmation before leaving.</p>
+    </section>
     <div id="fsa-banner" class="notice danger" style="display:none;">
       <strong>Your browser can't run the file-movement tools.</strong>
       Tools F-02 through F-09 use the File System Access API, which is only available in <strong>Chrome</strong> or <strong>Edge</strong> on desktop. The Offer Letter Creation (F-01) works everywhere.
@@ -115,7 +133,7 @@
       <div class="panel-head">
         <div class="eyebrow">R-00 · Reports &amp; Dashboards</div>
         <h2>Database</h2>
-        <p class="desc">One JSON file is now the live source of truth for both Recruitment and Visa records \u2014 Excel is used only for exporting from here on. Open your existing database file, or create a new one, then import your current Excel data once.</p>
+        <p class="desc">One JSON file is now the live source of truth for both Recruitment and Visa records — Excel is used only for exporting from here on. Open your existing database file, or create a new one, then import your current Excel data once.</p>
       </div>
 
       <div id="dbNoFileNotice" class="notice">
@@ -129,14 +147,14 @@
           <button id="dbOpenBtn">Open existing database file</button>
           <button id="dbCreateBtn" class="secondary">Create new database file</button>
         </div>
-        <p class="hint">Your data lives in one file on your own computer \u2014 nothing is uploaded anywhere. Every add, edit, or delete auto-saves straight back to it.</p>
-        <div class="log" id="dbLog" style="margin-top:14px;">Waiting for you to open or create a database file\u2026</div>
+        <p class="hint">Your data lives in one file on your own computer — nothing is uploaded anywhere. Every add, edit, or delete auto-saves straight back to it.</p>
+        <div class="log" id="dbLog" style="margin-top:14px;">Waiting for you to open or create a database file…</div>
       </div>
 
       <div id="dbFileTools" style="display:none;">
         <div class="card">
           <h3>Status</h3>
-          <span class="status-pill" id="dbStatusPill">\u2014</span>
+          <span class="status-pill" id="dbStatusPill">—</span>
         </div>
 
         <div class="card">
@@ -151,13 +169,13 @@
 
         <div class="card">
           <h3>3. Export to Excel</h3>
-          <p class="hint">Excel is now an output format only \u2014 use this any time you need a spreadsheet copy to share.</p>
+          <p class="hint">Excel is now an output format only — use this any time you need a spreadsheet copy to share.</p>
           <div class="btnrow"><button id="dbExportBtn" class="secondary">Export current database to Excel</button></div>
         </div>
 
         <div class="card">
           <h3>4. Visa copy attachments folder</h3>
-          <p class="hint">Visa copy files (PDF/image) are stored as separate files in a folder you choose \u2014 not inside the database file. Pick this once per session before uploading or viewing a visa copy.</p>
+          <p class="hint">Visa copy files (PDF/image) are stored as separate files in a folder you choose — not inside the database file. Pick this once per session before uploading or viewing a visa copy.</p>
           <div class="upload-row">
             <button id="attachmentsDirBtn" class="secondary">Set attachments folder</button>
             <span class="status-pill" id="attachmentsDirStatus">Not set for this session</span>
@@ -180,7 +198,7 @@
       <div class="panel-head">
         <div class="eyebrow">R-01 · Reports &amp; Dashboards</div>
         <h2>Visa Report</h2>
-        <p class="desc">Live visa inventory \u2014 add, edit, delete, and link visa records directly. Sponsor (Safwat vs. the client) is derived automatically from Company Name.</p>
+        <p class="desc">Live visa inventory — add, edit, delete, and link visa records directly. Sponsor (Safwat vs. the client) is derived automatically from Company Name.</p>
       </div>
 
       <div id="visaNoDbNotice" class="notice">
@@ -198,14 +216,14 @@
           <div class="f-group"><label>Client</label><select id="visaFilterClient"><option value="">All</option></select></div>
           <div class="f-group"><label>Status</label><select id="visaFilterStatus"><option value="">All</option></select></div>
           <div class="f-group"><label>Sponsor</label><select id="visaFilterSponsor"><option value="">All</option><option value="SAFWAT">Safwat</option><option value="CLIENT">Client</option></select></div>
-          <div class="f-group f-search"><label>Search (name / passport / visa doc #)</label><input type="text" id="visaSearch" placeholder="Type to search\u2026"></div>
+          <div class="f-group f-search"><label>Search (name / passport / visa doc #)</label><input type="text" id="visaSearch" placeholder="Type to search…"></div>
         </div>
 
         <div class="kpi-grid" id="visaKpiGrid"></div>
 
         <div class="chart-row">
           <div class="chart-card"><h4>Visa status breakdown</h4><canvas id="visaStatusChart"></canvas></div>
-          <div class="chart-card"><h4>Sponsor \u2014 Safwat vs. Client</h4><canvas id="visaSponsorChart"></canvas></div>
+          <div class="chart-card"><h4>Sponsor — Safwat vs. Client</h4><canvas id="visaSponsorChart"></canvas></div>
         </div>
         <div class="chart-row">
           <div class="chart-card" style="grid-column:1/-1;"><h4>Top nationalities</h4><canvas id="visaNatChart"></canvas></div>
@@ -223,7 +241,7 @@
         </div>
 
         <div class="card">
-          <h3>Upcoming expirations <span class="hint" style="display:inline;">\u2014 unused &amp; allocated visas only</span></h3>
+          <h3>Upcoming expirations <span class="hint" style="display:inline;">— unused &amp; allocated visas only</span></h3>
           <div class="row" style="margin-bottom:10px;">
             <div style="max-width:220px;"><label>Window</label>
               <select id="visaExpiryWindow">
@@ -268,7 +286,7 @@
       <div class="panel-head">
         <div class="eyebrow">R-02 · Reports &amp; Dashboards</div>
         <h2>Recruitment Pipeline</h2>
-        <p class="desc">Live candidate pipeline across Local Transfer, Overseas \u2013 Endorsed, and Overseas \u2013 Sourced \u2014 add, edit, delete, and start visa processing directly from a case.</p>
+        <p class="desc">Live candidate pipeline across Local Transfer, Overseas – Endorsed, and Overseas – Sourced — add, edit, delete, and start visa processing directly from a case.</p>
       </div>
 
       <div id="pipelineNoDbNotice" class="notice">
@@ -286,7 +304,7 @@
           <div class="f-group"><label>Position</label><select id="pipelineFilterPos"><option value="">All</option></select></div>
           <div class="f-group"><label>Recruitment Type</label><select id="pipelineFilterType"><option value="">All</option></select></div>
           <div class="f-group"><label>Stage</label><select id="pipelineFilterStage"><option value="">All</option></select></div>
-          <div class="f-group f-search"><label>Search (name)</label><input type="text" id="pipelineSearch" placeholder="Type to search\u2026"></div>
+          <div class="f-group f-search"><label>Search (name)</label><input type="text" id="pipelineSearch" placeholder="Type to search…"></div>
         </div>
 
         <div class="kpi-grid" id="pipelineKpiGrid"></div>
@@ -1271,5 +1289,9 @@
 <script src="/js/legacy/103-darkchartsv771.js"></script>
 <script src="/js/operations.js"></script>
 <script src="/js/toolkit-guide.js"></script>
+<link rel="stylesheet" href="/css/workspace.css">
+<button id="wsDismiss" class="ws-dismiss" aria-label="Close navigation" hidden></button>
+<dialog id="wsSearchDialog" aria-labelledby="wsSearchTitle"><div class="ws-dialog-head"><h2 id="wsSearchTitle">Find your next tool</h2><button id="wsCloseSearch" aria-label="Close tool search">×</button></div><label for="wsSearch">Search workspaces</label><input id="wsSearch" type="search" placeholder="Try visa, offer or PDF" autocomplete="off"><div id="wsResults"></div><p id="wsSearchStatus" role="status"></p></dialog>
+<script src="/js/workspace.js"></script>
 </body>
 </html>

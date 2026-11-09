@@ -51,7 +51,7 @@ The workspace uses the already-loaded database and performs **no writes**. Refre
 
 ## Files and checks
 
-- `public/index.html`: 1,275-line HTML shell and ordered asset references.
+- `public/index.html`: HTML shell and ordered asset references.
 - `public/js/legacy/`: 103 extracted classic-script blocks, in original execution order.
 - `public/css/legacy/`: 67 extracted stylesheets, in original cascade order.
 - `public/js/toolkit-guide.js`: searchable in-app navigation directory.
@@ -69,7 +69,7 @@ npm run check
 npm test
 ```
 
-The check recursively parses all 107 JavaScript files and checks local asset paths. Structural tests verify the extracted blocks against their original checksums and order, and ensure every static tool tab has a panel. GitHub Actions runs these checks in the Riyadh timezone. To run the optional browser test, install Playwright in your development environment and its Chromium browser, then run `node tests/browser-smoke.cjs`. `CHROMIUM_PATH` can point to an existing compatible Chromium executable.
+The check recursively parses all application JavaScript files and checks local asset paths. Structural tests verify the extracted blocks against their original checksums and order, and ensure every static tool tab has a panel. GitHub Actions runs these checks in the Riyadh timezone. To run the optional browser test, install Playwright in your development environment and its Chromium browser, then run `node tests/browser-smoke.cjs`. `CHROMIUM_PATH` can point to an existing compatible Chromium executable.
 
 ## Data compatibility and deployment
 
@@ -98,3 +98,11 @@ For a feature, start with the [module map](docs/MODULE_MAP.md) or search `rg "fu
 GitHub Actions runs unit/structure checks, isolated Firebase rules tests and an isolated browser smoke test with synthetic data. Full authenticated staging regression remains required before merging/deploying the draft.
 
 Verified on GitHub Actions on 9 November 2026: 16 unit/structure tests, 17 Firebase emulator tests, and the isolated Chromium smoke test pass ([run](https://github.com/cmlagatuz/safwat-recruitment-toolkit/actions/runs/42610307070)). The browser test covers synthetic Operations/Guide workflows; it does not replace authenticated regression of the legacy application.
+
+## Interactive workspace (9 November 2026)
+
+The new Home screen brings task launchers, a daily workflow and session-only recent tools together. Use **Find a tool** in the top bar to search available workspaces; press Down to focus results, use arrow keys to move, Enter to open, and Escape to close. Hidden or disabled navigation tools are excluded. On smaller screens, the menu button opens the scrollable sidebar; select a tool, tap outside or press Escape to close it.
+
+The forest-green presentation layer updates typography, cards, inputs, focus states and sign-in styling across the toolkit. Animations respect reduced-motion preferences; the existing dark-mode setting remains supported. Recent tools clear on sign-out and are not stored. No candidate data or Firebase settings are changed by this UI update.
+
+Source: `public/js/workspace.js` and `public/css/workspace.css`. The existing tool handlers remain in place. Browser smoke coverage includes Home launchers, tool search, hidden-tool exclusion, recent tools, mobile navigation and sign-out clearing. Full authenticated testing remains necessary for legacy workflows.
