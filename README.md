@@ -26,7 +26,7 @@ npm start
 
 Open `http://localhost:8080`. This serves `public/` using Python 3. No build or runtime npm installation is required. The application still loads its existing Firebase/document/chart libraries from CDNs. Use desktop Chrome or Edge for File System Access features. Do not open `index.html` directly as a file; local assets use root-relative URLs.
 
-**The existing HTML contains the production Firebase project configuration.** For development with real app scripts, use a separate Firebase project and test accounts/data. Firebase web configuration is not an authorization boundary; deployed RTDB rules enforce access. The isolated browser smoke test blocks all network access and does not connect to Firebase.
+**The extracted legacy scripts contain production Firebase project configuration** (start with `public/js/legacy/002-initfirebaseearly.js` and inspect other legacy defaults). For development with real app scripts, use a separate Firebase project and test accounts/data. Firebase web configuration is not an authorization boundary; deployed RTDB rules enforce access. The isolated browser smoke test blocks all network access and does not connect to Firebase.
 
 ## Operations workflow
 
@@ -77,7 +77,7 @@ The shared JSON loader now rejects missing record arrays, missing/duplicate IDs 
 
 The common CSV helper and new Operations exports neutralize spreadsheet formulas, support quoted/newline values and include a UTF-8 BOM for Arabic names. Some legacy exporters have independent serializers and still need consolidation.
 
-Firebase Hosting continues to serve `public/` using `firebase.json`; publish the **whole directory**, including `js/` and `css/`. Review on a staging Firebase project before deploying. No RTDB rules, production data, existing roles or live hosting settings are changed by this upgrade.
+Firebase Hosting continues to serve `public/` using `firebase.json`; publish the **whole directory**, including `js/` and `css/`. Review on a staging Firebase project before deploying. This branch includes replacement RTDB rules and matching application changes; release them together after staging validation. No live rules, production data, existing roles or hosting settings have been changed during development.
 
 ## RTDB security and rollout
 
@@ -96,3 +96,5 @@ Edit the relevant JS/CSS file directly. Keep the numeric ordering and classic sc
 For a feature, start with the [module map](docs/MODULE_MAP.md) or search `rg "functionName|elementId" public/js public/css public/index.html`. Run `npm run check` and `npm test` before committing. The extraction checks intentionally flag changes to preserved legacy files; a reviewed functional edit should also update that file's manifest checksum and regression tests.
 
 GitHub Actions runs unit/structure checks, isolated Firebase rules tests and an isolated browser smoke test with synthetic data. Full authenticated staging regression remains required before merging/deploying the draft.
+
+Verified on GitHub Actions on 9 November 2026: 16 unit/structure tests, 17 Firebase emulator tests, and the isolated Chromium smoke test pass ([run](https://github.com/cmlagatuz/safwat-recruitment-toolkit/actions/runs/42610307070)). The browser test covers synthetic Operations/Guide workflows; it does not replace authenticated regression of the legacy application.
