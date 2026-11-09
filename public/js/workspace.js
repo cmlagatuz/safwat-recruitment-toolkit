@@ -45,6 +45,7 @@
   }
   $('wsFind').onclick = () => { if (!signedIn()) return; input.value = ''; results(); dialog.showModal(); input.focus(); };
   $('wsCloseSearch').onclick = () => dialog.close();
+  dialog.addEventListener('keydown', e => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); dialog.close(); } });
   dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close(); } });
   input.oninput = results;
   input.addEventListener('keydown', e => { if (e.key === 'ArrowDown') { e.preventDefault(); $('wsResults').querySelector('button')?.focus(); } if (e.key === 'Enter') { e.preventDefault(); $('wsResults').querySelector('button')?.click(); } });
