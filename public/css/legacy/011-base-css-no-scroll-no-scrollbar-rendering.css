@@ -1,0 +1,13 @@
+
+/* Base CSS: no scroll, no scrollbar rendering.
+   Do NOT set height here — JS will set it dynamically to match
+   the actual strip height instead of a threshold-based value. */
+.sidebar{
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  scrollbar-width: none !important;
+}
+.sidebar::-webkit-scrollbar{
+  display: none !important;
+  width: 0 !important;
+}

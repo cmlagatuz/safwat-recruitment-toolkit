@@ -1,0 +1,5 @@
+
+#vdGrid td.vd-cvexp-ro input{ background:rgba(63,108,77,.06) !important; color:#3F6C4D !important; font-weight:600; cursor:not-allowed; }
+#vdGrid td.vd-cvexp-ro .cal, #vdGrid td.vd-cvexp-ro .vd-cal, #vdGrid td.vd-cvexp-ro [class*="cal"]{ display:none !important; }
+.vd-cvexp-flash{ animation:vdCVE 1s ease-out 1; }
+@keyframes vdCVE{ 0%{ background:rgba(63,108,77,.25);} 100%{ background:transparent;} }

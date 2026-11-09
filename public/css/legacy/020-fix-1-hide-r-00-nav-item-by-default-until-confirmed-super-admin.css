@@ -1,0 +1,58 @@
+
+/* ── FIX 1: Hide R-00 nav item by default (until confirmed super-admin) ── */
+/* Match by data-tab, href, id, or text content */
+body:not(.ent-is-super-admin) [data-tab="R-00"],
+body:not(.ent-is-super-admin) a[href="#R-00"],
+body:not(.ent-is-super-admin) #nav-R-00,
+body:not(.ent-is-super-admin) .sidebar a:has(> code:first-child:contains("R-00")){
+  display: none !important;
+}
+/* Also hide the parent <li> wrapper (works with more markup variants) */
+body:not(.ent-is-super-admin) [data-role-hidden="true"]{
+  display: none !important;
+}
+
+/* Cloud load banner */
+#entDbLoadBanner{
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  background: #17242F;
+  color: #EDE7D6;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+#entDbLoadBanner.ent-visible{ display: flex; }
+#entDbLoadBanner .ent-spinner{
+  width: 12px; height: 12px;
+  border: 2px solid rgba(237,231,214,.3);
+  border-top-color: #B98A2E;
+  border-radius: 50%;
+  animation: entDbSpin .8s linear infinite;
+}
+@keyframes entDbSpin{ to{ transform: rotate(360deg); } }
+#entDbLoadBanner button{
+  margin-left: 12px;
+  padding: 4px 10px;
+  background: #B98A2E;
+  color: #17242F;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+}
+#entDbLoadBanner.ent-error{
+  background: #7E2E24;
+  color: #fff;
+}

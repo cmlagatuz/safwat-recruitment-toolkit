@@ -1,0 +1,32 @@
+
+/* Override v2.5.3: pin the strip to the BOTTOM, not the top */
+.ent-topstrip{
+  position: fixed !important;
+  bottom: 0 !important;
+  top: auto !important;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  /* Slight top border to separate from content, plus a shadow for lift */
+  border-top: 2px solid var(--brass, #B98A2E);
+  border-bottom: none;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, .15);
+}
+
+/* Remove the top margin v2.5.3 added; add bottom margin instead
+   so page content doesn't hide behind the fixed bottom strip. */
+body.ent-authenticated .app{
+  margin-top: 0 !important;
+  margin-bottom: 42px;      /* room for the strip */
+}
+body.ent-authenticated.ent-topstrip-tall .app{
+  margin-top: 0 !important;
+  margin-bottom: 76px;      /* extra room if the strip wrapped */
+}
+
+/* Toast host should sit above the strip, not behind it */
+#entToastHost{
+  bottom: 58px !important;
+}

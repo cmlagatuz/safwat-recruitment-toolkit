@@ -1,0 +1,10 @@
+
+/* Make sure the injected fields are clearly visible in the single visa form */
+#vf_stampingCity, #vf_gender { width: 100%; box-sizing: border-box; }
+.ent-sponsor-badge{
+  display:inline-block; padding:2px 8px; border-radius:4px;
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700;
+  letter-spacing:.05em; margin-left:6px;
+}
+.ent-sponsor-badge.SAFWAT{ background:rgba(63,108,77,.14); color:#2F5A3B; border:1px solid #6BB588; }
+.ent-sponsor-badge.CLIENT{ background:rgba(185,138,46,.14); color:#8C6A22; border:1px solid #DFBE63; }

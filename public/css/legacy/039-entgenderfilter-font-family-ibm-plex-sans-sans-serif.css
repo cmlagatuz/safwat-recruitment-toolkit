@@ -1,0 +1,9 @@
+
+#entGenderFilter{ font-family:'IBM Plex Sans',sans-serif; }
+tr.ent-gender-hidden{ display:none !important; }
+/* status row tints (light shades) */
+tr.ent-st-used   > td{ background:rgba(35,92,137,.08) !important; }   /* light blue */
+tr.ent-st-unused > td{ background:rgba(47,90,59,.09) !important; }    /* light green */
+tr.ent-st-alloc  > td{ background:rgba(185,138,46,.12) !important; }  /* light gold */
+tr.ent-st-expired> td{ background:rgba(143,49,37,.09) !important; }   /* light red */
+tr.ent-st-cancel > td{ background:rgba(120,120,120,.10) !important; } /* light grey */

@@ -1,0 +1,57 @@
+
+/* Sticky headers on all report tables */
+#pipelineClientTable thead th,
+#pipelineMainTable thead th,
+#visaMainTable thead th,
+#visaExpiryTable thead th,
+#visaCrTable thead th{
+  position:sticky;top:0;z-index:5;background:var(--paper-raised,#fff);
+  box-shadow:0 1px 0 var(--rule,#D9D2BC), 0 2px 3px rgba(0,0,0,.04);
+}
+#pipelineClientTable thead tr.head-row-1 th{top:0;}
+#pipelineClientTable thead tr.head-row-2 th{top:34px;}
+#pipelineClientTable thead th{border-bottom:1px solid var(--rule,#D9D2BC);}
+
+/* KPI c-brass class (new tone for Allocated after color swap) */
+.kpi-card.c-brass{border-left-color:#B98A2E;}
+.kpi-card.c-brass .kpi-num{color:#8C6A22;}
+
+/* Gregorian shadow under Hijri inputs */
+.ent-gregorian-shadow{
+  margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-soft,#6B6558);
+  padding:3px 8px;background:rgba(46,111,163,.06);border-left:2px solid var(--focus,#2E6FA3);border-radius:0 3px 3px 0;
+  display:inline-block;letter-spacing:.02em;
+}
+.ent-gregorian-shadow strong{color:var(--text,#23201B);font-weight:500;}
+
+/* Auto-computed (read-only) fields */
+input.ent-auto-computed{
+  background:rgba(63,108,77,.05)!important;
+  border-color:var(--success,#3F6C4D)!important;
+  color:var(--success,#3F6C4D)!important;font-weight:500;cursor:not-allowed;
+}
+input.ent-auto-computed::-webkit-calendar-picker-indicator{opacity:.4;}
+.ent-auto-computed-hint{
+  font-size:10.5px;color:var(--success,#3F6C4D);font-family:'IBM Plex Mono',monospace;
+  margin-top:2px;letter-spacing:.03em;
+}
+
+/* Bulk edit: date field groups */
+.ent-bulk-datefield-group{
+  border:1px solid var(--rule,#D9D2BC);border-radius:6px;padding:10px 12px;
+  margin-top:12px;background:var(--paper,#F5F2EA);
+}
+.ent-bulk-datefield-group h4{
+  font-family:'Zilla Slab',serif;font-size:13px;margin:0 0 8px;
+  color:var(--brass-dark,#8C6A22);letter-spacing:.02em;
+}
+.ent-bulk-datefield-group .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* Section heading in expanded case form */
+.ent-case-section{
+  border-top:1px solid var(--rule,#D9D2BC);margin-top:14px;padding-top:10px;
+}
+.ent-case-section > h3{
+  font-family:'Zilla Slab',serif;font-size:14px;margin:0 0 8px;
+  color:var(--brass-dark,#8C6A22);letter-spacing:.02em;
+}

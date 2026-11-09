@@ -46,3 +46,7 @@ Passed locally: eight Node regression groups and syntax parsing of all 103 inlin
 The optional browser test uses real app markup/styles/navigation with legacy scripts removed, synthetic data and all network traffic blocked. It covers navigation, search, pagination, details, client filters, CSV download and sign-out clearing. It was prepared but **could not run in this execution environment**: Chromium startup was denied a local socket by the runtime. No visual/browser pass is claimed. Run it in a normal development environment, then perform full application regression in staging.
 
 Production authentication, RTDB authorization, save concurrency, legacy imports/export formats and live Firebase behavior have not been verified. This is a reviewable first upgrade, not a claim that the full modernization or security review is complete. No live database or hosting deployment was changed.
+
+## Follow-up after receiving RTDB rules — 9 November
+
+The access gaps are confirmed by the supplied rules. This branch now implements hardened rules, removes anonymous loaders and bootstrap/rescue bypasses, adds presence ownership, closes lock-acquisition failure handling, and replaces the main save path with immutable revision-checked transactions. Known remote assignment paths preserve dirty local work. See `SECURITY_ROLLOUT.md` for the exact scope, compatibility changes, tests and staging requirements. Earlier findings above describe the original baseline; full legacy consolidation, audit enforcement and live browser regression remain outstanding.

@@ -1,0 +1,9 @@
+
+/* Undo the damage: never let our class force flex on a container. */
+.avr-head-flex{ display:block !important; }
+
+/* Safe search: absolute, top-right inside the records card. */
+.avr-card-anchor{ position:relative !important; }
+#avrSearch{ position:absolute; top:12px; right:16px; z-index:6; width:280px; max-width:36vw; padding:7px 12px; border:1px solid #C9BFA4; border-radius:8px; font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:#23201B; background:#fff; box-sizing:border-box; }
+#avrSearch:focus{ outline:none; border-color:#B98A2E; box-shadow:0 0 0 3px rgba(185,138,46,.2); }
+tr.avr-hidden-by-search{ display:none !important; }

@@ -1,0 +1,28 @@
+
+/* 1. Sidebar becomes FIXED at top-left, spans from top to
+      just above the bottom strip. Grid column continues to
+      reserve its 280px width so main content stays in place. */
+.sidebar{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 280px !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  scrollbar-width: none !important;
+  z-index: 50;
+}
+.sidebar::-webkit-scrollbar{
+  display: none !important;
+  width: 0 !important;
+}
+
+/* 2. The .app grid preserves its 280px first column so the
+      main content still starts at 280px from the left.
+      This makes the sidebar's fixed positioning invisible
+      from a layout perspective. */
+.app{
+  grid-template-columns: 280px 1fr !important;
+}

@@ -1,0 +1,46 @@
+
+/* ── Nav items: bigger text, more vertical spacing ─────── */
+.sidebar nav a,
+.sidebar nav button,
+.sidebar nav li{
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  letter-spacing: .01em !important;
+}
+
+/* Slightly larger and softer group labels */
+.sidebar .navgroup-label{
+  font-size: 11.5px !important;
+  padding-top: 18px !important;
+  padding-bottom: 6px !important;
+  letter-spacing: .12em !important;
+}
+
+/* Give the "code" prefix (R-00, F-01, etc.) a bit more breathing room */
+.sidebar nav a code,
+.sidebar nav .code,
+.sidebar nav a > span:first-child{
+  margin-right: 4px !important;
+}
+
+/* ── Dashed separators between section groups ─────────── */
+/* Each navgroup-label gets a subtle top separator except the first one */
+.sidebar .navgroup-label{
+  border-top: 1px dashed rgba(237, 231, 214, .12);
+  margin-top: 10px !important;
+}
+/* First group label under the brand shouldn't have the separator
+   (that boundary is handled by the brand block's own border) */
+.sidebar .brand + nav .navgroup-label:first-child,
+.sidebar nav > .navgroup-label:first-of-type{
+  border-top: none;
+  margin-top: 0 !important;
+}
+
+/* Slightly softer brand tagline to keep hierarchy right */
+.sidebar .brand p{
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+}

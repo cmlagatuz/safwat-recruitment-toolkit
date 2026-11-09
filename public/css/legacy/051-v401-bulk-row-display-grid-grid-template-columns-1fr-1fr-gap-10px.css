@@ -1,0 +1,7 @@
+
+.v401-bulk-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin-top:10px; }
+@media(max-width:700px){ .v401-bulk-row{ grid-template-columns:1fr; } }
+.v401-bulk-cell{ display:flex; align-items:center; gap:8px; }
+.v401-bulk-cell label{ margin:0; font-size:13px; white-space:nowrap; }
+.v401-bulk-cell input[type="date"]{ flex:1; padding:8px 10px; border:1px solid #D9D2BC; border-radius:6px; font-family:inherit; font-size:13px; background:#fff; color:#23201B; box-sizing:border-box; }
+.v401-bulk-cell input[type="date"]:disabled{ background:#F0EBDD; color:#A89B82; }

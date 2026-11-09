@@ -1,0 +1,134 @@
+
+/* Hide the base app's two visa-add buttons */
+#visaAddBtn,
+#visaBulkAddBtn,
+button[onclick*="openVisaForm"],
+button[onclick*="openBulkAddVisaForm"]{
+  display: none !important;
+}
+/* Show only our new unified button */
+#entUnifiedAddVisaBtn{
+  padding: 10px 20px !important;
+  background: #17242F !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  margin-bottom: 10px !important;
+}
+#entUnifiedAddVisaBtn:hover{
+  background: #233442 !important;
+}
+
+/* Modal form styling — self-contained */
+.v2851-group{
+  border: 1px solid #D9D2BC;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  background: #F5F2EA;
+}
+.v2851-group h4{
+  font-family: 'Zilla Slab', serif;
+  font-size: 13px;
+  margin: 0 0 10px;
+  color: #8C6A22;
+  letter-spacing: .02em;
+}
+.v2851-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.v2851-row:last-child{ margin-bottom: 0; }
+.v2851-row.full{ grid-template-columns: 1fr; }
+.v2851-cell label{
+  display: block;
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #6B6558;
+  margin-bottom: 3px;
+}
+.v2851-cell label .req{ color: #A23B2E; }
+.v2851-cell input,
+.v2851-cell select{
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #D9D2BC;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  background: #fff;
+  color: #23201B;
+  box-sizing: border-box;
+}
+.v2851-cell input[readonly]{
+  background: rgba(63,108,77,.05);
+  color: #3F6C4D;
+  cursor: not-allowed;
+  font-weight: 500;
+}
+.v2851-shadow{
+  margin-top: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: #6B6558;
+  padding: 3px 8px;
+  background: rgba(46,111,163,.06);
+  border-left: 2px solid #2E6FA3;
+  border-radius: 0 3px 3px 0;
+  display: inline-block;
+}
+.v2851-shadow strong{ color: #23201B; }
+.v2851-hint{
+  font-size: 12px;
+  color: #6B6558;
+  margin: 8px 0 4px;
+  line-height: 1.5;
+}
+.v2851-actions{
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.v2851-btn-primary{
+  padding: 9px 22px;
+  background: #17242F;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+}
+.v2851-btn-primary:hover{ background: #233442; }
+.v2851-btn-primary:disabled{ opacity: .5; cursor: wait; }
+.v2851-btn-secondary{
+  padding: 9px 18px;
+  background: #fff;
+  color: #23201B;
+  border: 1px solid #D9D2BC;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+}
+.v2851-btn-secondary:hover{ background: #F5F2EA; }
+.v2851-summary{
+  background: rgba(185,138,46,.08);
+  color: #8C6A22;
+  border-left: 3px solid #B98A2E;
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  margin-top: 10px;
+}

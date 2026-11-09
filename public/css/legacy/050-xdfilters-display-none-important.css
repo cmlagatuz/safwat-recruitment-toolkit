@@ -1,0 +1,68 @@
+
+#xdFilters{ display:none !important; }
+.pd-lb-wrap{ overflow:auto; max-height:460px; border:1px solid #EDE7D6; border-radius:8px; position:relative; }
+table.pd-lb{ width:100%; border-collapse:separate; border-spacing:0; font-size:12px; }
+table.pd-lb th{ background:#FAF7EF; color:#6B6558; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.04em;
+  text-transform:uppercase; padding:7px 8px; text-align:center; border-bottom:1px solid #E0D8C4; position:sticky; z-index:5; }
+table.pd-lb thead tr:nth-child(1) th{ top:0; }
+table.pd-lb thead tr:nth-child(2) th{ top:32px; }
+table.pd-lb th.grp{ border-left:1px solid #E0D8C4; border-right:1px solid #E0D8C4; background:#F3EDDF; color:#8C6A22; }
+table.pd-lb th.cli{ text-align:left; left:0; z-index:7; background:#F3EDDF; }
+table.pd-lb td{ padding:7px 8px; text-align:center; border-bottom:1px solid rgba(0,0,0,.04); font-family:'IBM Plex Mono',monospace; background:#fff; }
+table.pd-lb td.cli{ text-align:left; font-family:'IBM Plex Sans',sans-serif; white-space:nowrap; max-width:260px;
+  overflow:hidden; text-overflow:ellipsis; position:sticky; left:0; z-index:3; background:#fff; border-right:1px solid #EDE7D6; }
+table.pd-lb tbody tr:hover td{ background:rgba(185,138,46,.06); }
+table.pd-lb tbody tr:hover td.cli{ background:#FBF6E9; }
+table.pd-lb td.z{ color:#C9BFA4; }
+table.pd-lb td.acc{ font-weight:700; color:#2F5A3B; }
+table.pd-lb tfoot td{ position:sticky; bottom:0; z-index:4; border-top:2px solid #B98A2E; background:#FBF4DE; font-weight:700; }
+table.pd-lb tfoot td.cli{ z-index:6; left:0; background:#FBF4DE; }
+.pd-cals{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:1100px){ .pd-cals{ grid-template-columns:1fr; } }
+.pd-cal{ background:#fff; border:1px solid #E0D8C4; border-radius:12px; padding:14px 16px; }
+.pd-cal h4{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#8C6A22; margin:0 0 4px; font-weight:700; }
+.pd-cal .hint{ font-size:10.5px; color:#8E7F6A; margin-bottom:10px; }
+.pd-cal-head{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.pd-cal-head .mon{ font-family:'Zilla Slab',serif; font-size:17px; font-weight:600; color:#17242F; min-width:150px; text-align:center; }
+.pd-cal-head button{ border:1px solid #D9D2BC; background:#fff; color:#4A4032; width:28px; height:28px; border-radius:7px; cursor:pointer; font-size:13px; }
+.pd-cal-head button:hover{ background:#F5F2EA; }
+.pd-cal-head .today{ width:auto; padding:0 11px; font-family:'IBM Plex Sans',sans-serif; font-size:11.5px; font-weight:600; }
+.pd-cal-head .tot{ margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6558; }
+.pd-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.pd-dow{ text-align:center; font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; color:#8E7F6A; padding:3px 0 5px; }
+.pd-day{ position:relative; min-height:52px; border:1px solid #EDE7D6; border-radius:8px; background:#FCFAF4; padding:5px 6px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6558; }
+.pd-day.blank{ background:transparent; border-color:transparent; }
+.pd-day.today{ border-color:#B98A2E; box-shadow:0 0 0 1px #B98A2E inset; }
+.pd-day.has{ background:#fff; }
+.pd-day.clickable{ cursor:pointer; }
+.pd-day.clickable:hover{ background:#FFF9EC; border-color:#B98A2E; }
+.pd-day.past{ background:#F2F0EA; border-color:#E4DFD2; color:#A9A296; }
+.pd-day.past .dn{ color:#A9A296; }
+.pd-day.locked{ cursor:default; }
+.pd-day .dn{ font-weight:700; color:#3B3227; }
+.pd-badge{ position:absolute; right:5px; bottom:5px; min-width:22px; height:22px; border-radius:11px; display:inline-flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:800; color:#fff; padding:0 6px; }
+.pd-badge.arr{ background:#2E6FA3; animation:pdPulseA 2.2s infinite; }
+.pd-badge.apt{ background:#8C6A22; animation:pdPulseB 2.2s infinite; }
+.pd-badge.muted{ background:#B3ADA1 !important; animation:none !important; }
+@keyframes pdPulseA{ 0%{box-shadow:0 0 0 0 rgba(46,111,163,.55);} 70%{box-shadow:0 0 0 9px rgba(46,111,163,0);} 100%{box-shadow:0 0 0 0 rgba(46,111,163,0);} }
+@keyframes pdPulseB{ 0%{box-shadow:0 0 0 0 rgba(140,106,34,.55);} 70%{box-shadow:0 0 0 9px rgba(140,106,34,0);} 100%{box-shadow:0 0 0 0 rgba(140,106,34,0);} }
+.pd-dots{ position:absolute; left:6px; bottom:7px; display:flex; gap:3px; }
+.pd-dot{ width:6px; height:6px; border-radius:50%; }
+.pd-day.past .pd-dot{ opacity:.45; }
+.pd-legend{ display:flex; gap:12px; flex-wrap:wrap; margin-top:9px; font-size:10.5px; color:#6B6558; font-family:'IBM Plex Sans',sans-serif; }
+.pd-legend .li{ display:inline-flex; align-items:center; gap:5px; }
+.pd-legend .sw{ width:9px; height:9px; border-radius:50%; }
+#pdCalPop{ position:fixed; inset:0; z-index:100090; background:rgba(20,32,43,.55); display:none; align-items:center; justify-content:center; padding:20px; font-family:'IBM Plex Sans',sans-serif; }
+#pdCalPop.open{ display:flex; }
+#pdCalPop .box{ background:#fff; color:#14202B; width:min(860px,96vw); max-height:84vh; border-radius:12px; box-shadow:0 24px 70px rgba(0,0,0,.35); overflow:hidden; display:flex; flex-direction:column; }
+#pdCalPop .hd{ display:flex; justify-content:space-between; align-items:center; padding:14px 18px; background:#14202B; color:#F1EDE2; }
+#pdCalPop .hd h3{ margin:0; font-family:'Zilla Slab',serif; font-size:17px; }
+#pdCalPop .hd button{ border:none; border-radius:7px; padding:6px 13px; cursor:pointer; font-size:12px; font-weight:700; }
+#pdCalPop .hd .exp{ background:#B98A2E; color:#14202B; margin-right:8px; }
+#pdCalPop .hd .cls{ background:transparent; border:1px solid #4A5560; color:#F1EDE2; }
+#pdCalPop .bd{ overflow:auto; }
+#pdCalPop table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+#pdCalPop th{ position:sticky; top:0; background:#FAF7EF; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; color:#6B6558; text-align:left; padding:8px 10px; border-bottom:1px solid #E0D8C4; }
+#pdCalPop td{ padding:7px 10px; border-bottom:1px solid rgba(0,0,0,.05); }
+#pdCalPop .tag{ font-family:'IBM Plex Mono',monospace; font-size:10px; padding:1px 7px; border-radius:9px; }

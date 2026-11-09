@@ -1,0 +1,43 @@
+
+/* Lock the sidebar and make it fill only the remaining height
+   above the fixed bottom strip (42 px). No scrollbar. */
+.sidebar{
+  overflow: hidden !important;
+  height: calc(100vh - 42px) !important;
+  padding-top: 22px !important;
+  padding-bottom: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* When the bottom strip wraps to 2 rows, sidebar shrinks a bit more */
+body.ent-topstrip-tall .sidebar{
+  height: calc(100vh - 76px) !important;
+}
+
+/* Compress vertical spacing between nav items so everything fits
+   without scrolling on typical laptop screens */
+.sidebar .brand{
+  padding-bottom: 14px !important;
+  margin-bottom: 6px !important;
+}
+.sidebar .brand h1{ font-size: 17px !important; line-height: 1.2 !important; }
+.sidebar .brand p{ font-size: 11.5px !important; margin-top: 4px !important; }
+
+.sidebar nav{ margin-top: 2px !important; }
+.sidebar .navgroup-label{
+  padding: 10px 22px 4px !important;
+  font-size: 10.5px !important;
+}
+.sidebar nav a,
+.sidebar nav button,
+.sidebar li{
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+/* If content STILL overflows on very small windows, hide the
+   overflow silently (last resort — user can zoom out) */
+.sidebar > *{ flex-shrink: 0; }

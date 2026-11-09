@@ -1,0 +1,18 @@
+
+.ent-greg2hijri-panel{
+  border:1px solid #B98A2E;border-radius:8px;
+  padding:14px 18px;margin:12px 0;
+  background:rgba(185,138,46,.05);
+}
+.ent-greg2hijri-panel h3{font-family:'Zilla Slab',serif;font-size:14px;margin:0 0 8px;color:#8C6A22;}
+.ent-greg2hijri-panel p{font-size:12.5px;color:#6B6558;margin:4px 0;}
+.ent-greg2hijri-panel button{
+  padding:8px 14px;font-size:12.5px;border-radius:5px;cursor:pointer;
+  font-family:inherit;background:#B98A2E;color:#17242F;border:none;font-weight:600;margin-right:8px;
+}
+.ent-greg2hijri-panel button.secondary{background:#fff;color:#23201B;border:1px solid #D9D2BC;font-weight:400;}
+.ent-greg2hijri-report{
+  margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  padding:8px 10px;background:#fff;border:1px solid #D9D2BC;border-radius:4px;
+  max-height:220px;overflow-y:auto;white-space:pre;
+}

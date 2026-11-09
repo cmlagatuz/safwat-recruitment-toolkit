@@ -1,0 +1,35 @@
+
+#cvViewBtn{ padding:8px 16px; border:1px solid #2F5A3B; background:#2F5A3B; color:#fff; border-radius:8px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:600; margin-left:8px; }
+#cvViewBtn:hover{ background:#24492F; }
+#cvOverlay{ position:fixed; inset:0; z-index:100000; background:rgba(20,32,43,.55); display:none; align-items:flex-start; justify-content:center; padding:20px; overflow:auto; font-family:'IBM Plex Sans',sans-serif; }
+#cvOverlay.open{ display:flex; }
+#cvCard{ background:#F1EDE2; color:#14202B; width:min(1600px,98vw); border-radius:12px; box-shadow:0 24px 70px rgba(0,0,0,.35); overflow:hidden; margin-bottom:40px; }
+#cvHead{ display:flex; justify-content:space-between; align-items:center; gap:14px; padding:16px 20px; background:#14202B; color:#F1EDE2; flex-wrap:wrap; }
+#cvHead .t{ font-family:'Zilla Slab',serif; font-size:20px; font-weight:600; }
+#cvHead .sub{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:#A9B4BE; margin-left:8px; }
+#cvHead .actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+#cvHead button{ border:none; border-radius:8px; padding:8px 14px; cursor:pointer; font-family:inherit; font-size:13px; font-weight:600; }
+#cvHead .save{ background:#2F5A3B; color:#fff; } #cvHead .save:hover{ background:#24492F; }
+#cvHead .clear{ background:#fff; color:#A23B2E; border:1px solid #A23B2E; } #cvHead .clear:hover{ background:#A23B2E; color:#fff; }
+#cvHead .export{ background:#B98A2E; color:#14202B; } #cvHead .export:hover{ background:#a5791f; }
+#cvHead .addrow{ background:#fff; color:#2F5A3B; border:1px solid #2F5A3B; }
+#cvHead .close{ background:transparent; border:1px solid #4A5560; color:#F1EDE2; }
+#cvBody{ padding:12px 16px 18px; }
+#cvHint{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#6B6558; margin:0 0 8px; }
+#cvLoading{ display:none; font-family:'IBM Plex Mono',monospace; font-size:13px; color:#8C6A22; padding:20px; text-align:center; }
+.cv-scroll{ overflow:auto; max-height:74vh; border:1px solid #E0D8C4; border-radius:8px; background:#fff; }
+table.cv-grid{ border-collapse:separate; border-spacing:0; font-size:12.5px; }
+table.cv-grid thead th{ position:sticky; top:0; z-index:5; background:#14202B; color:#F1EDE2; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.04em; text-transform:uppercase; padding:8px 8px; text-align:left; font-weight:700; white-space:nowrap; border-bottom:2px solid #B98A2E; }
+table.cv-grid tbody td{ padding:0; border-bottom:1px solid #EDE7D6; border-right:1px solid #F1EDE2; }
+table.cv-grid tbody td.rownum{ text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8E7F6A; background:#F1EDE2; padding:0 6px; width:34px; }
+table.cv-grid tbody tr:nth-child(even) td{ background:#FAF8F1; }
+table.cv-grid input{ width:100%; border:none; background:transparent; padding:7px 8px; font-family:inherit; font-size:12.5px; color:#14202B; box-sizing:border-box; outline:none; min-width:100px; }
+table.cv-grid input:focus{ background:#FFF7DE; box-shadow:inset 0 0 0 2px #B98A2E; border-radius:3px; }
+table.cv-grid td.date-cell{ position:relative; }
+table.cv-grid td.date-cell .cal{ position:absolute; right:4px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:13px; opacity:.6; }
+table.cv-grid td.date-cell .cal:hover{ opacity:1; }
+table.cv-grid td.date-cell input{ padding-right:20px; min-width:120px; }
+table.cv-grid td.sal input{ text-align:right; min-width:80px; }
+table.cv-grid td.total input{ background:rgba(185,138,46,.08); color:#8C6A22; font-weight:700; }
+table.cv-grid td.rowact{ width:30px; text-align:center; }
+table.cv-grid td.rowact button{ background:none; border:none; color:#A23B2E; cursor:pointer; font-size:15px; }

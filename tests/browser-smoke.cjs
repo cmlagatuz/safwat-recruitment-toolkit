@@ -13,10 +13,12 @@ const assert = require('node:assert/strict');
     const source = fs.readFileSync('public/index.html', 'utf8');
     const html = source.replace(/<!--[\s\S]*?-->/g, '').replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '');
     await page.setContent(html);
-    await page.addStyleTag({ path: 'public/css/operations.css' });
+    for (const [, href] of source.matchAll(/<link[^>]*href="(\/css\/[^"]+)"/g)) await page.addStyleTag({ path: 'public' + href });
     await page.addScriptTag({ path: 'public/js/toolkit-core.js' });
     // Exactly the app's navigation event handler, without the unrelated boot code.
-    await page.addScriptTag({ content: source.slice(source.indexOf('/* ---------- navigation'), source.indexOf('/* ---------- FSA support')) });
+    const navigationFile = require('../docs/asset-manifest.json').assets.find(a => a.kind === 'js' && fs.readFileSync(a.path, 'utf8').includes('/* ---------- navigation'));
+    const navigation = fs.readFileSync(navigationFile.path, 'utf8');
+    await page.addScriptTag({ content: navigation.slice(navigation.indexOf('/* ---------- navigation'), navigation.indexOf('/* ---------- FSA support')) });
     await page.evaluate(() => {
       document.body.classList.add('ent-authenticated', 'ent-is-super-admin');
       document.documentElement.classList.add('ent-super-confirmed');
@@ -24,6 +26,12 @@ const assert = require('node:assert/strict');
       window.before = JSON.stringify(window.DB);
     });
     await page.addScriptTag({ path: 'public/js/operations.js' });
+    await page.addScriptTag({ path: 'public/js/toolkit-guide.js' });
+    await page.locator('[data-tab="guide"]').click();
+    await page.locator('#guideSearch').fill('expiry');
+    assert.match(await page.locator('#guideTools').innerText(), /Visa Report/);
+    await page.locator('#guideTools button').first().click();
+    assert.equal(await page.locator('#panel-visa').evaluate(el => el.classList.contains('active')), true);
     await page.locator('[data-tab="operations"]').click();
     await page.waitForFunction(() => document.getElementById('opsQueue').children.length === 50);
     assert.match(await page.locator('#opsCount').innerText(), /61 actions/);

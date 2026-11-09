@@ -10,6 +10,7 @@ Browser-based recruitment, visa reporting and document tools for Safwat. Firebas
 | R-01 Visa Report | Visa inventory, candidate assignments, filters and exports |
 | R-02 Recruitment Pipeline | Candidate progress, salary details and bulk editing |
 | **R-03 Operations (new)** | Client delivery snapshots, follow-up queue, visa deadlines and CSV summaries |
+| **R-04 Toolkit Guide (new)** | Searchable directory of tools visible to your account |
 | F-01 | Offer-letter generation |
 | F-02–F-06 | Extract, sort, rename, create folders and list files |
 | F-07–F-09 | PDF merging, conversion workflow and Word-file cleanup |
@@ -50,7 +51,11 @@ The workspace uses the already-loaded database and performs **no writes**. Refre
 
 ## Files and checks
 
-- `public/index.html`: existing application, integrations and legacy layers.
+- `public/index.html`: 1,275-line HTML shell and ordered asset references.
+- `public/js/legacy/`: 103 extracted classic-script blocks, in original execution order.
+- `public/css/legacy/`: 67 extracted stylesheets, in original cascade order.
+- `public/js/toolkit-guide.js`: searchable in-app navigation directory.
+- [Module map](docs/MODULE_MAP.md), [navigation map](docs/NAVIGATION.md) and [asset manifest](docs/asset-manifest.json): code ownership, tool panels and extraction checksums.
 - `public/js/toolkit-core.js`: tested date, CSV, escaping, database validation and operations calculations.
 - `public/js/operations.js`, `public/css/operations.css`: new UI, kept separate from the legacy file.
 - `tests/core.test.js`: dependency-free regression tests.
@@ -64,7 +69,7 @@ npm run check
 npm test
 ```
 
-The check parses the existing inline JavaScript and new modules and checks local asset paths. GitHub Actions runs these checks in the Riyadh timezone. To run the optional browser test, install Playwright in your development environment and its Chromium browser, then run `node tests/browser-smoke.cjs`. `CHROMIUM_PATH` can point to an existing compatible Chromium executable.
+The check recursively parses all 107 JavaScript files and checks local asset paths. Structural tests verify the extracted blocks against their original checksums and order, and ensure every static tool tab has a panel. GitHub Actions runs these checks in the Riyadh timezone. To run the optional browser test, install Playwright in your development environment and its Chromium browser, then run `node tests/browser-smoke.cjs`. `CHROMIUM_PATH` can point to an existing compatible Chromium executable.
 
 ## Data compatibility and deployment
 
@@ -74,6 +79,20 @@ The common CSV helper and new Operations exports neutralize spreadsheet formulas
 
 Firebase Hosting continues to serve `public/` using `firebase.json`; publish the **whole directory**, including `js/` and `css/`. Review on a staging Firebase project before deploying. No RTDB rules, production data, existing roles or live hosting settings are changed by this upgrade.
 
-## RTDB rules needed for the next phase
+## RTDB security and rollout
 
-Provide the deployed Realtime Database Rules JSON (Firebase Console → Realtime Database → Rules). No passwords, service-account keys or production records are needed. Rules review and emulator tests are required before the proposed authorization/concurrent-save redesign described in `docs/REVIEW.md`.
+The deployed rules were supplied and reviewed on 9 November 2026. The replacement rules and compatibility changes are included in this draft. Follow [SECURITY_ROLLOUT.md](docs/SECURITY_ROLLOUT.md) for emulator tests and coordinated staging/deployment. No production secrets or data are needed for testing.
+
+## Security update (9 November 2026)
+
+The supplied production rules have now been reviewed. The draft includes `database.rules.json`, emulator tests, approved-account dashboard access, owner-checked presence/locks, and revision-checked saves that preserve in-flight edits. Read [the rollout guide](docs/SECURITY_ROLLOUT.md) before deploying: the matching app and rules must be tested and released together. The first admin must already exist through a trusted Console/Admin SDK action; anonymous dashboard access is intentionally removed. Live Firebase has not been changed.
+
+## Working with the split source
+
+The HTML no longer contains inline script or style blocks. Historical HTML comments moved to `docs/LEGACY_NOTES.md`. Extraction preserves each legacy block byte-for-byte, with checksums recorded in the manifest. The total feature code still exists: reducing the HTML size is an organization change, not a claim that the codebase has been fully rewritten or optimized.
+
+Edit the relevant JS/CSS file directly. Keep the numeric ordering and classic script semantics: legacy globals, inline event handlers and patch wrappers depend on them. Do not add `async`, `defer` or `type="module"` to these scripts without a separate tested migration. Do not upload only `index.html`; deploy the entire `public/` directory.
+
+For a feature, start with the [module map](docs/MODULE_MAP.md) or search `rg "functionName|elementId" public/js public/css public/index.html`. Run `npm run check` and `npm test` before committing. The extraction checks intentionally flag changes to preserved legacy files; a reviewed functional edit should also update that file's manifest checksum and regression tests.
+
+GitHub Actions runs unit/structure checks, isolated Firebase rules tests and an isolated browser smoke test with synthetic data. Full authenticated staging regression remains required before merging/deploying the draft.

@@ -1,0 +1,1 @@
+(function(){ try{ const h=(location.hash||'').toLowerCase().replace(/[^a-z]/g,''); if(h==='ceo'){ document.documentElement.classList.add('ceo-route'); document.title='SAFWAT · Executive Dashboard'; } }catch(e){} })();
