@@ -1,0 +1,4 @@
+
+/* inline group holding the search + View Data button, top-right of the records card */
+.avr-topright{ display:flex !important; align-items:center; gap:10px; }
+.avr-topright #vdViewBtn, .avr-topright .avr-viewdata{ position:static !important; margin:0 !important; }

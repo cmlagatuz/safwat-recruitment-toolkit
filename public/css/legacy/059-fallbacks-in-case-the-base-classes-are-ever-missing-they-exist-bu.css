@@ -1,0 +1,19 @@
+
+/* fallbacks in case the base classes are ever missing (they exist, but be safe) */
+.ent-field-error{ border-color:#A23B2E !important; background:rgba(162,59,46,.05) !important; }
+.ent-field-warn{ border-color:#B47A0A !important; background:rgba(180,122,10,.06) !important; }
+.ent-field-ok{ border-color:#3F6C4D !important; }
+.ent-vmsg{ font-size:11px; margin-top:3px; font-family:'IBM Plex Mono',monospace; line-height:1.3; }
+.ent-vmsg.err{ color:#A23B2E; } .ent-vmsg.warn{ color:#B47A0A; } .ent-vmsg.ok{ color:#3F6C4D; }
+/* save-status pill */
+#entSaveStatus{ position:fixed; top:10px; right:16px; z-index:100055; display:none; align-items:center; gap:8px;
+  padding:6px 12px; border-radius:20px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600;
+  box-shadow:0 6px 18px rgba(0,0,0,.18); }
+#entSaveStatus.show{ display:inline-flex; }
+#entSaveStatus.saving{ background:#14202B; color:#EDE7D6; }
+#entSaveStatus.saved{ background:rgba(63,108,77,.14); color:#2F5A3B; border:1px solid #3F6C4D; }
+#entSaveStatus.queued{ background:rgba(180,122,10,.14); color:#8C6A22; border:1px solid #B47A0A; }
+#entSaveStatus.err{ background:rgba(162,59,46,.14); color:#A23B2E; border:1px solid #A23B2E; }
+#entSaveStatus .dot{ width:8px; height:8px; border-radius:50%; background:currentColor; }
+#entSaveStatus.saving .dot{ animation:entSavePulse 1s infinite; }
+@keyframes entSavePulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }

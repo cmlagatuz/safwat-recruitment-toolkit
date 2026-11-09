@@ -1,0 +1,4 @@
+
+#visaFilterAgency{ padding:6px 10px; border:1px solid var(--rule,#D9D2BC); border-radius:4px; background:#fff; color:var(--text,#23201B); font-family:inherit; font-size:13px; width:100%; box-sizing:border-box; }
+.ent-gender-cell:not(.ent-ready){ visibility:hidden !important; }
+.ent-gender-cell > label{ margin:0 0 4px !important; }

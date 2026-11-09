@@ -1,0 +1,4 @@
+
+/* make sure nothing of mine is still hiding the legacy sections */
+.v41-legacy-exp{ display:block !important; }
+#vupbSection, #vexpSection{ display:block !important; }

@@ -1,0 +1,39 @@
+#panel-operations { color: var(--text, #23201b); }
+.ops-controls, .ops-heading, .ops-pager { display:flex; flex-wrap:wrap; gap:12px; align-items:end; }
+.ops-controls label { display:flex; flex-direction:column; gap:6px; font-size:13px; flex:1; min-width:150px; }
+.ops-controls input, .ops-controls select { width:100%; box-sizing:border-box; padding:10px; border:1px solid var(--rule,#d9d2bc); border-radius:5px; background:var(--paper-raised,#fff); color:inherit; font:inherit; }
+.ops-controls .ops-search { flex:3; }
+.ops-heading { align-items:center; justify-content:space-between; }
+.ops-heading h3 { margin:0; }
+.ops-metrics { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin:18px 0; }
+.ops-metric { border:1px solid var(--rule,#d9d2bc); border-top:3px solid var(--brass,#b98a2e); padding:18px; border-radius:8px; background:var(--paper-raised,#fff); }
+.ops-metric strong { display:block; font-size:30px; font-variant-numeric:tabular-nums; }
+.ops-metric span { font-size:12px; }
+.ops-scroll { overflow-x:auto; }
+.ops-table { width:100%; border-collapse:collapse; font-size:13px; }
+.ops-table th, .ops-table td { padding:11px 9px; text-align:left; border-bottom:1px solid var(--rule,#d9d2bc); vertical-align:top; }
+.ops-table thead th { background:var(--ink,#17242f); color:#fff; white-space:nowrap; }
+.ops-table small { display:block; margin-top:4px; }
+.ops-table button { white-space:nowrap; }
+.ops-priority { display:inline-block; padding:3px 7px; border-radius:4px; white-space:nowrap; font-weight:600; }
+.ops-priority.p1 { background:#fbe7e3; color:#86291b; }
+.ops-priority.p2 { background:#fff0d5; color:#745000; }
+.ops-priority.p3 { background:#e3eef8; color:#20516f; }
+.ops-pager { justify-content:flex-end; align-items:center; margin-top:14px; }
+#opsDetail { max-width:720px; width:90vw; max-height:80vh; overflow:auto; padding:24px; border:1px solid var(--rule,#d9d2bc); border-radius:10px; color:var(--text,#23201b); background:var(--paper-raised,#fff); }
+#opsDetail::backdrop { background:rgba(0,0,0,.5); }
+#opsDetail dl { display:grid; grid-template-columns:minmax(120px,1fr) 2fr; gap:8px 16px; }
+#opsDetail dt { text-transform:capitalize; font-weight:600; }
+#opsDetail dd { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.ops-sr { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); }
+#panel-operations button:focus-visible, #panel-operations input:focus-visible, #panel-operations select:focus-visible { outline:3px solid var(--focus,#2e6fa3); outline-offset:2px; }
+@media(max-width:850px) { .ops-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media print {
+  body.ops-print * { visibility:hidden; }
+  body.ops-print #panel-operations, body.ops-print #panel-operations * { visibility:visible; }
+  body.ops-print #panel-operations { position:absolute; left:0; top:0; width:100%; background:white; color:black; }
+  body.ops-print #opsQueueCard, body.ops-print #panel-operations button, body.ops-print .ops-controls, body.ops-print .ops-pager, body.ops-print dialog { display:none !important; }
+  body.ops-print .ops-scroll { overflow:visible; }
+  body.ops-print .ops-table { font-size:9px; }
+  body.ops-print .ops-table thead th { background:#eee; color:black; }
+}

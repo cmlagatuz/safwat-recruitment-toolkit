@@ -1,0 +1,54 @@
+
+/* Ensure the bulk bar is prominently visible when shown */
+#visaBulkBar{
+  position: sticky !important;
+  top: 8px !important;
+  z-index: 10 !important;
+  background: linear-gradient(135deg, rgba(46,111,163,.08) 0%, rgba(185,138,46,.08) 100%) !important;
+  border: 1px solid var(--brass, #B98A2E) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08) !important;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#visaBulkBar.ent-visible{ display: flex !important; }
+#visaBulkBar #visaBulkCount{
+  font-family: 'Zilla Slab', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brass-dark, #8C6A22);
+}
+#visaBulkBar button{ padding: 6px 14px !important; font-size: 13px !important; }
+
+/* Bulk edit form: grouped sections for visa fields */
+.ent-vbulk-group{
+  border: 1px solid var(--rule, #D9D2BC);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  background: var(--paper, #F5F2EA);
+}
+.ent-vbulk-group h4{
+  font-family: 'Zilla Slab', serif;
+  font-size: 13px;
+  margin: 0 0 8px;
+  color: var(--brass-dark, #8C6A22);
+  letter-spacing: .02em;
+}
+.ent-vbulk-group .checkline{
+  display: flex; align-items: center; gap: 8px; margin: 6px 0 4px;
+}
+.ent-vbulk-group input,
+.ent-vbulk-group select{
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--rule, #D9D2BC);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  background: #fff;
+}

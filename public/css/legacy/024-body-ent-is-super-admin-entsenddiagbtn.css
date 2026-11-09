@@ -1,0 +1,4 @@
+
+body.ent-is-super-admin #entSendDiagBtn{
+  display: none !important;
+}

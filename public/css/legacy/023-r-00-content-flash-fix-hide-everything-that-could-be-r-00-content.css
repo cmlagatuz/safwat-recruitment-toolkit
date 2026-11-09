@@ -1,0 +1,53 @@
+
+/* R-00 content flash fix: hide EVERYTHING that could be R-00 content
+   until we've confirmed super-admin status. */
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) #tab-R-00,
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) [data-tab-content="R-00"],
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) section#R-00,
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) [id="R-00-content"],
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) [data-panel="R-00"],
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) #entCloudPanel,
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) #dbFileTools,
+html:not(.ent-super-confirmed) body:not(.ent-is-super-admin) #dbNoFileNotice{
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -99999px !important;
+}
+
+/* Role dropdown lock indicator */
+#entRoleSelect[disabled]{
+  cursor: not-allowed !important;
+  background: rgba(0,0,0,.05) !important;
+  color: var(--text-soft, #6B6558) !important;
+  opacity: .7 !important;
+}
+.ent-role-locked-hint{
+  display: block;
+  margin-top: 4px;
+  font-size: 10.5px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--brass-dark, #8C6A22);
+  letter-spacing: .04em;
+}
+
+/* 1-click diagnostic button */
+.ent-send-diag-btn{
+  background: rgba(162, 59, 46, .1) !important;
+  color: #A23B2E !important;
+  border-color: #A23B2E !important;
+}
+.ent-send-diag-btn:hover{
+  background: rgba(162, 59, 46, .2) !important;
+}
+.ent-send-diag-btn.ent-sending{
+  opacity: .6;
+  cursor: wait !important;
+}
+.ent-send-diag-btn.ent-sent{
+  background: rgba(63, 108, 77, .12) !important;
+  color: #3F6C4D !important;
+  border-color: #3F6C4D !important;
+}

@@ -1,0 +1,96 @@
+
+/* ── Wide table container: horizontal scroll ──────────── */
+#visaMainTable{
+  min-width: 2400px;   /* enough for all 22 columns */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+#visaMainTable + *,
+.rowlist:has(#visaMainTable){
+  overflow-x: auto !important;
+}
+.rowlist{
+  overflow-x: auto;
+}
+
+/* ── Sticky first two columns ────────────────────────── */
+#visaMainTable thead th:nth-child(1),
+#visaMainTable tbody td:nth-child(1){
+  position: sticky; left: 0; z-index: 3;
+  background: var(--paper-raised, #fff);
+  min-width: 34px; max-width: 34px; width: 34px;
+}
+#visaMainTable thead th:nth-child(2),
+#visaMainTable tbody td:nth-child(2){
+  position: sticky; left: 34px; z-index: 3;
+  background: var(--paper-raised, #fff);
+  min-width: 180px; max-width: 260px;
+  border-right: 1px solid var(--rule, #D9D2BC);
+  box-shadow: 4px 0 6px -3px rgba(0,0,0,.06);
+}
+#visaMainTable thead th:nth-child(1),
+#visaMainTable thead th:nth-child(2){
+  z-index: 6;
+}
+
+/* Ensure sticky headers stay on top when scrolling vertically too */
+#visaMainTable thead th{
+  position: sticky; top: 0; z-index: 5;
+  background: var(--paper-raised, #fff);
+  box-shadow: 0 1px 0 var(--rule, #D9D2BC), 0 2px 3px rgba(0,0,0,.04);
+}
+#visaMainTable thead th:first-child,
+#visaMainTable thead th:nth-child(2){
+  z-index: 7;
+}
+
+/* Column-specific widths for readability */
+#visaMainTable thead th,
+#visaMainTable tbody td{
+  padding: 6px 10px !important;
+  font-size: 12.5px !important;
+  vertical-align: top;
+  white-space: nowrap;
+}
+#visaMainTable td.wrap{ white-space: normal; min-width: 160px; }
+
+/* Toggle indicator on QIWA Visa Date header */
+th.ent-toggle-qiwa{
+  cursor: pointer;
+  user-select: none;
+}
+th.ent-toggle-qiwa:hover{ color: var(--brass-dark, #8C6A22); }
+th.ent-toggle-qiwa .ent-toggle-badge{
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  padding: 1px 6px;
+  margin-left: 4px;
+  background: var(--brass, #B98A2E);
+  color: var(--ink, #17242F);
+  border-radius: 3px;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+
+/* Status pill */
+.ent-vs-pill{
+  display: inline-block; padding: 1px 8px; font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace; border-radius: 10px;
+  border: 1px solid var(--rule, #D9D2BC);
+  letter-spacing: .04em;
+}
+.ent-vs-pill.USED     { background: rgba(46,111,163,.12);  color: #2E6FA3; border-color: #2E6FA3; }
+.ent-vs-pill.UNUSED   { background: rgba(63,108,77,.12);   color: #3F6C4D; border-color: #3F6C4D; }
+.ent-vs-pill.ALLOCATED{ background: rgba(185,138,46,.14);  color: #8C6A22; border-color: #B98A2E; }
+.ent-vs-pill.EXPIRED  { background: rgba(162,59,46,.12);   color: #A23B2E; border-color: #A23B2E; }
+.ent-vs-pill.CANCELLED{ background: rgba(107,101,88,.15);  color: #6B6558; }
+
+/* Sponsor pill */
+.ent-sponsor-pill{
+  display: inline-block; padding: 1px 6px; font-size: 10.5px;
+  font-family: 'IBM Plex Mono', monospace; border-radius: 3px;
+  letter-spacing: .04em; font-weight: 600;
+}
+.ent-sponsor-pill.SAFWAT{ background: rgba(63,108,77,.14); color: #3F6C4D; }
+.ent-sponsor-pill.CLIENT{ background: rgba(185,138,46,.14); color: #8C6A22; }

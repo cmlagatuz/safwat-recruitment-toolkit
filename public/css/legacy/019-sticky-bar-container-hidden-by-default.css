@@ -1,0 +1,100 @@
+
+/* ── Sticky bar container (hidden by default) ─────────── */
+#entStickyVisaBar{
+  position: fixed;
+  top: 0;
+  left: 280px;     /* clears the sidebar */
+  right: 0;
+  z-index: 40;
+  background: rgba(245, 242, 234, .98);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule, #D9D2BC);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  padding: 10px 20px 8px;
+  transform: translateY(-110%);
+  transition: transform .22s ease;
+  display: none;
+}
+#entStickyVisaBar.ent-sticky-active{
+  display: block;
+  transform: translateY(0);
+}
+
+/* ── Compact filter row inside sticky bar ─────────────── */
+#entStickyFilterRow{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 6px;
+}
+#entStickyFilterRow > div{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#entStickyFilterRow label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-soft, #6B6558);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+#entStickyFilterRow select,
+#entStickyFilterRow input{
+  padding: 5px 8px;
+  font-size: 12px;
+  border: 1px solid var(--rule, #D9D2BC);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--text, #23201B);
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Compact KPI strip inside sticky bar ──────────────── */
+#entStickyKpiRow{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 6px;
+}
+#entStickyKpiRow .ent-sk-card{
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 4px;
+  border-left: 3px solid var(--rule, #D9D2BC);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+#entStickyKpiRow .ent-sk-num{
+  font-family: 'Zilla Slab', serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+#entStickyKpiRow .ent-sk-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-soft, #6B6558);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* Color-code KPI cards to match main view */
+#entStickyKpiRow .ent-sk-card.used{ border-left-color: #2E6FA3; }
+#entStickyKpiRow .ent-sk-card.used .ent-sk-num{ color: #2E6FA3; }
+#entStickyKpiRow .ent-sk-card.unused{ border-left-color: #3F6C4D; }
+#entStickyKpiRow .ent-sk-card.unused .ent-sk-num{ color: #3F6C4D; }
+#entStickyKpiRow .ent-sk-card.allocated{ border-left-color: #B98A2E; }
+#entStickyKpiRow .ent-sk-card.allocated .ent-sk-num{ color: #8C6A22; }
+#entStickyKpiRow .ent-sk-card.expired{ border-left-color: #A23B2E; }
+#entStickyKpiRow .ent-sk-card.expired .ent-sk-num{ color: #A23B2E; }
+#entStickyKpiRow .ent-sk-card.cancelled{ border-left-color: #9B9082; }
+#entStickyKpiRow .ent-sk-card.expiring{ border-left-color: #A23B2E; }
+#entStickyKpiRow .ent-sk-card.expiring .ent-sk-num{ color: #A23B2E; }
+
+/* Responsive: on smaller screens, hide labels, keep numbers */
+@media (max-width: 1200px) {
+  #entStickyKpiRow .ent-sk-label{ display: none; }
+}

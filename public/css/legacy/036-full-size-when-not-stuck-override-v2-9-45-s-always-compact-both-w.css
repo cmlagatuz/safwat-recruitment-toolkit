@@ -1,0 +1,19 @@
+
+/* Full size when NOT stuck — override v2.9.45's always-compact (both wrappers). */
+.ent-kpiwrap:not(.is-stuck) #pipelineKpiGrid{ gap:14px !important; margin-top:10px !important; }
+.ent-kpiwrap:not(.is-stuck) #pipelineKpiGrid > *{ padding:14px 18px !important; min-height:0 !important; }
+.ent-kpiwrap:not(.is-stuck) #pipelineKpiGrid > * > *:first-child{ font-size:28px !important; line-height:1.08 !important; font-weight:700 !important; }
+.ent-kpiwrap:not(.is-stuck) #pipelineKpiGrid > * > *:not(:first-child){ font-size:11px !important; margin-top:3px !important; line-height:1.2 !important; }
+
+/* Compact ONLY when stuck (scrolled). */
+.ent-kpiwrap.is-stuck{ box-shadow:0 6px 10px -8px rgba(0,0,0,.16); }
+.ent-kpiwrap.is-stuck #pipelineKpiGrid{ gap:6px !important; margin-top:6px !important; }
+.ent-kpiwrap.is-stuck #pipelineKpiGrid > *{ padding:5px 10px !important; min-height:0 !important; border-radius:8px !important; }
+.ent-kpiwrap.is-stuck #pipelineKpiGrid > * > *:first-child{ font-size:17px !important; line-height:1 !important; font-weight:700 !important; }
+.ent-kpiwrap.is-stuck #pipelineKpiGrid > * > *:not(:first-child){ font-size:9px !important; letter-spacing:.02em !important; margin-top:1px !important; line-height:1.15 !important; }
+
+/* hide leftover floating header clones anywhere */
+.ent-float-head{ display:none !important; }
+/* our dedupe marker */
+tr.ent-dup-header-hidden{ display:none !important; }
+#entKpiSentinel{ height:1px; margin:0; padding:0; }

@@ -1,0 +1,7 @@
+
+tr.ent-agency-hidden{ display:none !important; }
+tr.ent-hidden-by-search{ display:none !important; }
+#v41LinkBtn{ display:none !important; }
+#v422LinkBtn{ display:inline-flex; align-items:center; gap:6px; padding:9px 16px; border:1px solid #2F5A3B; background:#fff; color:#2F5A3B;
+  border-radius:8px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:600; }
+#v422LinkBtn:hover{ background:#EDF3EE; }

@@ -1,0 +1,14 @@
+
+#vdGrid input.vd-combo{ padding-right:20px !important;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='9' height='6'><path d='M0 0l4.5 6 4.5-6z' fill='%236B6558'/></svg>");
+  background-repeat:no-repeat; background-position:right 5px center; }
+/* read-only linked case display */
+#vdGrid td.vd-linked-ro{ font-size:12px; color:#3F5A3C; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:6px 8px; }
+#vdGrid td.vd-linked-ro .vd-lock{ opacity:.5; margin-right:4px; }
+#vdGrid td.vd-linked-ro.none{ color:#A89B82; }
+/* shared combo panel */
+#vdComboPanel{ position:fixed; z-index:100060; display:none; background:#14202B; color:#F1EDE2; border:1px solid #2A3A48; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.35); max-height:240px; overflow-y:auto; min-width:150px; font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; padding:4px; }
+#vdComboPanel .it{ padding:7px 11px; border-radius:6px; cursor:pointer; white-space:nowrap; }
+#vdComboPanel .it:hover, #vdComboPanel .it.active{ background:#2F4A5E; }
+#vdComboPanel .nu{ padding:7px 11px; color:#9BD3A9; font-family:'IBM Plex Mono',monospace; font-size:11px; border-top:1px solid #2A3A48; }
+#vdViewBtn.vd-pinned{ position:absolute !important; z-index:7 !important; margin:0 !important; }

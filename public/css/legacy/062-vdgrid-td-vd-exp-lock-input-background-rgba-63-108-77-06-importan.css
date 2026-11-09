@@ -1,0 +1,27 @@
+
+#vdGrid td.vd-exp-lock input{ background:rgba(63,108,77,.06) !important; color:#3F6C4D !important; font-weight:600; cursor:not-allowed; pointer-events:none; }
+#vdGrid td.vd-exp-lock .cal, #vdGrid td.vd-exp-lock input.picker, #vdGrid td.vd-exp-lock input[type="date"]{ display:none !important; }
+#vdGrid td.vd-pick .cal, #vdGrid td.vd-pick input.picker, #vdGrid td.vd-pick input[type="date"]{ display:none !important; }
+#vdGrid td.vd-pick{ position:relative; }
+#vdGrid td.vd-pick .vd-qcal{ position:absolute; right:3px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:13px; opacity:.7; z-index:2; }
+#vdGrid td.vd-pick .vd-qcal:hover{ opacity:1; }
+#vdGrid td.vd-pick input{ padding-right:22px !important; }
+#vdQiwaToggle{ display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:none; border-radius:8px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; font-weight:700; background:#B98A2E; color:#14202B; }
+#vdQiwaToggle:hover{ background:#a5791f; }
+#vdQiwaToggle .m{ font-family:'IBM Plex Mono',monospace; font-size:10px; background:#14202B; color:#EDD9A6; padding:1px 6px; border-radius:4px; }
+#vdDatePicker{ position:fixed; z-index:100065; display:none; box-sizing:border-box; width:250px !important; background:#14202B; color:#F1EDE2; border:1px solid #2A3A48; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.4); padding:10px 12px; font-family:'IBM Plex Sans',sans-serif; }
+#vdDatePicker.open{ display:block; }
+#vdDatePicker .vd-dp-lbl{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9BB0C0; margin-bottom:7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#vdDatePicker .vd-dp-row{ display:flex !important; flex-wrap:nowrap !important; gap:4px !important; align-items:center !important; grid-template-columns:none !important; }
+#vdDatePicker .vd-dp-row select{ box-sizing:border-box !important; padding:5px 4px !important; border-radius:6px !important; border:1px solid #3A4A58 !important; background:#0F1922 !important; color:#F1EDE2 !important; font-size:13px !important; min-width:0 !important; height:auto !important; margin:0 !important; }
+#vdDatePicker .vd-dp-row select.y{ width:70px !important; flex:0 0 70px !important; }
+#vdDatePicker .vd-dp-row select.m{ width:52px !important; flex:0 0 52px !important; }
+#vdDatePicker .vd-dp-row select.d{ width:52px !important; flex:0 0 52px !important; }
+#vdDatePicker .vd-dp-row .sep{ color:#6B7A88; flex:0 0 auto; }
+#vdDatePicker .vd-dp-btns{ display:flex; justify-content:flex-end; gap:8px; margin-top:10px; }
+#vdDatePicker .vd-dp-btns button{ border:none; border-radius:6px; padding:6px 14px; cursor:pointer; font-size:12.5px; font-weight:600; }
+#vdDatePicker .vd-dp-btns .ok{ background:#B98A2E; color:#14202B; } #vdDatePicker .vd-dp-btns .cx{ background:#33424F; color:#EDE7D6; }
+#vdGrid td.vd-pick .vd-qclr{ position:absolute; right:20px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:11px; opacity:.5; z-index:2; }
+#vdGrid td.vd-pick .vd-qclr:hover{ opacity:1; color:#A23B2E; }
+.vd-autofill-flash{ animation:vdAF 1s ease-out 1; }
+@keyframes vdAF{ 0%{ background:rgba(185,138,46,.25);} 100%{ background:transparent;} }

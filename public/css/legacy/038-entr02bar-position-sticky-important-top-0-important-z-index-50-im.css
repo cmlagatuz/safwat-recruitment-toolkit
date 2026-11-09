@@ -1,0 +1,52 @@
+
+#entR02Bar{ position:sticky !important; top:0 !important; z-index:50 !important; }
+#entR02Bar.is-stuck{ box-shadow:0 4px 8px -8px rgba(0,0,0,.16); padding-top:2px !important; padding-bottom:2px !important; }
+#entR02BarSentinel{ height:1px; margin:0; padding:0; }
+
+/* one-row layout always */
+.ent-filter-row{ display:flex !important; flex-wrap:nowrap !important; align-items:flex-end !important; gap:10px !important; width:100% !important; margin:0 !important; }
+.ent-filter-row > *{ flex:1 1 0 !important; min-width:0 !important; margin:0 !important; }
+.ent-filter-row > .ent-search-field{ flex:1.4 1 0 !important; }
+.ent-filter-row select, .ent-filter-row input{ width:100% !important; box-sizing:border-box !important; }
+
+/* ===== FILTER CONTROLS: full/normal when NOT stuck ===== */
+/* (We do NOT override padding/font here, so they keep the app's normal size.) */
+
+/* ===== FILTER CONTROLS: R-01 tight sizing ONLY when stuck ===== */
+#entR02Bar.is-stuck .ent-filter-row select,
+#entR02Bar.is-stuck .ent-filter-row input[type="text"],
+#entR02Bar.is-stuck .ent-filter-row input:not([type]){
+  padding: 5px 8px !important;
+  font-size: 12px !important;
+  border: 1px solid #D9D2BC !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  color: #23201B !important;
+  font-family: inherit !important;
+  line-height: 1.2 !important;
+  height: auto !important;
+}
+#entR02Bar.is-stuck .ent-filter-row label{ font-size:10.5px !important; letter-spacing:.02em !important; margin-bottom:3px !important; line-height:1.1 !important; }
+
+/* ===== KPI: full size when NOT stuck (normal) ===== */
+#entR02Bar:not(.is-stuck) #pipelineKpiGrid{ gap:14px !important; margin-top:10px !important; }
+#entR02Bar:not(.is-stuck) #pipelineKpiGrid > *{ padding:14px 18px !important; }
+#entR02Bar:not(.is-stuck) #pipelineKpiGrid > * > *:first-child{ font-size:28px !important; line-height:1.08 !important; font-weight:700 !important; }
+#entR02Bar:not(.is-stuck) #pipelineKpiGrid > * > *:not(:first-child){ font-size:11px !important; margin-top:3px !important; }
+
+/* ===== KPI: slim inline ONLY when stuck ===== */
+#entR02Bar.is-stuck #pipelineKpiGrid{ gap:0 !important; margin-top:2px !important; margin-bottom:0 !important; }
+#entR02Bar.is-stuck #pipelineKpiGrid > *{
+  display:flex !important; align-items:baseline !important; gap:5px !important;
+  padding:1px 14px 1px 8px !important; min-height:0 !important;
+  border:0 !important; border-radius:0 !important; box-shadow:none !important; background:transparent !important;
+  border-left:3px solid rgba(0,0,0,.18) !important;
+}
+#entR02Bar.is-stuck #pipelineKpiGrid > * > *{ margin:0 !important; padding:0 !important; }
+#entR02Bar.is-stuck #pipelineKpiGrid > * > *:first-child{ font-size:15px !important; line-height:1 !important; font-weight:700 !important; }
+#entR02Bar.is-stuck #pipelineKpiGrid > * > *:not(:first-child){ font-size:9px !important; letter-spacing:.02em !important; line-height:1 !important; text-transform:uppercase !important; color:#6B6558 !important; white-space:nowrap !important; }
+
+/* candidate table: one clean sticky header */
+.ent-cand-table thead th{ position:sticky !important; top:0 !important; z-index:20 !important; background:#fff !important; box-shadow:0 2px 0 #E0D8C4 !important; }
+tr.ent-hdr-hidden{ display:none !important; }
+.ent-float-head{ display:none !important; }

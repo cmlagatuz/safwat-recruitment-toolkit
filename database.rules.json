@@ -1,0 +1,119 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "safwat": {
+      "users": {
+        ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+        "$uid": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid",
+          ".write": "((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin') && (auth.uid !== $uid || (newData.exists() && newData.child('role').val() === 'admin' && newData.child('disabled').val() !== true))",
+          ".validate": "newData.hasChildren(['uid','email','role'])",
+          "uid": {
+            ".validate": "newData.isString() && newData.val() === $uid"
+          },
+          "email": {
+            ".validate": "newData.isString() && newData.val().length <= 320"
+          },
+          "role": {
+            ".validate": "newData.isString() && newData.val().matches(/^(viewer|editor|admin)$/)"
+          },
+          "disabled": {
+            ".validate": "newData.isBoolean()"
+          },
+          "displayName": {
+            ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true",
+            ".validate": "newData.isString() && newData.val().length <= 200"
+          },
+          "lastSeenAt": {
+            ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true",
+            ".validate": "newData.isString() && newData.val().length <= 40"
+          },
+          "emailVerified": {
+            ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true",
+            ".validate": "newData.isBoolean() && (auth.uid !== $uid || newData.val() === auth.token.email_verified)"
+          }
+        }
+      },
+      "pendingUsers": {
+        ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+        "$uid": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid",
+          ".write": "((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin') || (auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid && !data.exists() && !root.child('safwat/users').child(auth.uid).exists() && newData.child('status').val() === 'pending' && newData.child('email').val() === auth.token.email)",
+          ".validate": "newData.hasChildren(['uid','email','status']) && newData.child('uid').val() === $uid",
+          "uid": {
+            ".validate": "newData.isString()"
+          },
+          "email": {
+            ".validate": "newData.isString() && newData.val().length <= 320"
+          },
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length <= 200"
+          },
+          "status": {
+            ".validate": "newData.isString() && newData.val().matches(/^(pending|approved|rejected)$/)"
+          }
+        }
+      },
+      "diagnostics": {
+        ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+        "$uid": {
+          ".write": "((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin') || ((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && auth.uid === $uid)"
+        }
+      },
+      "config": {
+        ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)",
+        ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'"
+      },
+      "ceoConfig": {
+        "passwordHash": {
+          ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+          ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'"
+        },
+        "passwordSetAt": {
+          ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+          ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'"
+        },
+        "devices": {
+          ".read": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'",
+          ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'"
+        },
+        "presence": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)",
+          "$uid": {
+            ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && auth.uid === $uid"
+          }
+        }
+      },
+      "databases": {
+        "$dbname": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)",
+          ".write": "((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(editor|admin)$/)) && newData.exists()",
+          ".validate": "newData.hasChildren(['data','version','savedAt','updatedBy']) && newData.child('data').hasChildren() && newData.child('version').isNumber() && newData.child('version').val() === (data.child('version').isNumber() ? data.child('version').val() + 1 : 1) && newData.child('savedAt').isString() && newData.child('updatedBy').val() === auth.uid",
+          ".indexOn": [
+            "savedAt",
+            "version"
+          ]
+        }
+      },
+      "presence": {
+        "$dbname": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)",
+          "$sessionId": {
+            ".write": "(auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && ((!data.exists() && (!newData.exists() || newData.child('uid').val() === auth.uid)) || data.child('uid').val() === auth.uid || ((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin'))",
+            ".validate": "newData.hasChildren(['uid','actor','role']) && newData.child('uid').val() === auth.uid && newData.child('actor').isString() && newData.child('role').val() === root.child('safwat/users').child(auth.uid).child('role').val()"
+          }
+        }
+      },
+      "locks": {
+        "$dbname": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)",
+          "$recordId": {
+            ".write": "((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(editor|admin)$/)) && (!data.exists() || data.child('uid').val() === auth.uid || ((auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.token.email_verified === true && root.child('safwat/users').child(auth.uid).exists() && root.child('safwat/users').child(auth.uid).child('disabled').val() !== true && root.child('safwat/users').child(auth.uid).child('role').val().matches(/^(viewer|editor|admin)$/)) && root.child('safwat/users').child(auth.uid).child('role').val() === 'admin') || (newData.exists() && data.child('expires').isNumber() && data.child('expires').val() <= now))",
+            ".validate": "newData.hasChildren(['uid','sessionId','since','expires']) && newData.child('uid').val() === auth.uid && newData.child('sessionId').isString() && newData.child('since').isNumber() && newData.child('expires').isNumber() && newData.child('expires').val() > now && newData.child('expires').val() <= now + 180000"
+          }
+        }
+      }
+    }
+  }
+}

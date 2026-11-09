@@ -1,0 +1,21 @@
+
+/* Keep the original sticky layout intact — only these two changes:
+   1. overflow-y: hidden (no scrollbar)
+   2. height reduced by 42px so bottom strip doesn't hide items */
+.sidebar{
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  height: calc(100vh - 42px) !important;
+  max-height: calc(100vh - 42px) !important;
+  scrollbar-width: none !important;
+}
+.sidebar::-webkit-scrollbar{
+  display: none !important;
+  width: 0 !important;
+}
+
+/* If the bottom strip wraps to a second row on narrow screens */
+body.ent-topstrip-tall .sidebar{
+  height: calc(100vh - 76px) !important;
+  max-height: calc(100vh - 76px) !important;
+}

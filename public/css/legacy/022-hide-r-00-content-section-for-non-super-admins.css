@@ -1,0 +1,14 @@
+
+/* Hide R-00 CONTENT section for non-super-admins.
+   Also hide the parent .tab-content or section wrapper. */
+body:not(.ent-is-super-admin) #tab-R-00,
+body:not(.ent-is-super-admin) [data-tab-content="R-00"],
+body:not(.ent-is-super-admin) section[id="R-00"],
+body:not(.ent-is-super-admin) [id="R-00-content"],
+body:not(.ent-is-super-admin) .tab-content[data-tab="R-00"],
+body:not(.ent-is-super-admin) [data-panel="R-00"]{
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

@@ -1,0 +1,1366 @@
+{
+  "baseline": "security-prepared-local-beb4ed7",
+  "strategy": "classic scripts at original parser positions; CSS in original cascade order",
+  "assets": [
+    {
+      "kind": "js",
+      "path": "public/js/legacy/001-safwatperfgovernorv601.js",
+      "sourceLine": 5,
+      "sha256": "7f6e4df1ad10a2fdd4a699d08300361641e5879aff6e52af8eb52eebffb20927",
+      "lines": 114,
+      "title": "safwatperfgovernorv601"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/002-initfirebaseearly.js",
+      "sourceLine": 125,
+      "sha256": "e31794f31500601a4c8bee2d392a84deb1fb204c828c072ca308784b9e466d4d",
+      "lines": 26,
+      "title": "initfirebaseearly"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/003-document-addeventlistener-domcontentloaded-function.js",
+      "sourceLine": 156,
+      "sha256": "60112bccf4f7d607c1ce311df9e3d169cb015aac4e30dc7f3eb80f89525f9949",
+      "lines": 167,
+      "title": "document-addeventlistener-domcontentloaded-function"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/001-root.css",
+      "sourceLine": 347,
+      "sha256": "eaea87dddabe625ef4b1cebbb269651a3e41cc7775778c60938a14723b8e0715",
+      "lines": 738,
+      "title": "root"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/004-navigation.js",
+      "sourceLine": 1653,
+      "sha256": "fa75051ed2b37e57651ad4920e1aeb981d4ed66beb1d903e024cd3f42815550b",
+      "lines": 435,
+      "title": "navigation"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/005-shared-helpers-for-report-dashboards-r-01-r-02.js",
+      "sourceLine": 2090,
+      "sha256": "e60268d10503cdb1924e599ee6b1fc35c385dbb723cfa3ea800ebd1b49c3eb2c",
+      "lines": 2225,
+      "title": "shared-helpers-for-report-dashboards-r-01-r-02"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/006-enterpriselayer.js",
+      "sourceLine": 4581,
+      "sha256": "47909130f2a2004db4fc3bd1a6c1fcd58ac9027a548bfcb14964e1dcf1bf5a14",
+      "lines": 782,
+      "title": "enterpriselayer"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/007-enterprisev21.js",
+      "sourceLine": 5364,
+      "sha256": "1a6fd55fb7a1c9ea4657837e4803f81f6fdca5abdd93afd1118a864716393e06",
+      "lines": 783,
+      "title": "enterprisev21"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/008-enterprisev22.js",
+      "sourceLine": 6148,
+      "sha256": "a43d8e249b6fa4f01f3eb0775240cc11e2920fb446f876256450b7ce99fee093",
+      "lines": 545,
+      "title": "enterprisev22"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/009-hotfixv243.js",
+      "sourceLine": 6706,
+      "sha256": "32703d6d4753d48365de90657b03ba1d8081930dff9aecc50c14dd6a6a3b5fe0",
+      "lines": 139,
+      "title": "hotfixv243"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/002-small-tab-count-badge-on-presence-avatars.css",
+      "sourceLine": 6854,
+      "sha256": "16192bf99129fbfdc0b14196967da8b4e2b2052287790f451d9582c4142cff52",
+      "lines": 12,
+      "title": "small-tab-count-badge-on-presence-avatars"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/010-hotfixv245.js",
+      "sourceLine": 6868,
+      "sha256": "f62d61cc03bd4fb6b88ec4a320defddf9884838316ff9fb9468efdd8997db8f3",
+      "lines": 66,
+      "title": "hotfixv245"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/003-cloud-db-status-pill-in-the-r-00-database-tab.css",
+      "sourceLine": 6950,
+      "sha256": "6fc20ebdba6afa3fa712707ea103f87c858dd2fd3e22e9cc25405328759093cb",
+      "lines": 61,
+      "title": "cloud-db-status-pill-in-the-r-00-database-tab"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/011-cloudfirstv250.js",
+      "sourceLine": 7020,
+      "sha256": "c60a79c34968e9e044d69c56b5f0858fdf25f7fe4ae933eb42785a6e00b482af",
+      "lines": 314,
+      "title": "cloudfirstv250"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/012-hotfixv251.js",
+      "sourceLine": 7349,
+      "sha256": "574a2aab2cb5798e20479e9dc5ff46d99c6d1cee5ada3c452f2b2947dd601c3e",
+      "lines": 186,
+      "title": "hotfixv251"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/004-fix-3-keep-enterprise-top-strip-always-visible.css",
+      "sourceLine": 7560,
+      "sha256": "3586282c5d90a0cedf142e015b4d136816715e097f3ab9e2bb52b2c942d82ad4",
+      "lines": 42,
+      "title": "fix-3-keep-enterprise-top-strip-always-visible"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/013-hotfixv253.js",
+      "sourceLine": 7604,
+      "sha256": "3f7ba6edcc0de9439633e1da2831a6c6dc13d4051b666d1f5563963229725b72",
+      "lines": 146,
+      "title": "hotfixv253"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/005-override-v2-5-3-pin-the-strip-to-the-bottom-not-the-top.css",
+      "sourceLine": 7761,
+      "sha256": "1da16022d31727689f6a2dc55ec3df5737e2522f96bf5e8e0a7a38e63524b327",
+      "lines": 32,
+      "title": "override-v2-5-3-pin-the-strip-to-the-bottom-not-the-top"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/014-hotfixv254.js",
+      "sourceLine": 7795,
+      "sha256": "68821af5e3964c39a9ecd0049be671d21afc4cc0ccd53961cbae6cb0bb9b0f5e",
+      "lines": 6,
+      "title": "hotfixv254"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/006-waiting-for-approval-gate.css",
+      "sourceLine": 7816,
+      "sha256": "98fec63a516caee173e0086a1fd611220174c2989da3017f4dc3c977667db78e",
+      "lines": 108,
+      "title": "waiting-for-approval-gate"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/015-accountapprovalv260.js",
+      "sourceLine": 7953,
+      "sha256": "16ae1f9298ed20b6caef797e0563b0899b38be26527cda6c1226ef0ad5f8aaa7",
+      "lines": 423,
+      "title": "accountapprovalv260"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/007-sticky-headers-on-all-report-tables.css",
+      "sourceLine": 8412,
+      "sha256": "bc79e5d485c84ed22d7e5a08b7306cb3c52e2908a93d1eef33d323d55993e85f",
+      "lines": 57,
+      "title": "sticky-headers-on-all-report-tables"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/016-businessoverhaulv280.js",
+      "sourceLine": 8471,
+      "sha256": "89d5c11fc5706954eb2459ebe02a8a9c206531cea1b515c8d9cb33cd416d0a22",
+      "lines": 846,
+      "title": "businessoverhaulv280"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/017-hotfixv281.js",
+      "sourceLine": 9336,
+      "sha256": "3845bb7c893cf699a63819fbf612862230ef1209929c97ed17fe423d0857d517",
+      "lines": 93,
+      "title": "hotfixv281"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/018-hotfixv284.js",
+      "sourceLine": 9449,
+      "sha256": "6ee7b2596b141382298368679383c89b782ab182d264266b6912011c941bddff",
+      "lines": 188,
+      "title": "hotfixv284"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/019-hotfixv285.js",
+      "sourceLine": 9649,
+      "sha256": "9201baa12bfe07ee49b376013b14d02940f4713f59e773e5e06278509ac09aed",
+      "lines": 65,
+      "title": "hotfixv285"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/020-hotfixv286.js",
+      "sourceLine": 9730,
+      "sha256": "c78730c666e416a2471c005164353e605b49438a226f9745f7c8d395e63b6dc9",
+      "lines": 68,
+      "title": "hotfixv286"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/008-ent-greg2hijri-panel.css",
+      "sourceLine": 9820,
+      "sha256": "6aff4720807bf1a1a12d68d93dce43b84f977b007d3f311e3d814122191f7f77",
+      "lines": 18,
+      "title": "ent-greg2hijri-panel"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/021-hotfixv288.js",
+      "sourceLine": 9840,
+      "sha256": "c13e3e2c6270095a89aa6b0a920f79f006dcac12dc3febf4fa5529a9f8bce1cf",
+      "lines": 271,
+      "title": "hotfixv288"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/009-lock-the-sidebar-and-make-it-fill-only-the-remaining-height.css",
+      "sourceLine": 10128,
+      "sha256": "4a4f716d2fc726ac58e16c15c55ff7388607bd1bd9018218131cd778a44d7878",
+      "lines": 43,
+      "title": "lock-the-sidebar-and-make-it-fill-only-the-remaining-height"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/022-console-log-c-sidebar-scroll-lock-v2-8-9-active-color-3f6c4d-font.js",
+      "sourceLine": 10172,
+      "sha256": "875cc7cae50faa732d2d2d0b622e6a6473d4c88e398b1f2fb75cf988cb67a1a0",
+      "lines": 2,
+      "title": "console-log-c-sidebar-scroll-lock-v2-8-9-active-color-3f6c4d-font"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/010-keep-the-original-sticky-layout-intact-only-these-two-changes.css",
+      "sourceLine": 10188,
+      "sha256": "2bead3be64c9233dcb3414ddfd279495bd15b1bde9cd8bb201c6a80ba746ced9",
+      "lines": 21,
+      "title": "keep-the-original-sticky-layout-intact-only-these-two-changes"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/023-hotfixv2810.js",
+      "sourceLine": 10211,
+      "sha256": "1838e4574a1785bba8756ffef7557c406aa675a2820f40f9c762a795caba054d",
+      "lines": 39,
+      "title": "hotfixv2810"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/011-base-css-no-scroll-no-scrollbar-rendering.css",
+      "sourceLine": 10271,
+      "sha256": "4ac5148658061bb58119314d0c8c42362a7b4c78d4dd170bf5a1aaacdaf8b346",
+      "lines": 13,
+      "title": "base-css-no-scroll-no-scrollbar-rendering"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/024-hotfixv2811.js",
+      "sourceLine": 10286,
+      "sha256": "6caa28f830c6c467c2c5d1f2316252ef5d64bf0d5a26cb9351a0349bb444b5bf",
+      "lines": 54,
+      "title": "hotfixv2811"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/012-1-sidebar-becomes-fixed-at-top-left-spans-from-top-to.css",
+      "sourceLine": 10360,
+      "sha256": "ab1c461bf4d456079bd7444612873e6a54b79f452802c77c667f068f860a8e6f",
+      "lines": 28,
+      "title": "1-sidebar-becomes-fixed-at-top-left-spans-from-top-to"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/025-hotfixv2812.js",
+      "sourceLine": 10390,
+      "sha256": "23fa519be3f29b468398b43e6ab35e7ca1238a57d186304142b2c48eb83ffddd",
+      "lines": 48,
+      "title": "hotfixv2812"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/013-force-any-non-sidebar-child-of-app-into-column-2-so-main.css",
+      "sourceLine": 10452,
+      "sha256": "357e2acff32d0d638c1a12e2a8f788b9449405172ae250bc46d59c502b419f91",
+      "lines": 8,
+      "title": "force-any-non-sidebar-child-of-app-into-column-2-so-main"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/026-hotfixv2813.js",
+      "sourceLine": 10461,
+      "sha256": "66db8692a350ec1a7d0dff31b4b375f196643f42c0087d4f4ca328d529cdb743",
+      "lines": 27,
+      "title": "hotfixv2813"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/014-nav-items-bigger-text-more-vertical-spacing.css",
+      "sourceLine": 10499,
+      "sha256": "2bd642681fcbcf883196a696196ab69075ddc049addfea25165a6a1f726294b7",
+      "lines": 46,
+      "title": "nav-items-bigger-text-more-vertical-spacing"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/027-console-log-c-sidebar-typography-v2-8-14-active-color-b98a2e-font.js",
+      "sourceLine": 10546,
+      "sha256": "d4e44b937e38223e42bc02890dade4c527efc2117f3e4fbf63a3c5fdeb00777b",
+      "lines": 2,
+      "title": "console-log-c-sidebar-typography-v2-8-14-active-color-b98a2e-font"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/015-wide-table-container-horizontal-scroll.css",
+      "sourceLine": 10575,
+      "sha256": "5e35621d9a00c81b02ba11ea26dad964517e2bcc28c43dd18fbe51b159194fb1",
+      "lines": 96,
+      "title": "wide-table-container-horizontal-scroll"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/028-visatablev2815.js",
+      "sourceLine": 10673,
+      "sha256": "a51c0ae1682e3ac896302aa174fd6833b0e688f7ff8eeceebe7ba9322ceb99fd",
+      "lines": 265,
+      "title": "visatablev2815"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/016-ensure-the-bulk-bar-is-prominently-visible-when-shown.css",
+      "sourceLine": 10955,
+      "sha256": "f5257ae619683af25a2c9e4366017421cb7a3561261817085c7335e6f4322067",
+      "lines": 54,
+      "title": "ensure-the-bulk-bar-is-prominently-visible-when-shown"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/029-visabulkv2816.js",
+      "sourceLine": 11011,
+      "sha256": "5e6c79172a30890d0ec150b60eb16ca08b2810c2c5c6fd030e0e5a757e36e30b",
+      "lines": 266,
+      "title": "visabulkv2816"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/017-larger-modal-for-the-expanded-bulk-edit-form.css",
+      "sourceLine": 11324,
+      "sha256": "6688f964b002451954a17dcb0ba6f442c8a716eb6cc4638e2b801f759e6fa1c2",
+      "lines": 36,
+      "title": "larger-modal-for-the-expanded-bulk-edit-form"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/030-hotfixv2821.js",
+      "sourceLine": 11386,
+      "sha256": "3580fc41e79ac787b51b8e7ce6dc21032d64c9df6683ebefbe7f48870412ca22",
+      "lines": 175,
+      "title": "hotfixv2821"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/018-modal-body-wide-enough-for-grid-layout.css",
+      "sourceLine": 11586,
+      "sha256": "f03a23daf8f464e69a1899518be64548cb1fcda82ac63ece6e29260dc5b21eff",
+      "lines": 118,
+      "title": "modal-body-wide-enough-for-grid-layout"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/031-visabulkv2823.js",
+      "sourceLine": 11706,
+      "sha256": "5f04fdbade7371037aac73d72e6b2ffeb11a75146a937223ecf97ead3ebc972a",
+      "lines": 317,
+      "title": "visabulkv2823"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/032-hotfixv2824.js",
+      "sourceLine": 12039,
+      "sha256": "9aa60ae7f3e4d7efbf1734e1a9d50b0101e92893c03a34ceed1a4fb87b1046e2",
+      "lines": 37,
+      "title": "hotfixv2824"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/019-sticky-bar-container-hidden-by-default.css",
+      "sourceLine": 12097,
+      "sha256": "faeddf7e6187b720faf2d6aa74a86b3916214eab2d7838f306b4a8f665efbb80",
+      "lines": 100,
+      "title": "sticky-bar-container-hidden-by-default"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/033-stickyvisav2825.js",
+      "sourceLine": 12199,
+      "sha256": "6dbe8d38580306985ad27ed478f1ee4393af0d50a84479e6a09c3b01b36ce119",
+      "lines": 187,
+      "title": "stickyvisav2825"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/034-hotfixv2826.js",
+      "sourceLine": 12402,
+      "sha256": "5a0e071ebea99bbe0a55e0cc0359a4303c26b856a4984ad972a0cab93d8cccf7",
+      "lines": 76,
+      "title": "hotfixv2826"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/020-fix-1-hide-r-00-nav-item-by-default-until-confirmed-super-admin.css",
+      "sourceLine": 12508,
+      "sha256": "0d54aaf8ff2088deea860c0f2dc2aca2addc8e7cb3d04b857a64890c081e055b",
+      "lines": 58,
+      "title": "fix-1-hide-r-00-nav-item-by-default-until-confirmed-super-admin"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/035-hotfixv2827.js",
+      "sourceLine": 12574,
+      "sha256": "52d545814aab5e1de8d5013b918ae2111366970fd4b77425354ae2e6be5dec76",
+      "lines": 243,
+      "title": "hotfixv2827"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/036-hotfixv2828.js",
+      "sourceLine": 12847,
+      "sha256": "5a07f18802c46e5cac7dc9ed3fc4440e7cc486b775821f7c02d9005b6b0b6baf",
+      "lines": 203,
+      "title": "hotfixv2828"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/021-hide-r-00-immediately-on-page-parse-before-any-js-runs.css",
+      "sourceLine": 13071,
+      "sha256": "83c3cd9eb88fc1f57b8e1162bcf36df577f5df1314a652faaed2f54297ef6b20",
+      "lines": 65,
+      "title": "hide-r-00-immediately-on-page-parse-before-any-js-runs"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/037-hotfixv2829.js",
+      "sourceLine": 13149,
+      "sha256": "af70077809a7c3c3cace893e61cf4ed4fd1501d69b4bbe12567d23760b62777a",
+      "lines": 276,
+      "title": "hotfixv2829"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/022-hide-r-00-content-section-for-non-super-admins.css",
+      "sourceLine": 13447,
+      "sha256": "784b31ec7a390e08af51f2eaca1ec597a5402e956cacddcb79a8560ce71c0698",
+      "lines": 14,
+      "title": "hide-r-00-content-section-for-non-super-admins"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/038-hotfixv2830.js",
+      "sourceLine": 13463,
+      "sha256": "90e03a5c3008bacac3f5bb26208a6669ca8ad2ebf14424f0228e672daa3d2283",
+      "lines": 96,
+      "title": "hotfixv2830"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/039-hotfixv2832.js",
+      "sourceLine": 13579,
+      "sha256": "d54c60ff16916cfabd7f1d6bda19705d756cf7ff519d3f38e77f3e90ffd39bf2",
+      "lines": 99,
+      "title": "hotfixv2832"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/023-r-00-content-flash-fix-hide-everything-that-could-be-r-00-content.css",
+      "sourceLine": 13713,
+      "sha256": "ccdac88b92d9ebf43401a942400a77019e7a9531994203ff7ed43b8932637e26",
+      "lines": 53,
+      "title": "r-00-content-flash-fix-hide-everything-that-could-be-r-00-content"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/040-preflightr00hide.js",
+      "sourceLine": 13768,
+      "sha256": "a8f82501781a50037c8a092feec8be065b8a236ca2a1cf41bef81177e29ae642",
+      "lines": 11,
+      "title": "preflightr00hide"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/041-hotfixv2833.js",
+      "sourceLine": 13781,
+      "sha256": "203078898bb5ce9b54e1e903c21c455615d8107c74fc9d76ac4fd437b826bffa",
+      "lines": 211,
+      "title": "hotfixv2833"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/024-body-ent-is-super-admin-entsenddiagbtn.css",
+      "sourceLine": 14007,
+      "sha256": "968adea26628f5adf9ab7189f5a8efaead718d99095c0bb6f9c093271d8ae2eb",
+      "lines": 4,
+      "title": "body-ent-is-super-admin-entsenddiagbtn"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/042-console-log-c-hide-send-diagnostic-from-super-admin-v2-8-34-activ.js",
+      "sourceLine": 14012,
+      "sha256": "563f1ee26f0793e3d540e187436d916b5c58904664fb13d66649604db6512af3",
+      "lines": 2,
+      "title": "console-log-c-hide-send-diagnostic-from-super-admin-v2-8-34-activ"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/025-entrecoverybanner.css",
+      "sourceLine": 14038,
+      "sha256": "a4562a6e68636c51c7c63ffec26614a45e8188281a08efa32110765f762ded0f",
+      "lines": 51,
+      "title": "entrecoverybanner"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/043-hotfixv2835.js",
+      "sourceLine": 14096,
+      "sha256": "8b0df71b3936cb072123c5e1e1781340cc076247f62a5d319c2d71d1be3d9f95",
+      "lines": 185,
+      "title": "hotfixv2835"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/044-hotfixv2836.js",
+      "sourceLine": 14311,
+      "sha256": "f46cd2414286c9fa3ea074d24455b95073f4bbb2edc92e67184c17308d49a2f1",
+      "lines": 132,
+      "title": "hotfixv2836"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/045-hotfixv2837.js",
+      "sourceLine": 14467,
+      "sha256": "2d097f25c3ff43210a68dabeb17b0604b25008d485fb720bfd6c626ba3073f0d",
+      "lines": 173,
+      "title": "hotfixv2837"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/026-when-force-r01-class-is-set-on-html-hide-r-00-content-aggressivel.css",
+      "sourceLine": 14669,
+      "sha256": "05fcac5d43dafd6ef39919bcc0e2364d61712e6013cbf032d78bd54b8b354f31",
+      "lines": 28,
+      "title": "when-force-r01-class-is-set-on-html-hide-r-00-content-aggressivel"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/046-preflightforcer01.js",
+      "sourceLine": 14699,
+      "sha256": "b8714ae48d2eb64c743b8eafe3e8eeb3d183c00380167ca2e783c060d616256d",
+      "lines": 21,
+      "title": "preflightforcer01"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/047-hotfixv2838.js",
+      "sourceLine": 14722,
+      "sha256": "6d1c3bdaa1878d0651c0bb7fa8f5a74f0376514562ece6f8d77344bbcfa482a3",
+      "lines": 86,
+      "title": "hotfixv2838"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/048-hotfixv2839.js",
+      "sourceLine": 14841,
+      "sha256": "fe945770c6b8477403de137e881a8fb749bc5a3be3d39bc3184bf6d6187c16a2",
+      "lines": 250,
+      "title": "hotfixv2839"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/049-hotfixv2840.js",
+      "sourceLine": 15113,
+      "sha256": "9a23a93f715133bb981e6009363a1a50f07a6f30ce9f1a183b70dd048f2dde19",
+      "lines": 103,
+      "title": "hotfixv2840"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/050-bulkvisav2846.js",
+      "sourceLine": 15251,
+      "sha256": "94e538cbeb656292c47051bd1483af34fdccd606ff859f1f6154094715389840",
+      "lines": 288,
+      "title": "bulkvisav2846"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/051-hotfixv2847.js",
+      "sourceLine": 15563,
+      "sha256": "d2f49d8dae16fe797045fc57c6721331bd88b93e568c82c4e9c1e7cb14d46eda",
+      "lines": 63,
+      "title": "hotfixv2847"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/027-hide-the-base-app-s-two-visa-add-buttons.css",
+      "sourceLine": 15654,
+      "sha256": "19f0f57a921dea41e896315283458e191c5d6ac2491481cc4b123aedcad983e7",
+      "lines": 134,
+      "title": "hide-the-base-app-s-two-visa-add-buttons"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/052-unifiedaddvisav2851.js",
+      "sourceLine": 15790,
+      "sha256": "2112221a2a458f764aefa5c41b82db5f3b906150b9fe565bb0310ced6b90a7ec",
+      "lines": 331,
+      "title": "unifiedaddvisav2851"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/053-approvalpolicyv2852.js",
+      "sourceLine": 16146,
+      "sha256": "4df56b228ef6c8507f27ec7eab4cd9f60c382f4df35d2eab2fce78eb18f246ef",
+      "lines": 167,
+      "title": "approvalpolicyv2852"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/054-globalapprovalv2853.js",
+      "sourceLine": 16330,
+      "sha256": "26b4204b5a794661dc43cef9e7b62b5faed24e3c28c9fd45030fa207c33aaa00",
+      "lines": 110,
+      "title": "globalapprovalv2853"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/028-make-sure-the-injected-fields-are-clearly-visible-in-the-single-v.css",
+      "sourceLine": 16470,
+      "sha256": "bcb27766606e3c5ab9d636284b7e4b29ec46890415e4d5a5a9704218d7acef87",
+      "lines": 10,
+      "title": "make-sure-the-injected-fields-are-clearly-visible-in-the-single-v"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/055-sponsorandeditfixv2911.js",
+      "sourceLine": 16482,
+      "sha256": "d764f1699e1b4329e553fac248a0d8a4b4189a022209d4abd863efc53fdb6c6b",
+      "lines": 260,
+      "title": "sponsorandeditfixv2911"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/056-autoexpirev2912.js",
+      "sourceLine": 16769,
+      "sha256": "8ddbbddc763d935660fa3ddce903e409e55744129513c7fefedc1705be24bec5",
+      "lines": 91,
+      "title": "autoexpirev2912"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/029-entaddcandidatebtn-padding-10px-20px-important-background-17242f.css",
+      "sourceLine": 16891,
+      "sha256": "657f2e244031e0f26ab78f726aacb6a5fecaaa373caeb8580c63cca0b0293bb5",
+      "lines": 92,
+      "title": "entaddcandidatebtn-padding-10px-20px-important-background-17242f"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/057-r02v2936.js",
+      "sourceLine": 16989,
+      "sha256": "f7cff6afdd2dbc79b7742f103580afb0e9058fec8fd5369a6efb00e8fb5cd5f1",
+      "lines": 128,
+      "title": "r02v2936"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/030-entpipecontrols-position-sticky-important-top-0-important-left-0.css",
+      "sourceLine": 17153,
+      "sha256": "a9db6b403617e106c2ffb0ae56cd9217b289f7399160c4ef0b2f8fc0dbf0a0d9",
+      "lines": 50,
+      "title": "entpipecontrols-position-sticky-important-top-0-important-left-0"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/058-visaintelv2939.js",
+      "sourceLine": 17210,
+      "sha256": "e82d5929bb9790566d97fa826fd03de45f1c0eb2a6af6e06ad26455784edebe3",
+      "lines": 185,
+      "title": "visaintelv2939"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/031-r-02-slim-kpi-cards.css",
+      "sourceLine": 17421,
+      "sha256": "966070cac3c18f68e844066d09bd2f97ba9e3d99d281d8a0d6de1ac546e3aa87",
+      "lines": 44,
+      "title": "r-02-slim-kpi-cards"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/059-vupbv2950.js",
+      "sourceLine": 17467,
+      "sha256": "6e02b522b37483b235cadb99c5f8d51a12a5ca2494687523d46e89f01f0603d6",
+      "lines": 115,
+      "title": "vupbv2950"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/032-table-vupb-tbody-td-chip-rem-background-rgba-107-181-136-16-color.css",
+      "sourceLine": 17601,
+      "sha256": "ef01efb0696559416bc9261672773e3ded7c823b7455215521aa2bfcd6f0ebd2",
+      "lines": 3,
+      "title": "table-vupb-tbody-td-chip-rem-background-rgba-107-181-136-16-color"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/060-addremainingv2955.js",
+      "sourceLine": 17605,
+      "sha256": "8bf2e6b8b1107c074fdc77464a7c36dd081097180ba44964de89a54384eb9766",
+      "lines": 96,
+      "title": "addremainingv2955"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/033-crx-btn-padding-8px-14px-border-1px-solid-2f5a3b-background-2f5a3.css",
+      "sourceLine": 17721,
+      "sha256": "e5bbcff03731de9b2f82e6908dbb8b00e7d084fa582f53db2b563456bb8ba659",
+      "lines": 5,
+      "title": "crx-btn-padding-8px-14px-border-1px-solid-2f5a3b-background-2f5a3"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/061-vupbexportv2966.js",
+      "sourceLine": 17727,
+      "sha256": "6d409decfe0cd83501462a166dae21eec17025884d6aeff0396f63e4a46f120a",
+      "lines": 152,
+      "title": "vupbexportv2966"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/034-expexportbtn-position-absolute-top-14px-right-16px-z-index-5-padd.css",
+      "sourceLine": 17895,
+      "sha256": "044993887fc6d4c403869800858a3120170c0b73b8b61fab4e9d2545b9c393f0",
+      "lines": 4,
+      "title": "expexportbtn-position-absolute-top-14px-right-16px-z-index-5-padd"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/062-expexportv2961.js",
+      "sourceLine": 17900,
+      "sha256": "0fd5bd850400170da46a4b98347d807a45bc4b6133c0ded9be3735c6cfffcbba",
+      "lines": 86,
+      "title": "expexportv2961"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/035-undo-the-damage-never-let-our-class-force-flex-on-a-container.css",
+      "sourceLine": 18014,
+      "sha256": "d5bc9f020d1bdcd4013d133cb72683fc9560c92adee9732f78d7a84de8201efe",
+      "lines": 9,
+      "title": "undo-the-damage-never-let-our-class-force-flex-on-a-container"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/063-restorev2965.js",
+      "sourceLine": 18024,
+      "sha256": "e9612b2baba1f5a06671470454f8ed460fc15ffc09dc23de93db25e3080c8747",
+      "lines": 72,
+      "title": "restorev2965"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/036-full-size-when-not-stuck-override-v2-9-45-s-always-compact-both-w.css",
+      "sourceLine": 18123,
+      "sha256": "54307e8281b9bbde77105576dfc5d2a0cf766cce5b4ef7ba10688d80c088d8a8",
+      "lines": 19,
+      "title": "full-size-when-not-stuck-override-v2-9-45-s-always-compact-both-w"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/037-entagencyfilter-font-family-ibm-plex-sans-sans-serif.css",
+      "sourceLine": 18165,
+      "sha256": "bb0c4a4beab5618d1c08caf1b23c2470f3b452398c24785e3f0f9778994c3252",
+      "lines": 3,
+      "title": "entagencyfilter-font-family-ibm-plex-sans-sans-serif"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/064-agencyfilterv2972.js",
+      "sourceLine": 18169,
+      "sha256": "287d0bf6ed1a083cb74af9dc928188b9dc43890778d57af4b6fe42bb6e415286",
+      "lines": 122,
+      "title": "agencyfilterv2972"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/038-entr02bar-position-sticky-important-top-0-important-z-index-50-im.css",
+      "sourceLine": 18314,
+      "sha256": "63c3230971139e21a7f079dca515fc5e83e38957ec8c1ecddc2682278dfbc388",
+      "lines": 52,
+      "title": "entr02bar-position-sticky-important-top-0-important-z-index-50-im"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/065-r02v2979.js",
+      "sourceLine": 18367,
+      "sha256": "bc37e91949055fd56ab91369e6a4eab326405011cc0724f2017426e080be77d3",
+      "lines": 73,
+      "title": "r02v2979"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/039-entgenderfilter-font-family-ibm-plex-sans-sans-serif.css",
+      "sourceLine": 18463,
+      "sha256": "64212030fd63dadc1ffe940c0210bd02f777a82be777062f204f4c0ba1503198",
+      "lines": 9,
+      "title": "entgenderfilter-font-family-ibm-plex-sans-sans-serif"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/066-r01v300.js",
+      "sourceLine": 18473,
+      "sha256": "7bbf67e12d45ce69d5bc38a13bf533c9b5ef21d1260c93cbd3f5c95a26b3ffc8",
+      "lines": 71,
+      "title": "r01v300"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/040-vdviewbtn-padding-8px-16px-border-1px-solid-2f5a3b-background-2f5.css",
+      "sourceLine": 18571,
+      "sha256": "235d6d0b0b81a68495426e1bc4c89dbfff16aeb04e4cd3acbf26d8b6d56fa6e8",
+      "lines": 35,
+      "title": "vdviewbtn-padding-8px-16px-border-1px-solid-2f5a3b-background-2f5"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/067-viewdatar01v311.js",
+      "sourceLine": 18628,
+      "sha256": "e92ea05e3c0361fa79be02d47b58a4bf366c9ad64b69a78f532352edeadf174a",
+      "lines": 256,
+      "title": "viewdatar01v311"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/041-cvviewbtn-padding-8px-16px-border-1px-solid-2f5a3b-background-2f5.css",
+      "sourceLine": 18914,
+      "sha256": "198ef077cedc056631e9857385e56828a8bd66276344933e99a82b432877b0cd",
+      "lines": 35,
+      "title": "cvviewbtn-padding-8px-16px-border-1px-solid-2f5a3b-background-2f5"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/068-viewdatar02v320.js",
+      "sourceLine": 18971,
+      "sha256": "0d215dc45bb7b78e53b7ebe53ea9be5110e3d9a5c101e6186dd99976490e07ac",
+      "lines": 160,
+      "title": "viewdatar02v320"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/042-cvgrid-td-pd-cell-position-relative-min-width-132px.css",
+      "sourceLine": 19168,
+      "sha256": "80d2a7d9f6359b7f35d6d44e77076a5ff9088d36a686b8d54351346309f226a5",
+      "lines": 21,
+      "title": "cvgrid-td-pd-cell-position-relative-min-width-132px"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/069-entuniversalexport.js",
+      "sourceLine": 19195,
+      "sha256": "7faf2c60177f2ef65a6a0c2a68ed910f19951cd32bca3a84cf4eedbf0e8ccec8",
+      "lines": 353,
+      "title": "entuniversalexport"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/043-rcoverlay-position-fixed-inset-0-z-index-100000-background-rgba-2.css",
+      "sourceLine": 19580,
+      "sha256": "54be7c92374103096997bd6ac7e297840a09fee1663650752dc31f5aaa38577e",
+      "lines": 28,
+      "title": "rcoverlay-position-fixed-inset-0-z-index-100000-background-rgba-2"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/070-editcaseformv330.js",
+      "sourceLine": 19615,
+      "sha256": "a76f25188267a27d880c681e0074563ae7a4e1c7de2125dd769cd205bfa79f99",
+      "lines": 209,
+      "title": "editcaseformv330"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/044-input-cv-combo-padding-right-22px-important.css",
+      "sourceLine": 19849,
+      "sha256": "72f65883ca1e70a7eff175653c0f0baf33faecb43432e5e8446be24fcf7c7abe",
+      "lines": 10,
+      "title": "input-cv-combo-padding-right-22px-important"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/071-editablecombov324.js",
+      "sourceLine": 19861,
+      "sha256": "d12e1cc072f1fc7e78354f3ef840b48ac6d89e3b585c2222fd05fdd7348b8973",
+      "lines": 82,
+      "title": "editablecombov324"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/045-route-isolation.css",
+      "sourceLine": 19979,
+      "sha256": "1820d030809069a313b97e3a7358209170f9d60137710d5e741335c1d9355dc6",
+      "lines": 104,
+      "title": "route-isolation"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/072-function-try-const-h-location-hash-tolowercase-replace-a-z-g-if-h.js",
+      "sourceLine": 20097,
+      "sha256": "bb1a187c9a3bf012fed76db3ae7e487a00aa38abbb3a739b9356cbc25e445fd2",
+      "lines": 1,
+      "title": "function-try-const-h-location-hash-tolowercase-replace-a-z-g-if-h"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/073-ceodashboardv360.js",
+      "sourceLine": 20098,
+      "sha256": "d0746083dbf6fb77a33146fcba36642efbaf84618091351a708945c1d7c99548",
+      "lines": 347,
+      "title": "ceodashboardv360"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/046-td-dup-cell-background-fde7e7-important-box-shadow-inset-0-0-0-2p.css",
+      "sourceLine": 20474,
+      "sha256": "b0839eaad78270d58acfd4a3cb467c330ee81ec749fedfbe4640949b26fae3d6",
+      "lines": 25,
+      "title": "td-dup-cell-background-fde7e7-important-box-shadow-inset-0-0-0-2p"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/074-duplicateguardv367.js",
+      "sourceLine": 20504,
+      "sha256": "3d8368a7c88bf8d2f83d5d49811655afcaccbc8a8a9f791a5e853f3f48a47236",
+      "lines": 131,
+      "title": "duplicateguardv367"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/047-time-range-strip.css",
+      "sourceLine": 20670,
+      "sha256": "ac62d9d0bad9fdfb318c9fe278ee5e40e763bd6446ee7161db67150448749d65",
+      "lines": 71,
+      "title": "time-range-strip"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/075-ceoexecutivelayerv371.js",
+      "sourceLine": 20743,
+      "sha256": "6b8b1679c4b4dc72285261dd6bf03fe7d7e227e13144e7a9f3b02f4febaa04e2",
+      "lines": 300,
+      "title": "ceoexecutivelayerv371"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/048-vupbclientov-position-fixed-inset-0-z-index-100060-background-rgb.css",
+      "sourceLine": 21067,
+      "sha256": "8d024b2342aae30bb538e042bca0149937eba0fb17ad9fe95b5eb7b127c934c5",
+      "lines": 21,
+      "title": "vupbclientov-position-fixed-inset-0-z-index-100060-background-rgb"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/076-vupbclientpickerv370.js",
+      "sourceLine": 21095,
+      "sha256": "7d44ad962f7acb96c998d422eb44b58cef7af704f23b0431b85507ccac4de284",
+      "lines": 162,
+      "title": "vupbclientpickerv370"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/049-v38-kpis-display-grid-grid-template-columns-repeat-auto-fit-minma.css",
+      "sourceLine": 21285,
+      "sha256": "bf75550deaea72e46d8b7cc61b6d815bb1efaec1d5da941989e801e4b13ad41b",
+      "lines": 21,
+      "title": "v38-kpis-display-grid-grid-template-columns-repeat-auto-fit-minma"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/077-ceov381.js",
+      "sourceLine": 21307,
+      "sha256": "87753d1f37f33dbb6ed2a9082c74a99ffeaec615aa7df581841543f7f8338897",
+      "lines": 277,
+      "title": "ceov381"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/050-xdfilters-display-none-important.css",
+      "sourceLine": 21616,
+      "sha256": "b7e2ed3d6b7cb22ef5b7a63cb3ee8c1415461327f25c3638a0e209b11965f575",
+      "lines": 68,
+      "title": "xdfilters-display-none-important"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/078-ceov393.js",
+      "sourceLine": 21689,
+      "sha256": "47a533aa894c4f62e2e691204ab31a5f370393aa11df20dfb25fb4001813afe6",
+      "lines": 343,
+      "title": "ceov393"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/051-v401-bulk-row-display-grid-grid-template-columns-1fr-1fr-gap-10px.css",
+      "sourceLine": 22060,
+      "sha256": "2944b2a060ee5d86d4380ea05fa10d7fd71da1dad66fb7c9512d4e1eb0763fdf",
+      "lines": 7,
+      "title": "v401-bulk-row-display-grid-grid-template-columns-1fr-1fr-gap-10px"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/079-pasteblankfixv401.js",
+      "sourceLine": 22068,
+      "sha256": "06de861d128b0f42229d92ea04aba29b1294098a2bc1ee669bef61c0b4a7f680",
+      "lines": 187,
+      "title": "pasteblankfixv401"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/080-entcorev410.js",
+      "sourceLine": 22286,
+      "sha256": "739d6cd4f174aebf4ed224c509715ed22b9bbb677dd77323ed5146af79e7ffa5",
+      "lines": 121,
+      "title": "entcorev410"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/052-hide-only-the-legacy-duplicate-block-never-our-own-v41exp.css",
+      "sourceLine": 22438,
+      "sha256": "df5e6f5f0ec7706218fa8927fbae4b51d2970f56fd8cd4c3507c3b9fbcb24531",
+      "lines": 20,
+      "title": "hide-only-the-legacy-duplicate-block-never-our-own-v41exp"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/081-safwatfixesv411.js",
+      "sourceLine": 22459,
+      "sha256": "03f2c9be6fdf0d42e4b3ab4d9b2ca886ae86d62655a3d771562b436a451db7d4",
+      "lines": 186,
+      "title": "safwatfixesv411"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/053-tr-ent-agency-hidden-display-none-important.css",
+      "sourceLine": 22675,
+      "sha256": "cc263be9a76048f4d5621167d3aa254dc1d6967a1408cf5ecb22cc20dfde228d",
+      "lines": 7,
+      "title": "tr-ent-agency-hidden-display-none-important"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/082-r02filtersearchv424.js",
+      "sourceLine": 22683,
+      "sha256": "72ba553bb84c6ea7eb063c61b810535e29f9fefc46d13d8a21d04d13818f1428",
+      "lines": 214,
+      "title": "r02filtersearchv424"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/054-visafilteragency-padding-6px-10px-border-1px-solid-var-rule-d9d2b.css",
+      "sourceLine": 22920,
+      "sha256": "778898f018eb6c3658799cd5092878611f57e55a2eeb6103965201dc1970f24c",
+      "lines": 4,
+      "title": "visafilteragency-padding-6px-10px-border-1px-solid-var-rule-d9d2b"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/083-r01filtersconsolidatedv425.js",
+      "sourceLine": 22925,
+      "sha256": "e81efb63b0ee9949b046a94052f8be54e2ead372955b18c04505be9f19fb5651",
+      "lines": 181,
+      "title": "r01filtersconsolidatedv425"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/055-make-sure-nothing-of-mine-is-still-hiding-the-legacy-sections.css",
+      "sourceLine": 23145,
+      "sha256": "83ce51c99610d1d1d02ba674b363a9ee25b8c30e5c3013754b4c1b3ca0b5476d",
+      "lines": 4,
+      "title": "make-sure-nothing-of-mine-is-still-hiding-the-legacy-sections"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/084-restorevupbexpv430.js",
+      "sourceLine": 23150,
+      "sha256": "2eb75c691d12cd521c309f6b81771321eb1755a86a09c6d1c1b639a5d532c65a",
+      "lines": 93,
+      "title": "restorevupbexpv430"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/056-enthealthpanel-margin-14px-0.css",
+      "sourceLine": 23268,
+      "sha256": "d6ca8fce3731f31ad054e2a248ea98884118a34fe77dc23e3fcf08543986d1a1",
+      "lines": 54,
+      "title": "enthealthpanel-margin-14px-0"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/085-r00controlcenterv431.js",
+      "sourceLine": 23326,
+      "sha256": "12abd590f63320b69524b1ce2696dd22f8ec689259da72f96a63ffdcb652c007",
+      "lines": 249,
+      "title": "r00controlcenterv431"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/086-stickyreturnfixv440.js",
+      "sourceLine": 23597,
+      "sha256": "f7b9182252ab4500381c8ac41964c6d20e4e023cb777dddd893d20eec2021c29",
+      "lines": 56,
+      "title": "stickyreturnfixv440"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/057-hide-every-legacy-duplicate-expirations-block-ours-is-v44exp.css",
+      "sourceLine": 23687,
+      "sha256": "ae1bd8cb341a4b4bc97b7d3933f85558f647a631a26a14a337f2ce8016c06cad",
+      "lines": 20,
+      "title": "hide-every-legacy-duplicate-expirations-block-ours-is-v44exp"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/087-safwatv440.js",
+      "sourceLine": 23708,
+      "sha256": "5be35898d13cd5e8c3f81c20a6692d26394282193066685ac15237a913a5a907",
+      "lines": 172,
+      "title": "safwatv440"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/088-safwatv450.js",
+      "sourceLine": 23918,
+      "sha256": "970153ce36f85d0aa388d73dc25b154871e93db726dba1c17226e660ea11a97e",
+      "lines": 161,
+      "title": "safwatv450"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/058-v46repair-background-fff-border-1px-solid-e0d8c4-border-left-4px.css",
+      "sourceLine": 24111,
+      "sha256": "612e86bc15005d0c25c6b2b4dd114ba74c30426c517ca8558f93324d11d6eeb7",
+      "lines": 13,
+      "title": "v46repair-background-fff-border-1px-solid-e0d8c4-border-left-4px"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/089-safwatv460.js",
+      "sourceLine": 24125,
+      "sha256": "b7d625ca0d4351e82dd78676301f269f610a8e68cb161fbd65d585738249abca",
+      "lines": 156,
+      "title": "safwatv460"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/059-fallbacks-in-case-the-base-classes-are-ever-missing-they-exist-bu.css",
+      "sourceLine": 24315,
+      "sha256": "ec395825431b543b5922decddb6af8965b70af9dc21865c8e0f1727ddf057ef4",
+      "lines": 19,
+      "title": "fallbacks-in-case-the-base-classes-are-ever-missing-they-exist-bu"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/090-crudvalidationv500.js",
+      "sourceLine": 24336,
+      "sha256": "a4752a1e72d8576f63f8f0d6550a13ac63a5edf719d2cf0ef443ad4a2361d5c1",
+      "lines": 112,
+      "title": "crudvalidationv500"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/060-inline-group-holding-the-search-view-data-button-top-right-of-the.css",
+      "sourceLine": 24471,
+      "sha256": "62f899c3d309a7c140b5871eb472cac623d26f3e58c1db6643c5be2b4906b75b",
+      "lines": 4,
+      "title": "inline-group-holding-the-search-view-data-button-top-right-of-the"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/091-r01phase1v510.js",
+      "sourceLine": 24476,
+      "sha256": "ffc1082ea441c30b8b36f7b2b88a9a3f2a3d0fe24fbe6982619b115743e38ec9",
+      "lines": 100,
+      "title": "r01phase1v510"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/061-vdgrid-input-vd-combo-padding-right-20px-important.css",
+      "sourceLine": 24599,
+      "sha256": "582d026ef327a1d9d5405a5b3e57305d7bb1d3e1eeeaccb14818a331e1c4999d",
+      "lines": 14,
+      "title": "vdgrid-input-vd-combo-padding-right-20px-important"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/092-r01viewdataphase2v521.js",
+      "sourceLine": 24615,
+      "sha256": "0a503b5382236ade3fce45da52a523fa0e0e5b1d5e38b479aff059b293ad9037",
+      "lines": 121,
+      "title": "r01viewdataphase2v521"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/093-qiwatogglefixv530.js",
+      "sourceLine": 24766,
+      "sha256": "d32183233b476e30e41174b62880e86a324695543f4ea6303b15b06e9e3acd7c",
+      "lines": 71,
+      "title": "qiwatogglefixv530"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/062-vdgrid-td-vd-exp-lock-input-background-rgba-63-108-77-06-importan.css",
+      "sourceLine": 24867,
+      "sha256": "fe7456a79e83f22f09c778fba74686d27cca38eeefedbc50645d008ed348422d",
+      "lines": 27,
+      "title": "vdgrid-td-vd-exp-lock-input-background-rgba-63-108-77-06-importan"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/094-r01viewdataphase3v547.js",
+      "sourceLine": 24900,
+      "sha256": "b189f8ec40b307601651484df131ef26745edee51a30c4107ca5ab2bda78adf2",
+      "lines": 142,
+      "title": "r01viewdataphase3v547"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/095-visanumberautofillfixv548.js",
+      "sourceLine": 25065,
+      "sha256": "7e7b19f7299a05ac2fb565fc54d9aa1ae0660052bc3df573a524745c75e1db34",
+      "lines": 34,
+      "title": "visanumberautofillfixv548"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/063-vdgrid-td-vd-cvexp-ro-input-background-rgba-63-108-77-06-importan.css",
+      "sourceLine": 25126,
+      "sha256": "cc86fac696f03e6cfa5fa9173da5969d678d4dc6b02ff2d52111c31e26b07da5",
+      "lines": 5,
+      "title": "vdgrid-td-vd-cvexp-ro-input-background-rgba-63-108-77-06-importan"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/096-r01candvisaexpiryv550.js",
+      "sourceLine": 25132,
+      "sha256": "c21a86012d477a0951c3980ce7c34be62e7d3a52fec0c8345bf8672f98d8b5e2",
+      "lines": 83,
+      "title": "r01candvisaexpiryv550"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/097-globaldownloadfixv570.js",
+      "sourceLine": 25245,
+      "sha256": "b440871c9e0038b8cda6007d5ad0613f2d41b759bf8e96b0283428ea21a12897",
+      "lines": 60,
+      "title": "globaldownloadfixv570"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/098-clairestep1.js",
+      "sourceLine": 25355,
+      "sha256": "3dadd33d159375d6dc4f1548238a3cc56381c6c9a970bb56f37de9c377c72600",
+      "lines": 522,
+      "title": "clairestep1"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/099-clairealigndatesv730.js",
+      "sourceLine": 25907,
+      "sha256": "b4d231eadb7152d3416e62a6aea7b61a386486b3878e2372a08a01d6490820e4",
+      "lines": 106,
+      "title": "clairealigndatesv730"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/064-clairepanel-chat-mode-body-display-none-important.css",
+      "sourceLine": 26046,
+      "sha256": "6591455d77e478adecf337a94e3ec7418ac447bf8107ad5a480d8f13bbad13dc",
+      "lines": 29,
+      "title": "clairepanel-chat-mode-body-display-none-important"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/100-clairechatv740.js",
+      "sourceLine": 26076,
+      "sha256": "19ee84b09432d630f684b1b227997bdcfd48faa886cb949a3c15ce45c284ed3a",
+      "lines": 462,
+      "title": "clairechatv740"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/065-clairechat-cc-f-margin-top-6px-font-size-10-5px-color-var-text-so.css",
+      "sourceLine": 26592,
+      "sha256": "776003b0914955e64ded6997898490194b43a1bcd49fa9b29999864b3632d8a4",
+      "lines": 4,
+      "title": "clairechat-cc-f-margin-top-6px-font-size-10-5px-color-var-text-so"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/101-clairefreebrainv752.js",
+      "sourceLine": 26597,
+      "sha256": "468db5b7751d8b2fe09929c281d474cfc9e9075d73a7b532f83003da0aa568a3",
+      "lines": 514,
+      "title": "clairefreebrainv752"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/066-clairechat-cc-f-margin-top-6px-font-size-10-5px-color-var-text-so.css",
+      "sourceLine": 27162,
+      "sha256": "ed9a1a425540fc4cf2ab6289be43b87671311eb472d097483e6aa7e70ff78bae",
+      "lines": 3,
+      "title": "clairechat-cc-f-margin-top-6px-font-size-10-5px-color-var-text-so"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/102-clairelocalbrainv760.js",
+      "sourceLine": 27166,
+      "sha256": "ee93e32da13f5e67c92606e663c072939e08ed2d1e44b8f363b154418aed4a1b",
+      "lines": 951,
+      "title": "clairelocalbrainv760"
+    },
+    {
+      "kind": "css",
+      "path": "public/css/legacy/067-body-ent-dark-color-scheme-dark.css",
+      "sourceLine": 28134,
+      "sha256": "fb2d91893c7b5e3295605c24e4e8e383cff68988e2f96824bec91e4c4c5722ec",
+      "lines": 467,
+      "title": "body-ent-dark-color-scheme-dark"
+    },
+    {
+      "kind": "js",
+      "path": "public/js/legacy/103-darkchartsv771.js",
+      "sourceLine": 28602,
+      "sha256": "98be3350107f56abe0b87e9feac0e5861e5027a619811a7639bc6bced8249437",
+      "lines": 18,
+      "title": "darkchartsv771"
+    }
+  ]
+}

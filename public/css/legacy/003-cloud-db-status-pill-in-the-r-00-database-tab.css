@@ -1,0 +1,61 @@
+
+/* Cloud DB status pill (in the R-00 database tab) */
+.ent-cloud-panel{
+  border:2px solid var(--brass,#B98A2E);border-radius:10px;
+  padding:18px 22px;margin:14px 0;
+  background:linear-gradient(135deg,rgba(185,138,46,.06) 0%,rgba(46,111,163,.06) 100%);
+}
+.ent-cloud-panel h3{
+  font-family:'Zilla Slab',serif;font-size:16px;margin:0 0 6px;
+  display:flex;align-items:center;gap:10px;
+}
+.ent-cloud-panel .ent-cloud-icon{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;
+  padding:3px 8px;background:var(--brass,#B98A2E);color:var(--ink,#17242F);
+  border-radius:3px;letter-spacing:.08em;font-weight:700;
+}
+.ent-cloud-panel p{font-size:13px;color:var(--text-soft,#6B6558);margin:6px 0;line-height:1.5;}
+.ent-cloud-panel .ent-cloud-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;
+  margin:14px 0;
+}
+.ent-cloud-panel .ent-cloud-stat{
+  padding:10px 12px;background:var(--paper-raised,#fff);border:1px solid var(--rule,#D9D2BC);
+  border-radius:6px;
+}
+.ent-cloud-panel .ent-cloud-stat .ent-cs-num{
+  font-family:'Zilla Slab',serif;font-size:22px;font-weight:700;color:var(--brass-dark,#8C6A22);line-height:1;
+}
+.ent-cloud-panel .ent-cloud-stat .ent-cs-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-soft,#6B6558);
+  letter-spacing:.06em;text-transform:uppercase;margin-top:3px;
+}
+.ent-cloud-panel .ent-cloud-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.ent-cloud-panel .ent-cloud-actions button{
+  padding:8px 14px;font-size:13px;border-radius:5px;cursor:pointer;
+  font-family:inherit;border:1px solid var(--rule,#D9D2BC);background:#fff;color:var(--text,#23201B);
+}
+.ent-cloud-panel .ent-cloud-actions button.primary{
+  background:var(--brass,#B98A2E);color:var(--ink,#17242F);
+  border-color:var(--brass,#B98A2E);font-weight:600;
+}
+.ent-cloud-panel .ent-cloud-actions button:hover{filter:brightness(1.05);}
+.ent-cloud-panel .ent-cloud-actions button.danger{border-color:var(--danger,#A23B2E);color:var(--danger,#A23B2E);}
+.ent-cloud-panel .ent-cloud-actions button.danger:hover{background:var(--danger,#A23B2E);color:#fff;}
+
+/* Loading overlay while pulling cloud DB */
+#entCloudLoading{
+  position:fixed;inset:0;z-index:9990;
+  background:rgba(14,22,32,.65);color:#EDE7D6;
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  font-family:'IBM Plex Sans',sans-serif;text-align:center;padding:40px;
+}
+#entCloudLoading.open{display:flex;}
+#entCloudLoading .ent-cl-spinner{
+  width:40px;height:40px;border:3px solid rgba(237,231,214,.2);
+  border-top-color:var(--brass,#B98A2E);border-radius:50%;
+  animation:entClSpin .8s linear infinite;margin-bottom:16px;
+}
+@keyframes entClSpin{to{transform:rotate(360deg);}}
+#entCloudLoading .ent-cl-msg{font-size:14px;color:#B9C2C9;}
+#entCloudLoading .ent-cl-title{font-family:'Zilla Slab',serif;font-size:18px;color:#fff;margin-bottom:4px;}

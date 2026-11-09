@@ -1,0 +1,21 @@
+
+#cvGrid td.pd-cell{ position:relative; min-width:132px; }
+#cvGrid td.pd-cell input{ width:100%; border:none; background:transparent; padding:7px 20px 7px 8px; font-family:inherit; font-size:12.5px; box-sizing:border-box; outline:none; }
+#cvGrid td.pd-cell input:focus{ background:#FFF7DE; box-shadow:inset 0 0 0 2px #B98A2E; }
+#cvGrid td.pd-cell .pd-cal{ position:absolute; right:3px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:12px; opacity:.55; z-index:2; }
+#cvGrid td.pd-cell .pd-cal:hover{ opacity:1; }
+#cvGrid th.pd-head{ background:#20303E !important; color:#EDD9A6 !important; white-space:nowrap; }
+#pdPicker{ position:fixed; z-index:100075; display:none; box-sizing:border-box; width:250px !important; background:#14202B; color:#F1EDE2; border:1px solid #2A3A48; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.4); padding:10px 12px; font-family:'IBM Plex Sans',sans-serif; }
+#pdPicker.open{ display:block; }
+#pdPicker .pd-lbl{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9BB0C0; margin-bottom:7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#pdPicker .pd-row{ display:flex !important; flex-wrap:nowrap !important; gap:4px !important; align-items:center !important; grid-template-columns:none !important; }
+#pdPicker .pd-row select{ box-sizing:border-box !important; padding:5px 4px !important; border-radius:6px !important; border:1px solid #3A4A58 !important; background:#0F1922 !important; color:#F1EDE2 !important; font-size:13px !important; min-width:0 !important; margin:0 !important; }
+#pdPicker .pd-row select.y{ width:70px !important; flex:0 0 70px !important; }
+#pdPicker .pd-row select.m{ width:52px !important; flex:0 0 52px !important; }
+#pdPicker .pd-row select.d{ width:52px !important; flex:0 0 52px !important; }
+#pdPicker .pd-row .sep{ color:#6B7A88; flex:0 0 auto; }
+#pdPicker .pd-btns{ display:flex; align-items:center; gap:8px; margin-top:10px; }
+#pdPicker .pd-btns button{ border:none; border-radius:6px; padding:6px 12px; cursor:pointer; font-size:12px; font-weight:600; }
+#pdPicker .ok{ background:#B98A2E; color:#14202B; } #pdPicker .cx{ background:#33424F; color:#EDE7D6; } #pdPicker .clr{ background:#5A3A36; color:#F3D9D4; }
+.pd-flash{ animation:pdF 1s ease-out 1; }
+@keyframes pdF{ 0%{ background:rgba(46,111,163,.22);} 100%{ background:transparent;} }

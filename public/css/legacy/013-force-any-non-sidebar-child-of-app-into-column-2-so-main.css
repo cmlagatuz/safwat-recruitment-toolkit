@@ -1,0 +1,8 @@
+
+/* Force any non-sidebar child of .app into column 2, so main
+   content still renders correctly after v2.8.12 removes the
+   sidebar from grid flow via position:fixed. */
+.app > *:not(.sidebar){
+  grid-column: 2 / -1 !important;
+  grid-column-start: 2 !important;
+}

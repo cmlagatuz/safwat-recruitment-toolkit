@@ -1,0 +1,20 @@
+
+/* hide every legacy / duplicate expirations block — ours is #v44Exp */
+.v44-dupe-exp{ display:none !important; }
+/* remove the CSV / PDF buttons */
+button.v44-hidden-btn, a.v44-hidden-btn{ display:none !important; }
+#v44Exp .exp-note{ font-size:11.5px; color:#6B6558; margin:-2px 0 10px; }
+#v44Exp .exp-tools{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+#v44Exp .exp-tools select{ padding:6px 9px; border:1px solid #C9BFA4; border-radius:6px; font-family:'IBM Plex Sans',sans-serif; font-size:12px; background:#fff; color:#14202B; max-width:230px; }
+#v44Exp .exp-count{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6558; }
+#v44Exp .chip{ display:inline-block; min-width:26px; text-align:center; padding:1px 7px; border-radius:10px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; }
+#v44Exp .chip.qty{ background:rgba(185,138,46,.15); color:#8C6A22; }
+#v44Exp .chip.days{ background:rgba(162,59,46,.10); color:#A23B2E; }
+#v44Exp .chip.days.soon{ background:rgba(162,59,46,.22); color:#7E2E24; }
+#v44Exp table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+#v44Exp th{ position:sticky; top:0; background:#14202B; color:#F1EDE2; font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; padding:8px; text-align:left; }
+#v44Exp th.r{ text-align:right; }
+#v44Exp td{ padding:7px 8px; border-bottom:1px solid rgba(0,0,0,.05); }
+#v44Exp td.r{ text-align:right; } #v44Exp td.mono{ font-family:'IBM Plex Mono',monospace; } #v44Exp td.cat{ color:#8C6A22; }
+.v44-btn{ border:none; border-radius:7px; padding:6px 12px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:700; background:#2F5A3B; color:#fff; }
+.v44-btn:hover{ background:#24492F; }

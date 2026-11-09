@@ -1,0 +1,36 @@
+
+/* Larger modal for the expanded bulk-edit form */
+#modalOverlay .modal-body:has(.ent-vbulk-group){
+  max-width: 780px !important;
+}
+.ent-vbulk-group{
+  border: 1px solid var(--rule, #D9D2BC);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  background: var(--paper, #F5F2EA);
+}
+.ent-vbulk-group h4{
+  font-family: 'Zilla Slab', serif;
+  font-size: 13px;
+  margin: 0 0 8px;
+  color: var(--brass-dark, #8C6A22);
+  letter-spacing: .02em;
+}
+.ent-vbulk-group .checkline{
+  display: flex; align-items: center; gap: 8px; margin: 6px 0 4px;
+}
+.ent-vbulk-group input,
+.ent-vbulk-group select{
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--rule, #D9D2BC);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  background: #fff;
+}
+.ent-vbulk-group .ent-vb-row{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.ent-vbulk-group .ent-vb-row .ent-vb-cell{ display: flex; flex-direction: column; }

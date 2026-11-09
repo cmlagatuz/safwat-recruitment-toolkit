@@ -1,0 +1,108 @@
+
+/* Waiting-for-approval gate */
+#entWaitingGate, #entRejectedGate{
+  position: fixed; inset: 0; z-index: 10006;
+  background: linear-gradient(135deg, #17242F 0%, #233442 100%);
+  display: none; align-items: center; justify-content: center;
+  color: #EDE7D6; padding: 20px;
+}
+#entWaitingGate.open, #entRejectedGate.open { display: flex; }
+#entWaitingGate .ent-wait-card, #entRejectedGate .ent-wait-card{
+  background: #fff; color: #23201B; width: min(480px, 94vw);
+  border-radius: 8px; box-shadow: 0 20px 60px rgba(17,36,47,.28);
+  overflow: hidden; padding: 30px 32px; text-align: center;
+}
+#entWaitingGate .ent-wait-card{ border-top: 6px solid #B98A2E; }
+#entRejectedGate .ent-wait-card{ border-top: 6px solid #A23B2E; }
+#entWaitingGate .ent-wait-icon, #entRejectedGate .ent-wait-icon{
+  display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: .2em; color: #B98A2E; border: 1px solid #B98A2E;
+  padding: 4px 12px; border-radius: 2px; margin-bottom: 18px;
+}
+#entRejectedGate .ent-wait-icon{ color: #A23B2E; border-color: #A23B2E; }
+#entWaitingGate h2, #entRejectedGate h2{
+  font-family: 'Zilla Slab', serif; font-size: 24px; margin: 0 0 10px;
+}
+#entWaitingGate p, #entRejectedGate p{
+  font-size: 13.5px; color: #6B6558; margin: 6px 0; line-height: 1.6;
+}
+#entWaitingGate .ent-wait-email, #entRejectedGate .ent-wait-email{
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  color: #2E6FA3; margin: 10px 0 20px; word-break: break-all;
+}
+#entWaitingGate .ent-wait-status{
+  padding: 14px; background: rgba(185,138,46,.08);
+  border-left: 3px solid #B98A2E; border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+  color: #8C6A22; margin: 16px 0;
+}
+#entWaitingGate .ent-wait-status .ent-pulse{
+  display: inline-block; width: 8px; height: 8px; background: #B98A2E;
+  border-radius: 50%; margin-right: 6px; animation: entWaitPulse 1.4s infinite;
+}
+@keyframes entWaitPulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+#entWaitingGate button, #entRejectedGate button{
+  margin-top: 12px; padding: 9px 20px; font-size: 13px;
+  background: transparent; color: #23201B; border: 1px solid #D9D2BC;
+  border-radius: 6px; cursor: pointer; font-family: inherit; margin: 4px;
+}
+#entRejectedGate .ent-rejected-reason{
+  padding: 14px; background: rgba(162,59,46,.08);
+  border-left: 3px solid #A23B2E; border-radius: 4px;
+  font-size: 13px; color: #7E2E24; margin: 16px 0; font-style: italic;
+}
+
+/* Account request cards in Approvals panel */
+.ent-account-request{
+  border: 1px solid #D9D2BC; border-left: 4px solid #B98A2E;
+  border-radius: 8px; padding: 14px 16px; margin-bottom: 12px;
+  background: linear-gradient(135deg, rgba(185,138,46,.04) 0%, rgba(255,255,255,1) 60%);
+}
+.ent-account-request .ent-ar-head{
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.ent-account-request .ent-ar-head .ent-ar-tag{
+  display: inline-block; padding: 3px 9px; font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: .1em; background: #B98A2E; color: #17242F;
+  border-radius: 3px; font-weight: 700;
+}
+.ent-account-request .ent-ar-when{
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6558;
+}
+.ent-account-request .ent-ar-name{ font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.ent-account-request .ent-ar-email{
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  color: #2E6FA3; margin-bottom: 12px;
+}
+.ent-account-request .ent-ar-row{
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  margin-top: 10px;
+}
+.ent-account-request .ent-ar-row label{
+  font-size: 12.5px; color: #6B6558;
+}
+.ent-account-request select{
+  padding: 6px 10px; font-size: 13px; border: 1px solid #D9D2BC;
+  border-radius: 4px; background: #fff;
+}
+.ent-account-request button{
+  padding: 7px 14px; font-size: 12.5px; border-radius: 4px;
+  cursor: pointer; font-family: inherit; border: 1px solid;
+}
+.ent-account-request .ent-ar-approve{ background: #3F6C4D; color: #fff; border-color: #3F6C4D; font-weight: 600; }
+.ent-account-request .ent-ar-approve:hover{ filter: brightness(1.1); }
+.ent-account-request .ent-ar-reject{ background: #fff; color: #A23B2E; border-color: #A23B2E; }
+.ent-account-request .ent-ar-reject:hover{ background: #A23B2E; color: #fff; }
+
+.ent-account-requests-section{
+  padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px dashed #D9D2BC;
+}
+.ent-account-requests-section h3{
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #B98A2E; margin: 0 0 10px;
+}
+.ent-account-requests-empty{
+  font-size: 12.5px; color: #6B6558; text-align: center; padding: 12px 0;
+}

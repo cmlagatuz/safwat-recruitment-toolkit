@@ -1,0 +1,28 @@
+
+/* When force-r01 class is set on html, HIDE R-00 content aggressively.
+   These selectors cover the toolkit's various tab-content patterns. */
+html.ent-force-r01 [data-tab-content="R-00"],
+html.ent-force-r01 #tab-R-00,
+html.ent-force-r01 section#R-00,
+html.ent-force-r01 [id="R-00-content"],
+html.ent-force-r01 [data-panel="R-00"],
+html.ent-force-r01 #entCloudPanel,
+html.ent-force-r01 #dbFileTools,
+html.ent-force-r01 #dbNoFileNotice,
+html.ent-force-r01 #entHijriMigrationPanel,
+html.ent-force-r01 #entGreg2HijriPanel,
+html.ent-force-r01 #entVcMigrationPanel{
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -99999px !important;
+  pointer-events: none !important;
+}
+
+/* Also hide any heading "R-00 · REPORTS & DASHBOARDS" if it renders */
+html.ent-force-r01 [class*="dashboard-heading"]:has(> :contains("R-00")),
+html.ent-force-r01 h1:has(> :contains("Database")){
+  display: none !important;
+}
