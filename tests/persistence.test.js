@@ -52,3 +52,13 @@ test('remote updates preserve dirty local records and accept clean replacements'
   assert.equal(P.acceptRemote(null, { data: remote }), true);
   assert.equal(P.acceptRemote(live, { data: live }), true);
 });
+test('cold local transaction cache proposes data then checks the actual server revision', async () => {
+  const ref = fake({ version: 1, data: db() });
+  ref.transaction = async (fn, cb, applyLocally) => {
+    assert.equal(applyLocally, false);
+    assert.equal(fn(null).version, 2);
+    assert.equal(fn({ version: 2, data: db() }), undefined);
+    return { committed: false };
+  };
+  await assert.rejects(P.commit(ref, { db: db(), expectedVersion: 1, uid: 'editor' }), { code: 'SAVE_CONFLICT' });
+});

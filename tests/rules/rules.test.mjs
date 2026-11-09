@@ -3,6 +3,8 @@ import { ref, get, set, update, remove, runTransaction } from 'firebase/database
 import { readFileSync } from 'node:fs';
 import { test, before, beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+const { commit } = createRequire(import.meta.url)('../../public/js/persistence.js');
 if (!process.env.FIREBASE_DATABASE_EMULATOR_HOST) throw new Error('Run through firebase emulators:exec; production tests are prohibited.');
 let env;
 const user = (uid, role, disabled = false) => ({ uid, email: uid + '@example.test', role, disabled });
@@ -37,12 +39,16 @@ test('two concurrent writers cannot both commit the same version', async () => {
   const results = await Promise.allSettled(['editor', 'other'].map(uid => set(ref(db(uid), 'safwat/databases/main'), envelope(uid))));
   assert.equal(results.filter(r => r.status === 'fulfilled').length, 1);
 });
-test('transaction with expected version succeeds and stale transaction aborts', async () => {
-  const r = ref(db('editor'), 'safwat/databases/main'); await get(r);
-  const first = await runTransaction(r, current => current?.version === 1 ? envelope('editor') : undefined, { applyLocally: false });
-  assert.equal(first.committed, true);
-  const stale = await runTransaction(r, current => current?.version === 1 ? envelope('editor') : undefined, { applyLocally: false });
-  assert.equal(stale.committed, false);
+test('production save helper commits with a cold cache and rejects a stale baseline', async () => {
+  const r = ref(db('editor'), 'safwat/databases/main');
+  const adapter = {
+    once: () => get(r),
+    transaction: (fn, callback, applyLocally) => runTransaction(r, fn, { applyLocally })
+  };
+  const result = await commit(adapter, { db: envelope('editor').data, expectedVersion: 1, uid: 'editor', actor: 'Editor' });
+  assert.equal(result.version, 2);
+  assert.equal((await get(r)).val().version, 2);
+  await assert.rejects(commit(adapter, { db: envelope('editor').data, expectedVersion: 1, uid: 'editor', actor: 'Editor' }), { code: 'SAVE_CONFLICT' });
 });
 test('users can read their profile but cannot enumerate users, self-promote or self-enable', async () => {
   await assertSucceeds(get(ref(db('viewer'), 'safwat/users/viewer')));

@@ -30,6 +30,10 @@
     if (expectedVersion != null && version !== expectedVersion) throw conflict('The cloud database changed. Export unsaved work and reload before reconciling your edits.');
     const next = { ...(current || {}), version: version + 1, savedAt, updatedBy: uid, updatedByName: actor, data: outgoing };
     const result = await ref.transaction(latest => {
+      // Firebase may invoke this first with an empty local cache even after a read.
+      // Propose the immutable value so the server can compare and retry with its data.
+      // applyLocally=false prevents this proposal from appearing in the UI.
+      if (latest === null && current) return next;
       const latestVersion = latest && typeof latest.version === 'number' ? latest.version : 0;
       if (latestVersion !== version || (!!latest !== !!current)) return;
       return next;
