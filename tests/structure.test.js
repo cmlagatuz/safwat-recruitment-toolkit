@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const manifest = require('../docs/asset-manifest.json');
 const html = fs.readFileSync('public/index.html', 'utf8');
-test('extracted JS and CSS preserve every original block byte-for-byte and in order', () => {
+test('extracted JS and CSS match reviewed manifest checksums and original loading order', () => {
   let last = -1;
   for (const asset of manifest.assets) {
     const data = fs.readFileSync(asset.path);

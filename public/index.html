@@ -102,6 +102,7 @@
     <header class="ws-toolbar">
       <button id="wsMenu" class="ws-menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="wsSidebar">☰</button>
       <div class="ws-breadcrumb"><span>Workspace /</span><strong id="wsLocation">Home</strong></div>
+      <label class="appearance-control">Theme<select data-appearance-picker aria-label="Workspace color theme"><option value="dark">Graphite</option><option value="black">Midnight</option><option value="light">Light</option></select></label>
       <button id="wsFind" aria-haspopup="dialog">Find a tool <span>⌕</span></button>
     </header>
     <section class="panel" id="panel-home" aria-label="Workspace home">
@@ -1169,7 +1170,7 @@
 <div id="ceoSplash"><div class="box"><div class="t">SAFWAT — CEO Dashboard</div><div class="s">Connecting &amp; loading live data…</div><div class="spin"></div></div></div>
 <div class="ceo-ov" id="ceoDashOv"><div class="ceo-card">
   <div class="ceo-head"><span class="t" id="ceoDashTitle">PROJECT D — CEO Dashboard</span>
-    <div class="actions"><button class="add" id="ceoRefresh">↻ Refresh</button><button class="close" id="ceoDashClose">Close</button></div></div>
+    <div class="actions"><label class="appearance-control">Theme<select data-appearance-picker aria-label="Dashboard color theme"><option value="dark">Graphite</option><option value="black">Midnight</option><option value="light">Light</option></select></label><button class="add" id="ceoRefresh">↻ Refresh</button><button class="close" id="ceoDashClose">Close</button></div></div>
   <div class="ceo-body" id="ceoDashBody"></div>
 </div></div>
 <div class="ceo-ov" id="ceoModOv"><div class="ceo-card">
@@ -1292,6 +1293,8 @@
 <link rel="stylesheet" href="/css/workspace.css">
 <button id="wsDismiss" class="ws-dismiss" aria-label="Close navigation" hidden></button>
 <dialog id="wsSearchDialog" aria-labelledby="wsSearchTitle"><div class="ws-dialog-head"><h2 id="wsSearchTitle">Find your next tool</h2><button id="wsCloseSearch" aria-label="Close tool search">×</button></div><label for="wsSearch">Search workspaces</label><input id="wsSearch" type="search" placeholder="Try visa, offer or PDF" autocomplete="off"><div id="wsResults"></div><p id="wsSearchStatus" role="status"></p></dialog>
+<link rel="stylesheet" href="/css/appearance.css">
+<script src="/js/appearance.js"></script>
 <script src="/js/workspace.js"></script>
 </body>
 </html>

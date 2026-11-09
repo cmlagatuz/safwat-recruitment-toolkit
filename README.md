@@ -103,6 +103,12 @@ Verified on GitHub Actions on 9 November 2026: 16 unit/structure tests, 17 Fireb
 
 The new Home screen brings task launchers, a daily workflow and session-only recent tools together. Use **Find a tool** in the top bar to search available workspaces; press Down to focus results, use arrow keys to move, Enter to open, and Escape to close. Hidden or disabled navigation tools are excluded. On smaller screens, the menu button opens the scrollable sidebar; select a tool, tap outside or press Escape to close it.
 
-The forest-green presentation layer updates typography, cards, inputs, focus states and sign-in styling across the toolkit. Animations respect reduced-motion preferences; the existing dark-mode setting remains supported. Recent tools clear on sign-out and are not stored. No candidate data or Firebase settings are changed by this UI update.
+The neutral graphite presentation layer updates typography, cards, inputs, focus states and sign-in styling across the toolkit. Animations respect reduced-motion preferences; the existing dark-mode setting remains supported. Recent tools clear on sign-out and are not stored. No candidate data or Firebase settings are changed by this UI update.
 
 Source: `public/js/workspace.js` and `public/css/workspace.css`. The existing tool handlers remain in place. Browser smoke coverage includes Home launchers, tool search, hidden-tool exclusion, recent tools, mobile navigation and sign-out clearing. Full authenticated testing remains necessary for legacy workflows.
+
+## Dark appearance and PROJECT D
+
+Use **Theme** in the workspace or CEO dashboard header: **Graphite** (default), **Midnight** (near-black), or **Light**. Your choice is saved in this browser and applies to both screens. Existing dark-mode controls remain compatible.
+
+PROJECT D now has expandable **Filters**, a **Focus view**, **Export summary**, keyboard-accessible exception drill-downs and visible metric definitions. The fixed 85% target has been removed, future dates no longer count as completed events in executive KPIs, and mixed-case filters work correctly. See [the dashboard review](docs/PROJECT_D_REVIEW.md) for changes and scope limitations. No Firebase configuration changes are required for this appearance/dashboard update.

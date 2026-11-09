@@ -27,6 +27,7 @@ const assert = require('node:assert/strict');
     });
     await page.addScriptTag({ path: 'public/js/operations.js' });
     await page.addScriptTag({ path: 'public/js/toolkit-guide.js' });
+    await page.addScriptTag({ path: 'public/js/appearance.js' });
     await page.addScriptTag({ path: 'public/js/workspace.js' });
     assert.equal(await page.locator('#panel-home').evaluate(el => el.classList.contains('active')), true);
     await page.locator('#wsFind').click();

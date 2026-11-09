@@ -974,9 +974,10 @@
       "kind": "js",
       "path": "public/js/legacy/075-ceoexecutivelayerv371.js",
       "sourceLine": 20743,
-      "sha256": "6b8b1679c4b4dc72285261dd6bf03fe7d7e227e13144e7a9f3b02f4febaa04e2",
+      "sha256": "06fea85ab18e5d980e82a439b195b571308e8977682ae8f3b98c06ba3b7bedee",
       "lines": 300,
-      "title": "ceoexecutivelayerv371"
+      "title": "ceoexecutivelayerv371",
+      "revisionNote": "Reviewed PROJECT D correctness and interaction update; see docs/PROJECT_D_REVIEW.md. Original extraction hash superseded."
     },
     {
       "kind": "css",
