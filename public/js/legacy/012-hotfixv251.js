@@ -164,7 +164,7 @@
       log('Received remote update from', val.updatedByName, '— applying');
       if (!SafwatPersistence.acceptRemote(window.DB, val)) return;
       window.DB = val.data;
-      SafwatPersistence.remember(window.DB, val.data);
+      SafwatPersistence.remember(window.DB, val.data, typeof val.version === 'number' ? val.version : 0, CLOUD_PATH);
       refreshAllViews();
       if (window.Toast) window.Toast.info('Remote update', 'Data refreshed from ' + (val.updatedByName || 'server'));
     });

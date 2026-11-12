@@ -74,9 +74,9 @@
     var u = firebase.auth().currentUser;
     if (u.isAnonymous) throw new Error('An approved account is required to save.');
     var ref = firebase.database().ref(CLOUD_PATH);
-    var expected = snap && snap.db === liveDb ? snap.version : null;
+    var expected = SafwatPersistence.versionFor(liveDb, CLOUD_PATH);
     var committed = await SafwatPersistence.commit(ref, {
-      db: liveDb, expectedVersion: expected, uid: u.uid,
+      db: liveDb, expectedVersion: expected, scope: CLOUD_PATH, uid: u.uid,
       actor: (u.displayName || u.email || 'unknown')
     });
     lastVersion = committed.version;
@@ -86,7 +86,7 @@
     lastMode = 'revision-checked transaction';
     return true;
   }
-  /* Associate baselines only with a loaded database that matches the server data. */
+  /* Exact-match fallback for old load integrations. Normal loads register revisions directly. */
   (function watchRemote(){
     if (!cloudReady()) return setTimeout(watchRemote, 1000);
     firebase.database().ref(CLOUD_PATH).on('value', function(s){
@@ -97,7 +97,7 @@
         if (db && SafwatPersistence.signature(db) === SafwatPersistence.signature(remote.data)) {
           snap = takeSnap(remote.data, typeof remote.version === 'number' ? remote.version : 0);
           snap.db = db; lastSig = signature();
-          SafwatPersistence.remember(db, remote.data);
+          SafwatPersistence.remember(db, remote.data, typeof remote.version === 'number' ? remote.version : 0, CLOUD_PATH);
         } else if (++attempts < 20) setTimeout(matchLoaded, 100);
       }
       matchLoaded();

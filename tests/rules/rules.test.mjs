@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { test, before, beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
-const { commit } = createRequire(import.meta.url)('../../public/js/persistence.js');
+const { commit, remember, versionFor } = createRequire(import.meta.url)('../../public/js/persistence.js');
 if (!process.env.FIREBASE_DATABASE_EMULATOR_HOST) throw new Error('Run through firebase emulators:exec; production tests are prohibited.');
 let env;
 const user = (uid, role, disabled = false) => ({ uid, email: uid + '@example.test', role, disabled });
@@ -116,4 +116,18 @@ test('disabled users cannot write diagnostics/config or lock records', async () 
   await assertFails(set(ref(db('disabled'), 'safwat/diagnostics/disabled'), { test: true }));
   await assertFails(set(ref(db('disabled'), 'safwat/config/test'), true));
   await assertFails(set(ref(db('disabled'), 'safwat/locks/main/RC-1'), lock('disabled')));
+});
+
+test('loaded editor revision survives normalization and persists a new record', async () => {
+  const scope = 'safwat/databases/main';
+  const r = ref(db('editor'), scope), remote = (await get(r)).val();
+  const live = remote.data;
+  remember(live, live, remote.version, scope);
+  live.meta.schemaVersion = 3;
+  live.recruitmentCases.push({id:'RC-BRYAN-TEST',name:'Synthetic editor record'});
+  const adapter = { once: () => get(r), transaction: (fn, cb, applyLocally) => runTransaction(r, fn, {applyLocally}) };
+  await commit(adapter, {db:live,expectedVersion:versionFor(live,scope),scope,uid:'editor',actor:'Editor'});
+  const reloaded = (await get(ref(db('other'), scope))).val();
+  assert.equal(reloaded.version, 2);
+  assert.equal(reloaded.data.recruitmentCases[1].id, 'RC-BRYAN-TEST');
 });

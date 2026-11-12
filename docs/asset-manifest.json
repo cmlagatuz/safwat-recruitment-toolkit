@@ -62,9 +62,10 @@
       "kind": "js",
       "path": "public/js/legacy/007-enterprisev21.js",
       "sourceLine": 5364,
-      "sha256": "1a6fd55fb7a1c9ea4657837e4803f81f6fdca5abdd93afd1118a864716393e06",
+      "sha256": "14b838e33bf6c61d38ed48dde465f14bc87e763f594af50f043be456b1dde38c",
       "lines": 783,
-      "title": "enterprisev21"
+      "title": "enterprisev21",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "js",
@@ -110,17 +111,19 @@
       "kind": "js",
       "path": "public/js/legacy/011-cloudfirstv250.js",
       "sourceLine": 7020,
-      "sha256": "c60a79c34968e9e044d69c56b5f0858fdf25f7fe4ae933eb42785a6e00b482af",
+      "sha256": "3e707f84ed4c30524041047346154aa478d611d92c66d9b7d3b1b3d791477020",
       "lines": 314,
-      "title": "cloudfirstv250"
+      "title": "cloudfirstv250",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "js",
       "path": "public/js/legacy/012-hotfixv251.js",
       "sourceLine": 7349,
-      "sha256": "574a2aab2cb5798e20479e9dc5ff46d99c6d1cee5ada3c452f2b2947dd601c3e",
+      "sha256": "254c8abdcec71aae712b6bc27de9912f75ea0f5b26f5a1a893f9fa444ac8c691",
       "lines": 186,
-      "title": "hotfixv251"
+      "title": "hotfixv251",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "css",
@@ -190,9 +193,10 @@
       "kind": "js",
       "path": "public/js/legacy/017-hotfixv281.js",
       "sourceLine": 9336,
-      "sha256": "3845bb7c893cf699a63819fbf612862230ef1209929c97ed17fe423d0857d517",
+      "sha256": "d2f553ef4dc465d63f1a9c80cc6a1a0d5bfceb9bb02bbbd60fb45538ca912a9a",
       "lines": 93,
-      "title": "hotfixv281"
+      "title": "hotfixv281",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "js",
@@ -446,9 +450,10 @@
       "kind": "js",
       "path": "public/js/legacy/036-hotfixv2828.js",
       "sourceLine": 12847,
-      "sha256": "5a07f18802c46e5cac7dc9ed3fc4440e7cc486b775821f7c02d9005b6b0b6baf",
+      "sha256": "263467a19ef19c0b2ae55fec8517bae75aebe55a59564412c0311a369edd2dd2",
       "lines": 203,
-      "title": "hotfixv2828"
+      "title": "hotfixv2828",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "css",
@@ -462,9 +467,10 @@
       "kind": "js",
       "path": "public/js/legacy/037-hotfixv2829.js",
       "sourceLine": 13149,
-      "sha256": "af70077809a7c3c3cace893e61cf4ed4fd1501d69b4bbe12567d23760b62777a",
+      "sha256": "99c6e293f3531dfcd8433089ff4ca3a72b435be0bcd68988718b7196de68d3b4",
       "lines": 276,
-      "title": "hotfixv2829"
+      "title": "hotfixv2829",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "css",
@@ -542,9 +548,10 @@
       "kind": "js",
       "path": "public/js/legacy/043-hotfixv2835.js",
       "sourceLine": 14096,
-      "sha256": "8b0df71b3936cb072123c5e1e1781340cc076247f62a5d319c2d71d1be3d9f95",
+      "sha256": "4324c2a7239b14e6b98354686666d823e01533b66bd899b850e9c201c4ba9104",
       "lines": 185,
-      "title": "hotfixv2835"
+      "title": "hotfixv2835",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "js",
@@ -1287,9 +1294,10 @@
       "kind": "js",
       "path": "public/js/legacy/098-clairestep1.js",
       "sourceLine": 25355,
-      "sha256": "3dadd33d159375d6dc4f1548238a3cc56381c6c9a970bb56f37de9c377c72600",
+      "sha256": "c9451bb40f18e5b55f51c21d56983292d9955864a93cd053710aa0d6df35ec5d",
       "lines": 522,
-      "title": "clairestep1"
+      "title": "clairestep1",
+      "revisionNote": "Register scoped cloud revision on load; see docs/SAVE_BASELINE_FIX.md."
     },
     {
       "kind": "js",

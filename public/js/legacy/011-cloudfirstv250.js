@@ -72,7 +72,7 @@
             const remote = snap.val();
             if (remote && remote.data) {
               log('Loaded from Firebase, records:', (remote.data.recruitmentCases || []).length, 'cases,', (remote.data.visaRecords || []).length, 'visas');
-              this._activate(remote.data, false);
+              this._activate(remote.data, false, typeof remote.version === 'number' ? remote.version : 0);
               await Cache.save(remote.data);
               this.hide();
               return true;
@@ -138,10 +138,10 @@
       };
     },
 
-    _activate(dbData, isOffline) {
+    _activate(dbData, isOffline, cloudVersion) {
       if (window.DB && !SafwatPersistence.acceptRemote(window.DB, {data: dbData})) return;
       window.DB = dbData;
-      SafwatPersistence.remember(window.DB, dbData);
+      SafwatPersistence.remember(window.DB, dbData, isOffline ? undefined : cloudVersion, 'safwat/databases/' + CLOUD_DB_NAME);
       window.DB_FILE_HANDLE = null;   // no local file — cloud-first mode
       window.DB_FILE_NAME = CLOUD_DB_NAME + '.cloud';
       if (typeof window.makeIdCounter === 'function') window.DB_ID_COUNTER = window.makeIdCounter(dbData);

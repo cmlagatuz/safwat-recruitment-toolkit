@@ -344,7 +344,7 @@ const Sync = {
     try {
       if (!SafwatPersistence.acceptRemote(window.DB, remote)) return;
       window.DB = remote.data;
-      SafwatPersistence.remember(window.DB, remote.data);
+      SafwatPersistence.remember(window.DB, remote.data, typeof remote.version === 'number' ? remote.version : 0, 'safwat/databases/' + this.dbRef.key);
       if (typeof onDatabaseReady === 'function') onDatabaseReady();
       Approvals.render();
       UI.updateQueueBadge();

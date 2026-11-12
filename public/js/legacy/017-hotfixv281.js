@@ -55,7 +55,7 @@
         try {
           if (!SafwatPersistence.acceptRemote(window.DB, remote)) return;
       window.DB = remote.data;
-      SafwatPersistence.remember(window.DB, remote.data);
+      SafwatPersistence.remember(window.DB, remote.data, typeof remote.version === 'number' ? remote.version : 0, 'safwat/databases/' + window.EntSync.dbRef.key);
           if (typeof onDatabaseReady === 'function') setTimeout(onDatabaseReady, 200);
         } catch (e2) {
           console.warn('[v2.8.1] fallback apply also failed:', e2.message);

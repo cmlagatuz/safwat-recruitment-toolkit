@@ -6,13 +6,24 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
   const baselines = new WeakMap();
+  const revisions = new WeakMap();
   const clone = value => JSON.parse(JSON.stringify(value));
   function conflict(message) { const error = new Error(message); error.code = 'SAVE_CONFLICT'; return error; }
   function signature(db) {
     if (!db) return null;
     return JSON.stringify(db, function (key, value) { return key === 'savedAt' && this === db.meta ? undefined : value; });
   }
-  function remember(db, persisted) { if (db && persisted) baselines.set(db, signature(persisted)); }
+  function remember(db, persisted, version, scope) {
+    if (!db || !persisted) return;
+    baselines.set(db, signature(persisted));
+    // Register the envelope revision at the point of load, before normalization/UI hooks.
+    // Offline snapshots and unrelated database objects never gain a cloud revision.
+    if (Number.isInteger(version) && version >= 0 && typeof scope === 'string') revisions.set(db, { version, scope });
+  }
+  function versionFor(db, scope) {
+    const known = db && revisions.get(db);
+    return known && known.scope === scope ? known.version : null;
+  }
   function acceptRemote(current, incoming) {
     if (!current || signature(current) === signature(incoming.data)) return true;
     const baseline = baselines.get(current);
@@ -20,7 +31,7 @@
     if (typeof window !== 'undefined' && window.Toast) window.Toast.warn('Cloud update waiting', 'Unsaved local work was kept. Export it before reloading to reconcile changes.');
     return false;
   }
-  async function commit(ref, { db, expectedVersion, uid, actor, savedAt = new Date().toISOString() }) {
+  async function commit(ref, { db, expectedVersion, uid, actor, scope, savedAt = new Date().toISOString() }) {
     // Copy before the first await: never capture later local edits as already persisted.
     const outgoing = clone(db);
     outgoing.meta = { ...(outgoing.meta || {}), savedAt };
@@ -39,8 +50,8 @@
       return next;
     }, undefined, false);
     if (!result.committed) throw conflict('Another user saved first. Your save was stopped to protect their changes.');
-    remember(db, outgoing);
+    remember(db, outgoing, version + 1, scope);
     return { version: version + 1, data: outgoing, savedAt };
   }
-  return { commit, signature, remember, acceptRemote };
+  return { commit, signature, remember, versionFor, acceptRemote };
 });
