@@ -72,7 +72,7 @@ const fs = require('node:fs');
     await page.waitForSelector('#entVerifyGate.open');
     assert.equal(await appVisibility(),'hidden');
     assert.equal(await page.evaluate(()=>window.__testData['safwat/pendingUsers/new'].status),'pending');
-    assert.equal(await page.evaluate(()=>window.__emailCount),1);
+    await page.waitForFunction(()=>window.__emailCount === 1);
 
     await page.evaluate(()=>{
       window.__auth.currentUser.emailVerified=true;
