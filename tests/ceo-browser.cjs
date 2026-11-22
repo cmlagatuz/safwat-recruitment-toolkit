@@ -15,6 +15,8 @@ const assert = require('node:assert/strict');
     await page.addScriptTag({ path: 'public/js/appearance.js' });
     await page.evaluate(() => {
       document.body.classList.add('ent-authenticated');
+      // This isolated test injects a synthetic approved session without the Auth SDK.
+      document.getElementById('entAuthGate').classList.remove('open');
       document.getElementById('ceoDashOv').classList.add('open');
       document.getElementById('ceoDashBody').innerHTML = '<div class="ceo-tile" data-proj="OTHER">Project reports remain independent</div>';
       const today = SafwatCore.today();
