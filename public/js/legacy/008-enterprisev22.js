@@ -64,23 +64,22 @@ const Auth = {
 
       this.authInstance.onAuthStateChanged(async (user) => {
         if (user) {
+          // Identity does not imply authorization. The approval handler assigns
+          // the server-verified role; never load a role from previous localStorage.
           this.user = {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName || (user.email ? user.email.split('@')[0] : 'User'),
-            role: lsGet('role', 'viewer'),
+            role: null,
           };
-          // Persist actor into Session so audit log & presence pick up the real identity
-          if (window.Session) {
-            window.Session.actor = this.user.displayName + ' <' + this.user.email + '>';
-            lsSet('actor', window.Session.actor);
-          }
-          UI.hideGate();
           UI.renderUserPill();
-          window.Audit && window.Audit.push('security', 'auth', null, null, 'Signed in: ' + user.email);
-          Toast.ok('Signed in', 'Welcome, ' + this.user.displayName);
         } else {
           this.user = null;
+          if (window.Session) { window.Session.role = null; window.Session.actor = ''; }
+          try {
+            localStorage.removeItem('safwatEnt.role');
+            localStorage.removeItem('safwatEnt.actor');
+          } catch {}
           UI.showGate();
           UI.renderUserPill();
         }
@@ -88,9 +87,10 @@ const Auth = {
       this.ready = true;
     } catch (e) {
       console.warn('Auth init failed:', e);
-      Toast.err('Auth init failed', e.message + ' — app remains usable in offline mode');
-      // Don't block the app if auth is unavailable; skip the gate
-      UI.hideGate();
+      Toast.err('Auth init failed', 'Sign-in is unavailable. Check your connection and reload.');
+      // Never unlock recruitment data when Firebase is unavailable.
+      document.body.classList.remove('ent-authenticated');
+      UI.showGate();
     }
   },
 
@@ -106,7 +106,12 @@ const Auth = {
   async signUp(email, pass, displayName) {
     try {
       const cred = await this.authInstance.createUserWithEmailAndPassword(email, pass);
-      if (displayName && cred.user) await cred.user.updateProfile({ displayName: displayName });
+      if (displayName && cred.user) {
+        // Creation has already succeeded. Profile update errors must not imply
+        // that the user should create another account.
+        try { await cred.user.updateProfile({ displayName: displayName }); }
+        catch (e) { console.warn('New account profile update failed:', e.message); }
+      }
       return true;
     } catch (e) {
       return { error: this._friendly(e) };
@@ -446,7 +451,9 @@ const UI = {
     $('entAuthPrimary').disabled = false;
     $('entAuthPrimary').textContent = Auth.mode === 'signin' ? 'Sign in' : 'Create account';
     if (res && res.error) UI._showAuthError(res.error);
-    else UI._showAuthInfo(Auth.mode === 'signin' ? 'Signed in successfully.' : 'Account created — signing you in…');
+    else UI._showAuthInfo(Auth.mode === 'signin'
+      ? 'Password accepted. Checking your verified account and access approval…'
+      : 'Account created. Check your verification email and wait for administrator approval.');
   },
 
   async forgotPassword() {
