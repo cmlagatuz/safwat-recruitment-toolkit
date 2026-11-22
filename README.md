@@ -2,6 +2,12 @@
 
 Browser-based recruitment, visa reporting and document tools for Safwat. Firebase Authentication and Realtime Database provide the existing shared workspace; file tools use browser file access.
 
+## GitHub → Firebase automatic releases
+
+GitHub `main` is the source of truth. After any push to `main`, `.github/workflows/checks.yml` runs the project checks, Firebase rules emulator tests and browser smoke tests. If all pass and the Firebase deploy credential exists, the same workflow publishes the committed `public/` directory to the live Firebase Hosting project and verifies that the live `index.html` matches the release. Pull requests are checked but **never deployed to production**. A failing check or absent credential blocks deployment.
+
+**One-time credential setup and production rollout guidance:** [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). RTDB rules are deliberately excluded from automatic Hosting deployments; use [docs/SECURITY_ROLLOUT.md](docs/SECURITY_ROLLOUT.md) for matched application-and-rules releases.
+
 ## Modules
 
 | Module | Purpose |

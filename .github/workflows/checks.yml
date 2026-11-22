@@ -1,5 +1,8 @@
-name: Toolkit checks
-on: [push, pull_request]
+name: Toolkit checks and Firebase Hosting release
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -40,3 +43,51 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tests/browser-smoke.cjs
       - run: node tests/ceo-browser.cjs
+
+  deploy-hosting:
+    name: Deploy Firebase Hosting after checks
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [test, rules, browser]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    concurrency:
+      group: safwat-toolkit-production-hosting
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prevent an unmatched database rules rollout
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          git diff --name-only "$BEFORE" "$GITHUB_SHA" > /tmp/safwat-changed-files
+          if grep -Fxq 'database.rules.json' /tmp/safwat-changed-files; then
+            echo "::error::RTDB rules changed. Deploy app and rules together only after the authenticated staging checks in docs/SECURITY_ROLLOUT.md. Automatic Hosting release is blocked for this commit."
+            exit 1
+          fi
+      - name: Require configured Firebase deployment credentials
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SAFWAT_RECRUITMENT_TOOLKIT }}
+        run: |
+          if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo "::error::Missing GitHub Actions secret FIREBASE_SERVICE_ACCOUNT_SAFWAT_RECRUITMENT_TOOLKIT. See docs/DEPLOYMENT.md."
+            exit 1
+          fi
+      - name: Publish tested revision to Firebase Hosting live
+        uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SAFWAT_RECRUITMENT_TOOLKIT }}
+          projectId: safwat-recruitment-toolkit
+          channelId: live
+      - name: Verify the live index matches the committed source
+        run: |
+          curl --fail --location --silent --show-error --retry 3 \
+            -H "Cache-Control: no-cache" \
+            "https://safwat-recruitment-toolkit.web.app/?revision=$GITHUB_SHA" \
+            --output /tmp/safwat-live-index.html
+          if ! cmp -s public/index.html /tmp/safwat-live-index.html; then
+            echo "::error::The deployed index.html does not match this commit."
+            exit 1
+          fi
