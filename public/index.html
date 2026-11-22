@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div id="entAuthGate" role="dialog" aria-modal="true" aria-label="Sign in">
+<div id="entAuthGate" class="open" role="dialog" aria-modal="true" aria-label="Sign in">
   <div class="ent-auth-card">
     <div class="ent-auth-head">
       <span class="ent-auth-stamp">◆ SAFWAT · REC ENTERPRISE</span>
@@ -880,6 +880,47 @@
 <script src="/js/legacy/014-hotfixv254.js"></script>
 
 <link rel="stylesheet" href="/css/legacy/006-waiting-for-approval-gate.css">
+<link rel="stylesheet" href="/css/account-access.css">
+
+<div id="entVerifyGate" role="dialog" aria-modal="true" aria-label="Verify your email">
+  <div class="ent-wait-card">
+    <div class="ent-wait-icon">◆ VERIFY YOUR EMAIL</div>
+    <h2>Verify your email address</h2>
+    <p>For your security, verify your email before accessing the toolkit. An administrator must also approve your account.</p>
+    <div class="ent-wait-email" id="entVerifyEmail"></div>
+    <p id="entVerifyMessage" role="status">Check your inbox and spam folder for the verification link.</p>
+    <button type="button" id="entVerifyCheck">I've verified my email</button>
+    <button type="button" id="entVerifyResend">Resend verification email</button>
+    <button type="button" id="entVerifySignout">Sign out</button>
+  </div>
+</div>
+
+<div id="entDisabledGate" role="dialog" aria-modal="true" aria-label="Account disabled">
+  <div class="ent-wait-card">
+    <div class="ent-wait-icon">◆ ACCOUNT DISABLED</div>
+    <h2>Your access has been disabled</h2>
+    <p>Contact a Safwat administrator if you believe this is a mistake. You cannot access recruitment records while disabled.</p>
+    <button type="button" id="entDisabledSignout">Sign out</button>
+  </div>
+</div>
+
+<div id="entAccessLoadingGate" role="status" aria-live="polite" aria-label="Checking account access">
+  <div class="ent-wait-card">
+    <div class="ent-wait-icon">◆ CHECKING ACCOUNT ACCESS</div>
+    <h2>Confirming your permissions…</h2>
+    <p>Checking your email verification and administrator approval.</p>
+  </div>
+</div>
+
+<div id="entAccessErrorGate" role="dialog" aria-modal="true" aria-label="Account access unavailable">
+  <div class="ent-wait-card">
+    <div class="ent-wait-icon">◆ ACCESS CHECK UNAVAILABLE</div>
+    <h2>We couldn't confirm your access</h2>
+    <p id="entAccessErrorMessage" role="alert">Please check your connection and retry.</p>
+    <button type="button" id="entAccessRetry">Retry access check</button>
+    <button type="button" id="entAccessErrorSignout">Sign out</button>
+  </div>
+</div>
 
 <div id="entWaitingGate" role="dialog" aria-modal="true" aria-label="Waiting for approval">
   <div class="ent-wait-card">
@@ -890,7 +931,7 @@
     <div class="ent-wait-status">
       <span class="ent-pulse"></span> Waiting for admin approval… (this page updates automatically)
     </div>
-    <p style="font-size: 12.5px;">You'll receive an email verification link once approved. Feel free to close this tab and check back later.</p>
+    <p style="font-size: 12.5px;">Your email is verified. Your request will update automatically when approved.</p>
     <button type="button" id="entWaitingSignout">Sign out</button>
   </div>
 </div>
