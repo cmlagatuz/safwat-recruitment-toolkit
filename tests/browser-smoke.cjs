@@ -21,6 +21,8 @@ const assert = require('node:assert/strict');
     await page.addScriptTag({ content: navigation.slice(navigation.indexOf('/* ---------- navigation'), navigation.indexOf('/* ---------- FSA support')) });
     await page.evaluate(() => {
       document.body.classList.add('ent-authenticated', 'ent-is-super-admin');
+      // This isolated test injects a synthetic approved session without the Auth SDK.
+      document.getElementById('entAuthGate').classList.remove('open');
       document.documentElement.classList.add('ent-super-confirmed');
       window.DB = { recruitmentCases: Array.from({ length: 60 }, (_, i) => ({ id: 'RC-' + i, name: i === 0 ? '<img src=x onerror=alert(1)>' : 'Candidate ' + i, client: i < 55 ? 'Client A' : 'Client B', stage: 'MEDICAL ON PROGRESS', updatedAt: '2026-01-01', passport: 'AA' + i })), visaRecords: [{ id: 'VR-1', client: 'Client A', statusVisa: 'UNUSED', expirationDate: '2026-01-01' }] };
       window.before = JSON.stringify(window.DB);

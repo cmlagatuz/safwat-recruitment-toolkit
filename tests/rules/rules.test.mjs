@@ -79,6 +79,24 @@ test('pending requests are self-owned and cannot self-approve', async () => {
   await assertFails(set(ref(db('pending'), 'safwat/pendingUsers/other'), { ...request, uid: 'other' }));
   await assertSucceeds(update(ref(db('admin'), 'safwat/pendingUsers/pending'), { status: 'approved' }));
 });
+test('a newly registered unverified user has no staff, queue or recruitment access', async () => {
+  const newAccount = db('new-staff', false);
+  await assertSucceeds(set(ref(newAccount, 'safwat/pendingUsers/new-staff'), {
+    uid: 'new-staff', email: 'new-staff@example.test', status: 'pending'
+  }));
+  await assertSucceeds(get(ref(newAccount, 'safwat/pendingUsers/new-staff')));
+  for (const path of ['safwat/pendingUsers', 'safwat/users/admin', 'safwat/users',
+    'safwat/databases/main', 'safwat/config', 'safwat/ceoConfig/devices']) {
+    await assertFails(get(ref(newAccount, path)));
+  }
+  await assertFails(set(ref(newAccount, 'safwat/users/new-staff'), user('new-staff', 'admin')));
+  await assertFails(update(ref(newAccount, 'safwat/pendingUsers/new-staff'), { status: 'approved' }));
+});
+test('email-unverified admins and approved disabled users cannot authorize a new account', async () => {
+  await assertFails(set(ref(db('admin', false), 'safwat/users/new-staff'), user('new-staff', 'viewer')));
+  await assertFails(set(ref(db('disabled'), 'safwat/users/new-staff'), user('new-staff', 'viewer')));
+  await assertSucceeds(set(ref(db('admin'), 'safwat/users/new-staff'), user('new-staff', 'viewer')));
+});
 test('CEO password and device registry are admin-only', async () => {
   await assertFails(get(ref(db('viewer'), 'safwat/ceoConfig/passwordHash')));
   await assertFails(set(ref(db('viewer'), 'safwat/ceoConfig/devices/sample'), { approved: true }));

@@ -43,6 +43,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tests/browser-smoke.cjs
       - run: node tests/ceo-browser.cjs
+      - run: node tests/auth-browser.cjs
 
   deploy-hosting:
     name: Deploy Firebase Hosting after checks
