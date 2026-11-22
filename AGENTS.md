@@ -10,6 +10,7 @@ A request in the Safwat Toolkit project to check, fix, enhance, or upgrade “th
 
 ## Make and verify changes
 
+- Effective 2026-11-22, the owner authorizes direct releases. For each requested system update, commit the tested changes to `main` in this repository, deploy the affected components from that revision to the production Firebase project for the live toolkit, and verify the result. Include the commit link and production verification in the handoff. For Hosting updates, deploy `public/` using the repository’s `firebase.json`.
 - Preserve existing candidate and visa records, links, import/export formats, Arabic text and Asia/Riyadh date handling. Use synthetic records for examples and tests. Keep personal information, credentials and live database exports out of GitHub.
 - The browser loads classic scripts and CSS in a defined order from `public/index.html`. Trace all handlers for the affected screen, including later legacy patches. For intentional edits to extracted assets, review the diff, update the corresponding entry in `docs/asset-manifest.json` and cover the changed behavior.
 - For code changes, run `npm run check` and `TZ=Asia/Riyadh npm test` with Node 20 or later. For UI changes exercise the affected workflow in a browser. For authentication or database-rule changes use the Firebase emulator checks in `.github/workflows/checks.yml` and follow the [security rollout guide](docs/SECURITY_ROLLOUT.md) for authenticated staging verification.
