@@ -20,6 +20,12 @@ A request in the Safwat Toolkit project to check, fix, enhance, or upgrade “th
 
 Keep this section short. After work that changes a lasting decision or resolves an open problem, update its entry with the date, status and relevant commit or PR. Record the remaining verification step so a later session can resume without repeating completed work.
 
+### 2026-11-22 — GitHub-first Firebase Hosting auto-release (active)
+
+- GitHub `main` change `bd19c617cbdf79edb9e663a76a30c6ea5c4a3e59` enabled a gated Firebase Hosting deployment in `.github/workflows/checks.yml`. The actual [GitHub Actions run 45017624145](https://github.com/cmlagatuz/safwat-recruitment-toolkit/actions/runs/45017624145) passed all three tests, authenticated to Firebase, published to the `safwat-recruitment-toolkit` live Hosting channel, and confirmed the fetched live `index.html` matched the deployed commit.
+- Firebase deployment credentials are configured and functional in GitHub Actions; do not disclose or commit them. All subsequent Hosting edits must be committed to GitHub `main` and pass the same CI gates before automatic deployment.
+- Database rules are **not** included in automatic Hosting deployment; use `docs/SECURITY_ROLLOUT.md` for an explicitly staged paired app/rules change. Next step for ordinary changes: verify the resulting CI run and live site, not reconfigure the already-working deploy connection.
+
 ### 2026-11-22 — Login followed by “account under review” (open)
 
 The owner reported that some new users cannot enter the toolkit, and some briefly see a successful sign-in before the review popup. A comparison on this date confirmed that the live site served the inspected login and approval scripts. Individual account status and an end-to-end login were not verified.
