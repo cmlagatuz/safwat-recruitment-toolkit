@@ -44,6 +44,7 @@
   }
 
   function showError(message) {
+    dropListeners();
     resetAccess();
     $('entAccessErrorMessage').textContent = message || 'Unable to confirm your access. Please retry.';
     showGate('entAccessErrorGate');
@@ -252,14 +253,22 @@
     _listener: null,
 
     subscribe() {
-      if (this._listener) return;
+      if (this._listener || !window.EntRbac?.myRecord || window.EntRbac.myRecord.role !== 'admin') return;
       const ref = firebase.database().ref('safwat/pendingUsers');
-      const cb = ref.on('value', (snap) => {
+      const cb = snap => {
         this.all = snap.val() || {};
         this.render();
         this.updateBadge();
-      });
+      };
+      const err = e => { log('Admin request queue unavailable:', e.message); this.unsubscribe(); };
+      ref.on('value', cb, err);
       this._listener = () => ref.off('value', cb);
+    },
+
+    unsubscribe() {
+      if (this._listener) { this._listener(); this._listener = null; }
+      this.all = {};
+      this.updateBadge();
     },
 
     updateBadge() {
@@ -357,6 +366,9 @@
     async approve(uid, role) {
       const u = this.all[uid];
       if (!u) return Toast().err('Not found');
+      if (!ROLES.has(role) || !firebase.auth().currentUser || window.EntRbac?.myRecord?.role !== 'admin') {
+        return Toast().err('Only an active administrator may approve a valid role.');
+      }
       if (!confirm('Approve ' + u.email + ' as ' + role.toUpperCase() + '?')) return;
       try {
         // 1. Create the user record
@@ -418,40 +430,44 @@
      Wire gate buttons + boot
      ========================================================= */
   function wireGates() {
-    $('entWaitingSignout')?.addEventListener('click', () => firebase.auth().signOut().then(() => window.location.reload()));
-    $('entRejectedSignout')?.addEventListener('click', () => firebase.auth().signOut().then(() => window.location.reload()));
+    const signout = () => firebase.auth().signOut();
+    ['entWaitingSignout', 'entRejectedSignout', 'entVerifySignout', 'entDisabledSignout', 'entAccessErrorSignout']
+      .forEach(id => $(id)?.addEventListener('click', signout));
 
-    // When the Approvals panel opens, subscribe to account requests
-    const approvalsBtn = $('entOpenApprovals');
-    if (approvalsBtn) {
-      approvalsBtn.addEventListener('click', () => {
-        setTimeout(() => PendingRequests.subscribe(), 500);
-      });
-    }
-    // Also subscribe automatically for admins so the badge shows even without opening
-    setTimeout(() => {
-      if (window.EntRbac && window.EntRbac.myRecord && window.EntRbac.myRecord.role === 'admin') {
-        PendingRequests.subscribe();
+    $('entAccessRetry')?.addEventListener('click', () => {
+      const user = firebase.auth().currentUser;
+      if (user) void handleAuthState(user);
+      else showGate('entAuthGate');
+    });
+    $('entVerifyCheck')?.addEventListener('click', () => {
+      const user = firebase.auth().currentUser;
+      if (user) void handleAuthState(user);
+    });
+    $('entVerifyResend')?.addEventListener('click', async () => {
+      const user = firebase.auth().currentUser;
+      if (!user) return;
+      const button = $('entVerifyResend');
+      button.disabled = true;
+      try {
+        await sendVerification(user);
+        $('entVerifyMessage').textContent = 'Verification email requested. Check your inbox and spam folder.';
+      } catch (e) {
+        $('entVerifyMessage').textContent = 'Could not send the verification email. Please retry later.';
+      } finally {
+        button.disabled = false;
       }
-    }, 3000);
+    });
+
+    $('entOpenApprovals')?.addEventListener('click', () => {
+      if (window.EntRbac?.myRecord?.role === 'admin') PendingRequests.subscribe();
+    });
   }
 
   async function boot() {
-    log('Boot');
+    showGate('entAuthGate');
     await whenFirebaseReady();
-    log('Firebase ready');
-
-    // Wire our own onAuthStateChanged that OVERRIDES the earlier ones
-    firebase.auth().onAuthStateChanged(handleAuthState);
-
     wireGates();
-
-    // Re-check admin status periodically (in case admin logs in later)
-    setInterval(() => {
-      if (window.EntRbac && window.EntRbac.myRecord && window.EntRbac.myRecord.role === 'admin' && !PendingRequests._listener) {
-        PendingRequests.subscribe();
-      }
-    }, 5000);
+    firebase.auth().onAuthStateChanged(user => { void handleAuthState(user); });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
