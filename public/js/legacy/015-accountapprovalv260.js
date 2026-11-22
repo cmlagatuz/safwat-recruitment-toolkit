@@ -64,10 +64,13 @@
   async function sendVerification(user, force = false) {
     if (user.emailVerified) return;
     const key = 'safwatEnt.lastVerifyEmailAt.' + user.uid;
-    const last = Number(localStorage.getItem(key) || 0);
+    // Storage can be blocked in strict browser privacy modes or sandboxed embeds.
+    // A storage error must never suppress the email verification process.
+    let last = 0;
+    try { last = Number(localStorage.getItem(key) || 0); } catch {}
     if (!force && Date.now() - last < 60000) return;
     await user.sendEmailVerification();
-    localStorage.setItem(key, String(Date.now()));
+    try { localStorage.setItem(key, String(Date.now())); } catch {}
   }
 
   async function showVerification(user) {
