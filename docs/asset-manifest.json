@@ -22,8 +22,8 @@
       "kind": "js",
       "path": "public/js/legacy/003-document-addeventlistener-domcontentloaded-function.js",
       "sourceLine": 156,
-      "sha256": "60112bccf4f7d607c1ce311df9e3d169cb015aac4e30dc7f3eb80f89525f9949",
-      "lines": 167,
+      "sha256": "53ce75d762db1cbcbdbe5f924f85bf7fb3e0dd0a0dafe40a7cb6ecbb7d60b6bc",
+      "lines": 6,
       "title": "document-addeventlistener-domcontentloaded-function"
     },
     {
@@ -71,16 +71,16 @@
       "kind": "js",
       "path": "public/js/legacy/008-enterprisev22.js",
       "sourceLine": 6148,
-      "sha256": "a43d8e249b6fa4f01f3eb0775240cc11e2920fb446f876256450b7ce99fee093",
-      "lines": 545,
+      "sha256": "75f81867a1bde2a8fb6a70137deefee7152907573b6a8021e60243d91bb50934",
+      "lines": 552,
       "title": "enterprisev22"
     },
     {
       "kind": "js",
       "path": "public/js/legacy/009-hotfixv243.js",
       "sourceLine": 6706,
-      "sha256": "32703d6d4753d48365de90657b03ba1d8081930dff9aecc50c14dd6a6a3b5fe0",
-      "lines": 139,
+      "sha256": "6fa323dca35f23fa2fe57f0bfaa48d0df0172f97d1c47fc4634503776042ed0e",
+      "lines": 6,
       "title": "hotfixv243"
     },
     {
@@ -169,8 +169,8 @@
       "kind": "js",
       "path": "public/js/legacy/015-accountapprovalv260.js",
       "sourceLine": 7953,
-      "sha256": "16ae1f9298ed20b6caef797e0563b0899b38be26527cda6c1226ef0ad5f8aaa7",
-      "lines": 423,
+      "sha256": "d9099a1d4046932cd165040d15082074147e4925015a2d52b9fd62e98be5ec81",
+      "lines": 477,
       "title": "accountapprovalv260"
     },
     {
