@@ -8,32 +8,158 @@
   const log = (...a) => console.log('%c[v2.6.0]', 'color:#B98A2E;font-weight:bold', ...a);
   const Toast = () => window.Toast || { ok:console.log, warn:console.warn, err:console.error, info:console.info };
 
+  // One gate owns sign-in, verification, approval and live authorization.
+  // Firebase Authentication alone is not permission to open recruitment data.
+  const ROLES = new Set(['viewer', 'editor', 'admin']);
+  const GATES = ['entAuthGate', 'entVerifyGate', 'entDisabledGate', 'entWaitingGate', 'entRejectedGate', 'entAccessLoadingGate', 'entAccessErrorGate'];
+  let epoch = 0;
   let waitingListener = null;
+  let approvedListener = null;
+  let welcomedUid = null;
 
-  /* =========================================================
-     Show/hide gates
-     ========================================================= */
-  function showWaitingGate(email) {
-    // Hide all other gates first
-    ['entAuthGate','entVerifyGate','entDisabledGate','entRejectedGate'].forEach(id => $(id)?.classList.remove('open'));
-    $('entWaitingEmail').textContent = email || '';
-    $('entWaitingGate').classList.add('open');
-    document.body.classList.remove('ent-authenticated');
+  function dropListeners() {
+    if (waitingListener) { waitingListener(); waitingListener = null; }
+    if (approvedListener) { approvedListener(); approvedListener = null; }
   }
-  function showRejectedGate(email, reason) {
-    ['entAuthGate','entVerifyGate','entDisabledGate','entWaitingGate'].forEach(id => $(id)?.classList.remove('open'));
+
+  function isCurrent(user, ticket) {
+    const current = firebase.auth().currentUser;
+    return ticket === epoch && current && user && current.uid === user.uid;
+  }
+
+  function resetAccess() {
+    document.body.classList.remove('ent-authenticated');
+    if (window.Session) { window.Session.role = null; window.Session.actor = ''; }
+    if (window.EntRbac) { window.EntRbac.myRecord = null; window.EntRbac.myRef = null; }
+    if (window.EntAuth && window.EntAuth.user) window.EntAuth.user.role = null;
+    try { localStorage.removeItem('safwatEnt.role'); localStorage.removeItem('safwatEnt.actor'); } catch {}
+    if ($('entOpenUserMgmt')) $('entOpenUserMgmt').style.display = 'none';
+    if ($('entRolePill')) $('entRolePill').textContent = 'Role: —';
+    if (window.EntPendingRequests) window.EntPendingRequests.unsubscribe();
+  }
+
+  function showGate(id) {
+    GATES.forEach(gate => $(gate)?.classList.toggle('open', gate === id));
+    if (id) document.body.classList.remove('ent-authenticated');
+  }
+
+  function showError(message) {
+    resetAccess();
+    $('entAccessErrorMessage').textContent = message || 'Unable to confirm your access. Please retry.';
+    showGate('entAccessErrorGate');
+  }
+
+  function showRejected(email, reason) {
     $('entRejectedEmail').textContent = email || '';
     $('entRejectedReason').textContent = reason || 'Please contact your administrator for details.';
-    $('entRejectedGate').classList.add('open');
-    document.body.classList.remove('ent-authenticated');
-  }
-  function hideAllGates() {
-    ['entWaitingGate','entRejectedGate'].forEach(id => $(id)?.classList.remove('open'));
+    showGate('entRejectedGate');
   }
 
-  /* =========================================================
-     Wait until Firebase is fully ready (auth + database)
-     ========================================================= */
+  function showWaiting(email) {
+    $('entWaitingEmail').textContent = email || '';
+    showGate('entWaitingGate');
+  }
+
+  async function sendVerification(user, force = false) {
+    if (user.emailVerified) return;
+    const key = 'safwatEnt.lastVerifyEmailAt.' + user.uid;
+    const last = Number(localStorage.getItem(key) || 0);
+    if (!force && Date.now() - last < 60000) return;
+    await user.sendEmailVerification();
+    localStorage.setItem(key, String(Date.now()));
+  }
+
+  async function showVerification(user) {
+    $('entVerifyEmail').textContent = user.email || '';
+    showGate('entVerifyGate');
+    try { await sendVerification(user); } catch (e) {
+      // Keep the verification gate and allow the user to retry manually.
+      log('Verification email could not be sent:', e.message);
+      $('entVerifyMessage').textContent = 'We could not automatically send the link. Use Resend verification email.';
+    }
+  }
+
+  function validRecord(rec) {
+    return !!(rec && typeof rec === 'object' && ROLES.has(rec.role) && rec.disabled !== true);
+  }
+
+  function syncRecord(user, rec) {
+    const actor = (rec.displayName || user.displayName || user.email) + ' <' + user.email + '>';
+    if (window.Session) { window.Session.role = rec.role; window.Session.actor = actor; }
+    if (window.EntRbac) {
+      window.EntRbac.myRecord = rec;
+      window.EntRbac.myRef = firebase.database().ref('safwat/users/' + user.uid);
+    }
+    if (window.EntAuth && window.EntAuth.user) window.EntAuth.user.role = rec.role;
+    try {
+      localStorage.setItem('safwatEnt.role', JSON.stringify(rec.role));
+      localStorage.setItem('safwatEnt.actor', JSON.stringify(actor));
+    } catch {}
+    if ($('entRolePill')) $('entRolePill').textContent = 'Role: ' + rec.role.charAt(0).toUpperCase() + rec.role.slice(1);
+    if ($('entOpenUserMgmt')) $('entOpenUserMgmt').style.display = rec.role === 'admin' ? 'inline-block' : 'none';
+    if (window.EntPendingRequests) {
+      if (rec.role === 'admin') window.EntPendingRequests.subscribe();
+      else window.EntPendingRequests.unsubscribe();
+    }
+  }
+
+  function subscribeApproved(user, ticket) {
+    const ref = firebase.database().ref('safwat/users/' + user.uid);
+    const onValue = snap => {
+      if (!isCurrent(user, ticket)) return;
+      const rec = snap.val();
+      if (!validRecord(rec)) {
+        dropListeners();
+        resetAccess();
+        if (rec && rec.disabled === true) showGate('entDisabledGate');
+        else showError('Your account permissions were removed or are invalid. Contact an administrator.');
+        return;
+      }
+      syncRecord(user, rec);
+    };
+    const onError = err => {
+      if (isCurrent(user, ticket)) showError('Your access could not be revalidated (' + (err.code || 'connection error') + '). Retry to continue.');
+    };
+    ref.on('value', onValue, onError);
+    approvedListener = () => ref.off('value', onValue);
+  }
+
+  function subscribePending(user, ticket) {
+    const users = firebase.database().ref('safwat/users/' + user.uid);
+    const pending = firebase.database().ref('safwat/pendingUsers/' + user.uid);
+    const onUser = snap => {
+      if (isCurrent(user, ticket) && snap.val()) void handleAuthState(user);
+    };
+    const onPending = snap => {
+      if (isCurrent(user, ticket) && snap.val()?.status === 'rejected') void handleAuthState(user);
+    };
+    const onError = err => {
+      if (isCurrent(user, ticket)) showError('Cannot monitor your approval status (' + (err.code || 'connection error') + '). Retry to continue.');
+    };
+    users.on('value', onUser, onError);
+    pending.on('value', onPending, onError);
+    waitingListener = () => { users.off('value', onUser); pending.off('value', onPending); };
+  }
+
+  async function runApprovedFlow(user, rec, ticket) {
+    if (!isCurrent(user, ticket)) return;
+    if (rec.disabled === true) { showGate('entDisabledGate'); return; }
+    if (!validRecord(rec)) { showError('Your assigned role is invalid. Contact an administrator.'); return; }
+    if (!user.emailVerified) { await showVerification(user); return; }
+
+    syncRecord(user, rec);
+    showGate(null);
+    document.body.classList.add('ent-authenticated');
+    subscribeApproved(user, ticket);
+    if (welcomedUid !== user.uid) {
+      welcomedUid = user.uid;
+      Toast().ok('Welcome' + (rec.displayName ? ', ' + rec.displayName : ''), 'Role: ' + rec.role);
+    }
+    firebase.database().ref('safwat/users/' + user.uid).update({
+      lastSeenAt: nowIso(), emailVerified: true
+    }).catch(e => log('Last-seen update failed:', e.message));
+  }
+
   function whenFirebaseReady() {
     return new Promise(resolve => {
       const check = setInterval(() => {
@@ -45,165 +171,77 @@
     });
   }
 
-  /* =========================================================
-     Master auth-state handler — REPLACES the one from v2.4.4
-     ========================================================= */
   async function handleAuthState(user) {
+    const ticket = ++epoch;
+    dropListeners();
+    resetAccess();
     if (!user) {
-      log('Signed out');
-      hideAllGates();
-      if (waitingListener) { try { waitingListener(); } catch {} waitingListener = null; }
-      document.body.classList.remove('ent-authenticated');
-      $('entAuthGate')?.classList.add('open');
+      welcomedUid = null;
+      showGate('entAuthGate');
       return;
     }
-    log('Auth state: signed in as', user.email, '(uid:', user.uid + ')');
-
-    try { await user.reload(); if (user.emailVerified) await user.getIdToken(true); } catch (e) { log('reload failed:', e.message); }
-
-    // 1. Check if user has an approved account
-    let userRec = null;
-    try {
-      const snap = await firebase.database().ref('safwat/users/' + user.uid).once('value');
-      userRec = snap.val();
-    } catch (e) { log('users/ read error:', e.message); }
-
-    if (userRec) {
-      log('Approved user, role:', userRec.role);
-      if (userRec.disabled) {
-        $('entDisabledGate')?.classList.add('open');
-        document.body.classList.remove('ent-authenticated');
-        setTimeout(() => firebase.auth().signOut(), 4000);
-        return;
-      }
-      // Approved account → run existing flow (email verify + reveal)
-      // Delegate back to v2.4.4's flow by ensuring EntRbac has our record
-      hideAllGates();
-      await runApprovedFlow(user, userRec);
+    showGate('entAccessLoadingGate');
+    if (user.isAnonymous || !user.uid || !user.email) {
+      showError('A verified email/password account is required. Sign out and sign in with your work account.');
       return;
     }
-
-    // 2. No user record — check pending
-    let pendingRec = null;
     try {
-      const snap = await firebase.database().ref('safwat/pendingUsers/' + user.uid).once('value');
-      pendingRec = snap.val();
-    } catch (e) { log('pendingUsers/ read error:', e.message); }
-
-    if (pendingRec) {
-      if (pendingRec.status === 'rejected') {
-        log('Account rejected');
-        showRejectedGate(user.email, pendingRec.rejectionReason);
-        return;
-      }
-      log('Pending approval');
-      showWaitingGate(user.email);
-      subscribeToApproval(user);
-      return;
-    }
-
-    // The first admin is provisioned through Firebase Console/Admin SDK.
-    // Browser accounts always request approval; rules prohibit self-bootstrap.
-
-    // 4. Not first, not approved, not pending → create pending record
-    log('Creating pending account request');
-    try {
-      await firebase.database().ref('safwat/pendingUsers/' + user.uid).set({
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName || user.email.split('@')[0],
-        requestedAt: nowIso(),
-        status: 'pending',
-      });
-      showWaitingGate(user.email);
-      subscribeToApproval(user);
-      Toast().info('Request submitted', 'An admin will review your account shortly.');
+      await user.reload();
+      if (!isCurrent(user, ticket)) return;
+      if (user.emailVerified) await user.getIdToken(true);
+      if (!isCurrent(user, ticket)) return;
     } catch (e) {
-      log('Cannot create pending request:', e.message);
-      showRejectedGate(user.email, 'Unable to submit account request: ' + e.message);
-    }
-  }
-
-  /* =========================================================
-     Subscribe to my own approval status while waiting
-     ========================================================= */
-  function subscribeToApproval(user) {
-    if (waitingListener) { try { waitingListener(); } catch {} }
-    const userRef = firebase.database().ref('safwat/users/' + user.uid);
-    const pendingRef = firebase.database().ref('safwat/pendingUsers/' + user.uid);
-
-    const userCb = userRef.on('value', async (snap) => {
-      const rec = snap.val();
-      if (rec) {
-        log('Approval detected! Role:', rec.role);
-        Toast().ok('Approved!', 'Role assigned: ' + rec.role);
-        hideAllGates();
-        await runApprovedFlow(user, rec);
-      }
-    });
-
-    const pendingCb = pendingRef.on('value', (snap) => {
-      const rec = snap.val();
-      if (rec && rec.status === 'rejected') {
-        showRejectedGate(user.email, rec.rejectionReason);
-      }
-    });
-
-    waitingListener = () => { userRef.off('value', userCb); pendingRef.off('value', pendingCb); };
-  }
-
-  /* =========================================================
-     After approval — mimic v2.4.4's post-auth flow
-     ========================================================= */
-  async function runApprovedFlow(user, rec) {
-    // Update lastSeenAt (allowed by rules for own record)
-    try {
-      await firebase.database().ref('safwat/users/' + user.uid).update({
-        lastSeenAt: nowIso(),
-        emailVerified: !!user.emailVerified,
-        displayName: user.displayName || rec.displayName,
-      });
-    } catch (e) { log('lastSeenAt update failed:', e.message); }
-
-    // Sync into Session + EntRbac
-    if (window.Session) {
-      window.Session.role = rec.role;
-      try { localStorage.setItem('safwatEnt.role', JSON.stringify(rec.role)); } catch {}
-      window.Session.actor = (rec.displayName || user.email) + ' <' + user.email + '>';
-      try { localStorage.setItem('safwatEnt.actor', JSON.stringify(window.Session.actor)); } catch {}
-    }
-    if (window.EntRbac) {
-      window.EntRbac.myRecord = rec;
-      window.EntRbac.myRef = firebase.database().ref('safwat/users/' + user.uid);
-    }
-    const pill = $('entRolePill');
-    if (pill) pill.textContent = 'Role: ' + rec.role.charAt(0).toUpperCase() + rec.role.slice(1);
-    const adminBtn = $('entOpenUserMgmt');
-    if (adminBtn) adminBtn.style.display = rec.role === 'admin' ? 'inline-block' : 'none';
-
-    // Email verification
-    if (!user.emailVerified) {
-      log('Approved but email not verified — showing verify gate');
-      if ($('entVerifyEmail')) $('entVerifyEmail').textContent = user.email;
-      $('entVerifyGate')?.classList.add('open');
-      $('entAuthGate')?.classList.remove('open');
-      try {
-        const lastKey = 'safwatEnt.lastVerifyEmailAt';
-        const last = parseInt(localStorage.getItem(lastKey) || '0', 10);
-        if (Date.now() - last > 60000) {
-          await user.sendEmailVerification();
-          localStorage.setItem(lastKey, String(Date.now()));
-          log('Verification email sent');
-        }
-      } catch (e) { log('sendVerification failed:', e.message); }
+      if (isCurrent(user, ticket)) showError('Could not verify your sign-in or refresh your session. Check your connection and retry.');
       return;
     }
 
-    // All checks passed — reveal app
-    document.body.classList.add('ent-authenticated');
-    $('entAuthGate')?.classList.remove('open');
-    log('✓ App revealed');
-    Toast().ok('Welcome' + (rec.displayName ? ', ' + rec.displayName : ''), 'Role: ' + rec.role);
+    let userRec;
+    try {
+      userRec = (await firebase.database().ref('safwat/users/' + user.uid).once('value')).val();
+    } catch (e) {
+      if (isCurrent(user, ticket)) showError('Unable to check your account permissions. Check your connection and retry.');
+      return;
+    }
+    if (!isCurrent(user, ticket)) return;
+    if (userRec) {
+      await runApprovedFlow(user, userRec, ticket);
+      return;
+    }
+
+    let pendingRec;
+    try {
+      pendingRec = (await firebase.database().ref('safwat/pendingUsers/' + user.uid).once('value')).val();
+    } catch (e) {
+      if (isCurrent(user, ticket)) showError('Unable to check your approval request. Check your connection and retry.');
+      return;
+    }
+    if (!isCurrent(user, ticket)) return;
+    if (pendingRec?.status === 'rejected') {
+      showRejected(user.email, pendingRec.rejectionReason);
+      return;
+    }
+    if (!pendingRec) {
+      try {
+        // Only this own-UID pending request is created. No browser-admin bootstrap.
+        await firebase.database().ref('safwat/pendingUsers/' + user.uid).set({
+          uid: user.uid, email: user.email,
+          displayName: user.displayName || user.email.split('@')[0],
+          requestedAt: nowIso(), status: 'pending'
+        });
+      } catch (e) {
+        if (isCurrent(user, ticket)) showError('Could not submit your account approval request. Retry or contact an administrator.');
+        return;
+      }
+      if (!isCurrent(user, ticket)) return;
+      Toast().info('Account request submitted', 'An administrator must approve your access.');
+    }
+
+    if (!user.emailVerified) {
+      await showVerification(user);
+    } else {
+      showWaiting(user.email);
+      subscribePending(user, ticket);
+    }
   }
 
   /* =========================================================
