@@ -70,7 +70,12 @@ const Auth = {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName || (user.email ? user.email.split('@')[0] : 'User'),
-            role: null,
+            // If the authoritative gate completed before this listener,
+            // retain only that verified role (never browser-local state).
+            role: document.body.classList.contains('ent-authenticated') &&
+              window.EntRbac && window.EntRbac.myRecord &&
+              ['viewer', 'editor', 'admin'].includes(window.EntRbac.myRecord.role)
+              ? window.EntRbac.myRecord.role : null,
           };
           UI.renderUserPill();
         } else {
