@@ -1,0 +1,80 @@
+/* Account authorization must be completed before exposing even locally cached data.
+   This is presentation defense-in-depth; Firebase RTDB rules enforce data access. */
+body:not(.ent-authenticated) .app {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+#entVerifyGate, #entDisabledGate, #entAccessLoadingGate, #entAccessErrorGate {
+  position: fixed;
+  inset: 0;
+  z-index: 10010;
+  background: linear-gradient(135deg, #17242F 0%, #233442 100%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#entVerifyGate.open, #entDisabledGate.open, #entAccessLoadingGate.open, #entAccessErrorGate.open {
+  display: flex;
+}
+#entVerifyGate .ent-wait-card,
+#entDisabledGate .ent-wait-card,
+#entAccessLoadingGate .ent-wait-card,
+#entAccessErrorGate .ent-wait-card {
+  background: #fff;
+  color: #23201B;
+  width: min(480px, 94vw);
+  border-top: 6px solid #B98A2E;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(17,36,47,.28);
+  padding: 30px 32px;
+  text-align: center;
+}
+#entDisabledGate .ent-wait-card, #entAccessErrorGate .ent-wait-card {
+  border-top-color: #A23B2E;
+}
+#entVerifyGate .ent-wait-icon,
+#entDisabledGate .ent-wait-icon,
+#entAccessLoadingGate .ent-wait-icon,
+#entAccessErrorGate .ent-wait-icon {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: .12em;
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+#entVerifyGate h2, #entDisabledGate h2, #entAccessLoadingGate h2, #entAccessErrorGate h2 {
+  font-family: 'Zilla Slab', serif;
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+#entVerifyGate p, #entDisabledGate p, #entAccessLoadingGate p, #entAccessErrorGate p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #6B6558;
+  margin: 8px 0 18px;
+}
+#entVerifyGate .ent-wait-email {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #2E6FA3;
+  overflow-wrap: anywhere;
+  margin: 10px auto 18px;
+}
+#entVerifyGate button, #entDisabledGate button, #entAccessErrorGate button {
+  padding: 10px 16px;
+  border: 1px solid #D9D2BC;
+  border-radius: 6px;
+  background: #fff;
+  color: #23201B;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  margin: 4px;
+}
+#entVerifyGate button:focus-visible,
+#entDisabledGate button:focus-visible,
+#entAccessErrorGate button:focus-visible {
+  outline: 3px solid #B98A2E;
+  outline-offset: 2px;
+}
+#entVerifyGate button:disabled { opacity: .6; cursor: not-allowed; }
