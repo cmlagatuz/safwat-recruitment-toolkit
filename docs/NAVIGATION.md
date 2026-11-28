@@ -10,6 +10,7 @@ This is an authenticated single-page application. A search-engine sitemap would 
 | R-03 Operations | `panel-operations` | Client summaries, follow-ups and deadlines |
 | R-04 Toolkit Guide | `panel-guide` | Search and open tools permitted by current navigation |
 | F-01 Offer Letter Creation | `panel-offer` | Template-driven offer letters |
+| F-10 Offer Signing | `panel-offer-signing` | Batch PDF signature/stamp placement and export |
 | F-02 Extract Files by Type | `panel-extract` | File extraction |
 | F-03 Sort Files into Folders | `panel-sort` | File organization |
 | F-04 Batch Rename | `panel-rename` | Batch renaming |

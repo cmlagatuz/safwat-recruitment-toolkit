@@ -24,7 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.66.4/docxtemplater.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5/papaparse.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 
@@ -84,6 +84,7 @@
 
       <div class="navgroup-label">Documents</div>
       <button class="tab" data-tab="offer"><span class="idx">F-01</span> Offer Letter Creation</button>
+      <button class="tab" data-tab="offer-signing"><span class="idx">F-10</span> Offer Signing</button>
 
       <div class="navgroup-label">File movement</div>
       <button class="tab" data-tab="extract"><span class="idx">F-02</span> Extract Files by Type</button>
@@ -423,6 +424,38 @@
           <button id="offerGenerateBtn" disabled>Generate offer letters (.zip)</button>
         </div>
         <div class="log" id="offerLog" style="margin-top:16px;">Waiting for a template and data file…</div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-offer-signing" aria-label="Offer Signing">
+      <div class="panel-head"><div class="eyebrow">F-10 · Documents</div><h2>Offer Signing</h2><p class="desc">Apply your authorized signature and company stamp to a batch of PDF offers without changing the originals.</p></div>
+      <div class="card">
+        <h3>1. Attach offer PDFs</h3>
+        <label class="os-field">Select one or more PDF offers<input id="osPdfs" type="file" accept=".pdf,application/pdf" multiple></label>
+        <p class="hint">Up to 100 PDFs or 200 MB per batch. Selecting again replaces the batch.</p>
+        <div class="os-box"><strong id="osCount" role="status">0 PDFs attached</strong><ul id="osFileList" class="os-list"><li>No PDF files selected.</li></ul></div>
+      </div>
+      <div class="card">
+        <h3>2. Attach signature and stamp</h3>
+        <div class="os-grid"><div class="os-box"><label class="os-field">Authorized signature image<input id="osSignature" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg"></label><p id="osSignatureName" class="hint">No image attached</p></div><div class="os-box"><label class="os-field">Authorized company stamp<input id="osStamp" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg"></label><p id="osStampName" class="hint">No image attached</p></div></div>
+        <p class="hint">Transparent PNG recommended. JPEG also supported. Maximum 10 MB per image. Images and PDFs stay in this browser session; they are not saved to Firebase.</p>
+      </div>
+      <div class="card">
+        <h3>3. Position and preview</h3>
+        <p>The sample preset places the signature over the recruitment manager's signature area and the stamp just below the signing section. Adjust for different templates. Positions are measured from the visible page's top-left corner; images keep their proportions inside the selected box.</p>
+        <div class="os-grid"><div class="os-box"><h4>Signature placement</h4><div class="os-coords"><label class="os-field">Left (%)<input id="os-signature-x" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Top (%)<input id="os-signature-y" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Width (%)<input id="os-signature-w" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Height (%)<input id="os-signature-h" type="number" min="0" max="100" step="0.1"></label></div></div><div class="os-box"><h4>Stamp placement</h4><div class="os-coords"><label class="os-field">Left (%)<input id="os-stamp-x" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Top (%)<input id="os-stamp-y" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Width (%)<input id="os-stamp-w" type="number" min="0" max="100" step="0.1"></label><label class="os-field">Height (%)<input id="os-stamp-h" type="number" min="0" max="100" step="0.1"></label></div></div></div>
+        <div class="os-grid os-actions"><label class="os-field">Page to sign<input id="osPage" type="number" min="1" step="1" value="1"></label><label class="os-field">Offer to preview<select id="osSelect"></select></label></div>
+        <div class="os-actions"><button type="button" class="secondary" id="osPreset">Restore sample placement</button></div>
+        <p class="hint">Use the same page number and layout for every offer in a batch. Rotated, encrypted or invalid PDFs may be skipped. This applies visual images, not a certificate-based digital signature; editing an already digitally signed PDF may invalidate its signature.</p>
+        <label class="os-check"><input id="osConfirm" type="checkbox">I am authorized to use these signature and stamp images and will check the placement on the offers before distributing them.</label>
+        <div class="os-actions"><button type="button" class="secondary" id="osPreview" disabled>Prepare signed preview</button><a id="osPreviewLink" target="_blank" rel="noopener noreferrer" hidden>Open local PDF preview ↗</a></div>
+      </div>
+      <div class="card">
+        <h3>4. Export signed offers</h3>
+        <p>Each PDF keeps its original filename with <code>_signed</code> inserted before the extension. A single PDF downloads directly; multiple PDFs are exported together as <code>Signed_Offers.zip</code>.</p>
+        <div class="os-actions"><button type="button" id="osExport" disabled>Export signed offers</button><button type="button" class="secondary" id="osReset">Clear all files</button></div>
+        <p class="os-status" id="osStatus" role="status" aria-live="polite">Attach offer PDFs and the two image files to begin.</p>
+        <ul id="osResults" class="os-list" aria-label="Export results"></ul>
       </div>
     </section>
 
@@ -1338,5 +1371,8 @@
 <link rel="stylesheet" href="/css/appearance.css">
 <script src="/js/appearance.js"></script>
 <script src="/js/workspace.js"></script>
+<link rel="stylesheet" href="/css/offer-signing.css">
+<script src="/js/offer-signing-core.js"></script>
+<script src="/js/offer-signing.js"></script>
 </body>
 </html>

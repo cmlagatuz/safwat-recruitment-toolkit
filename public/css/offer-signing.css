@@ -1,0 +1,14 @@
+#panel-offer-signing .os-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#panel-offer-signing .os-field{display:grid;gap:7px;min-width:0}
+#panel-offer-signing .os-field input[type=file]{max-width:100%;color:var(--text);padding:10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+#panel-offer-signing .os-box{padding:14px;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+#panel-offer-signing .os-list{max-height:240px;overflow:auto;margin:10px 0 0;padding-left:24px;overflow-wrap:anywhere}
+#panel-offer-signing .os-list li{padding:5px 4px}
+#panel-offer-signing .os-coords{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#panel-offer-signing .os-coords input,#panel-offer-signing #osPage,#panel-offer-signing #osSelect{width:100%;box-sizing:border-box}
+#panel-offer-signing .os-check{display:flex;align-items:flex-start;gap:10px;margin:14px 0;line-height:1.5}
+#panel-offer-signing .os-check input{margin-top:4px;flex:none}
+#panel-offer-signing .os-status{padding:12px 14px;border:1px solid var(--rule);border-radius:8px;overflow-wrap:anywhere}
+#panel-offer-signing .os-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+#panel-offer-signing [hidden]{display:none!important}
+@media(max-width:700px){#panel-offer-signing .os-grid{grid-template-columns:1fr}}

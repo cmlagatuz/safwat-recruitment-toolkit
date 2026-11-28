@@ -33,3 +33,8 @@ Keep this section short. After work that changes a lasting decision or resolves 
 - New synthetic state-machine tests, Firebase rules emulator cases, and isolated real-Chromium sign-up/approval screen tests guard those behaviors. See [full security findings](docs/ACCOUNT_SECURITY_AUDIT.md).
 - The change does **not** change `database.rules.json`; Firebase Hosting auto-deployment alone does not deploy the checked-in RTDB rules. Production server-rule parity, real disposable-account email delivery/approval tests, and full authenticated staging acceptance remain required before claiming comprehensive production account security. Follow [SECURITY_ROLLOUT.md](docs/SECURITY_ROLLOUT.md).
 - Next step: merge only after complete GitHub checks pass, verify auto-deploy and live Hosting assets; independently verify actual deployed RTDB rules and hosted sign-in with authorized staging/test accounts. Do not alter any real user's role without separate authorization.
+
+### 2026-11-28 — Offer Signing (F-10)
+
+- Documents contains F-10 Offer Signing, preserving all existing tool numbers. Separate authorized signature/stamp images and PDFs are handled in the browser, not intentionally sent to Firebase or committed to GitHub. Sample-derived relative boxes are adjustable; review the actual PDF preview before use. The sample offer and its marks are not bundled.
+- One PDF exports directly; multiple PDFs export in a ZIP with `_signed` added to every original filename. Existing sources remain untouched. Visual placement is not certificate-backed signing. See README and the dedicated synthetic regression tests. Verify the exact GitHub CI and Hosting release before claiming deployment.

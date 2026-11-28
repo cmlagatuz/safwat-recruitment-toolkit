@@ -6,6 +6,7 @@
     pipeline: 'Candidate stages, recruitment details and bulk editing',
     operations: 'Client delivery summaries, overdue follow-ups and deadlines',
     offer: 'Create offer letters using a template and candidate data',
+    'offer-signing': 'Batch sign PDF employment offers with authorized signature and company stamp images',
     extract: 'Extract selected file types from folders',
     sort: 'Sort files into folders', rename: 'Rename a batch of files',
     mkfolders: 'Create folders from a list', list: 'List files and folders',

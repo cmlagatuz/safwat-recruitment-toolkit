@@ -11,6 +11,8 @@ The application shell loads classic scripts in the same order as before extracti
 | `public/js/persistence.js` | Immutable snapshots, revision checks and dirty-data guard |
 | `public/js/operations.js` | Read-only Operations dashboard |
 | `public/js/toolkit-guide.js` | Searchable permission-aware tool directory |
+| `public/js/offer-signing-core.js` | Local PDF placement geometry and image embedding |
+| `public/js/offer-signing.js` | F-10 transient batch selection, preview and export |
 | `public/css/operations.css` | Operations layout and print styling |
 | `database.rules.json` | Server-enforced access and write validation |
 
