@@ -22,6 +22,30 @@ const JSZip=require('jszip');
     await page.evaluate(()=>{document.body.classList.add('ent-authenticated');document.getElementById('entAuthGate').classList.remove('open');});
     await page.locator('[data-tab="offer-signing"]').click();
     assert.ok(await page.locator('#panel-offer-signing').isVisible());
+    const expected={signature:{x:38,y:68,w:21,h:8},stamp:{x:40,y:74,w:28,h:4.6}};
+    const checkDefaults=async()=>{
+      for(const [kind,coords] of Object.entries(expected))for(const [axis,value] of Object.entries(coords)){
+        const id='#os-'+kind+'-'+axis;
+        assert.equal(await page.locator(id).inputValue(),String(value));
+        assert.equal(await page.locator(id+'-default').innerText(),'(default)');
+        assert.ok(await page.locator(id+'-default').isVisible());
+      }
+    };
+    await checkDefaults();
+    await page.locator('#os-signature-x').fill('39');
+    assert.ok(!(await page.locator('#os-signature-x-default').isVisible()));
+    assert.ok(await page.locator('#os-signature-y-default').isVisible());
+    await page.locator('#os-signature-x').fill('');
+    assert.ok(!(await page.locator('#os-signature-x-default').isVisible()));
+    await page.locator('#os-signature-x').fill('38.0');
+    assert.ok(await page.locator('#os-signature-x-default').isVisible());
+    await page.locator('#os-stamp-h').fill('5');
+    assert.ok(!(await page.locator('#os-stamp-h-default').isVisible()));
+    await page.locator('#osPreset').click();
+    await checkDefaults();
+    await page.locator('#os-signature-w').fill('22');
+    await page.locator('#osReset').click();
+    await checkDefaults();
     const pdf=await PDFDocument.create();pdf.addPage([595,842]);pdf.addPage([595,842]);const original=Buffer.from(await pdf.save());
     const rotated=await PDFDocument.create();rotated.addPage([595,842]).setRotation(degrees(90));const bad=Buffer.from(await rotated.save());
     const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRkcAAAAASUVORK5CYII=','base64');

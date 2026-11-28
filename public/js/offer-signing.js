@@ -53,6 +53,10 @@
     try{boxes();pageNo();return true;}catch{return false;}
   }
   function render(){
+    for(const k of ['signature','stamp']) for(const p of ['x','y','w','h']){
+      const input=$('os-'+k+'-'+p), marker=$('os-'+k+'-'+p+'-default');
+      marker.hidden=!(input.value.trim()!=='' && Number(input.value)===core.defaults[k][p]);
+    }
     $('osCount').textContent=files.length+' PDF'+(files.length===1?'':'s')+' attached';
     $('osSignatureName').textContent=assets.signature?.name||'No image attached';
     $('osStampName').textContent=assets.stamp?.name||'No image attached';
@@ -132,7 +136,7 @@
     if(!allowed()||busy)return;
     for(const k of ['signature','stamp'])for(const p of ['x','y','w','h'])$('os-'+k+'-'+p).value=core.defaults[k][p];
     $('osPage').value='1';$('osConfirm').checked=false;clearPreview();render();
-    status('Sample placement restored. Review the selected PDF before exporting.');
+    status('Default placement restored. Review the selected PDF before exporting.');
   });
   $('osReset').addEventListener('click',()=>{clear();renderFiles();});
   async function signed(file,settings,ticket){

@@ -6,8 +6,8 @@
 })(typeof window==='undefined'?globalThis:window,function(){
   'use strict';
   const defaults=Object.freeze({
-    signature:Object.freeze({x:39,y:72.5,w:15,h:5.5}),
-    stamp:Object.freeze({x:49.5,y:79.4,w:28,h:4.6})
+    signature:Object.freeze({x:38,y:68,w:21,h:8}),
+    stamp:Object.freeze({x:40,y:74,w:28,h:4.6})
   });
   function outputName(name){
     if(typeof name!=='string'|| !/^[^\\/]+\.pdf$/i.test(name) || /[\x00-\x1f]/.test(name))

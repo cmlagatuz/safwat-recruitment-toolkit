@@ -12,3 +12,8 @@
 #panel-offer-signing .os-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
 #panel-offer-signing [hidden]{display:none!important}
 @media(max-width:700px){#panel-offer-signing .os-grid{grid-template-columns:1fr}}
+
+#panel-offer-signing .os-coords{align-items:start}
+#panel-offer-signing .os-value{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;min-width:0}
+#panel-offer-signing .os-value input{min-width:0;grid-column:1}
+#panel-offer-signing .os-default{font-size:12px;white-space:nowrap;color:var(--text-soft);grid-column:2}

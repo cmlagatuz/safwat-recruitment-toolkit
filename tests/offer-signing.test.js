@@ -16,3 +16,7 @@ test('image placement uses top-left page percentages and preserves aspect ratio'
   }
   assert.throws(()=>fit({x:95,y:10,w:10,h:10},{width:595,height:842},{width:1,height:1}));
 });
+
+test('standard Safwat offer placement matches approved default coordinates',()=>{
+  assert.deepEqual(defaults,{signature:{x:38,y:68,w:21,h:8},stamp:{x:40,y:74,w:28,h:4.6}});
+});
