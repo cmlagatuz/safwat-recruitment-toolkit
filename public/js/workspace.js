@@ -4,8 +4,8 @@
   const $ = id => document.getElementById(id);
   const nav = document.querySelector('.sidebar nav');
   const signedIn = () => document.body.classList.contains('ent-authenticated');
-  const labels = { home: 'Home', visa: 'Visa intelligence', pipeline: 'Recruitment pipeline', operations: 'Operations', offer: 'Offer studio', guide: 'Explore all tools' };
-  const descriptions = { visa: 'Track assignments and visa deadlines.', pipeline: 'Move recruitment forward, one candidate at a time.', operations: 'See client delivery and your next follow-ups.', offer: 'Turn candidate details into a ready-to-send offer.', guide: 'Find the right tool for your next task.' };
+  const labels = { home: 'Home', visa: 'Visa intelligence', pipeline: 'Recruitment pipeline', operations: 'Operations', offer: 'Offer studio', 'offer-signing': 'Offer Signing', guide: 'Explore all tools' };
+  const descriptions = { visa: 'Track assignments and visa deadlines.', pipeline: 'Move recruitment forward, one candidate at a time.', operations: 'See client delivery and your next follow-ups.', offer: 'Turn candidate details into a ready-to-send offer.', 'offer-signing': 'Apply signature and stamp images to PDF offers locally.', guide: 'Find the right tool for your next task.' };
   let recent = [], opened = false;
   const tabs = () => [...nav.querySelectorAll('.tab[data-tab]')].filter(t => !t.disabled && getComputedStyle(t).display !== 'none' && getComputedStyle(t).visibility !== 'hidden');
   function open(key) {

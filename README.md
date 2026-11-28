@@ -18,6 +18,7 @@ GitHub `main` is the source of truth. After any push to `main`, `.github/workflo
 | **R-03 Operations (new)** | Client delivery snapshots, follow-up queue, visa deadlines and CSV summaries |
 | **R-04 Toolkit Guide (new)** | Searchable directory of tools visible to your account |
 | F-01 | Offer-letter generation |
+| F-10 | Batch PDF offer signing with signature and stamp images |
 | F-02–F-06 | Extract, sort, rename, create folders and list files |
 | F-07–F-09 | PDF merging, conversion workflow and Word-file cleanup |
 | CLAIRE | Existing assistant, local query engine and save-status interface |
@@ -118,3 +119,7 @@ Source: `public/js/workspace.js` and `public/css/workspace.css`. The existing to
 Use **Theme** in the workspace or CEO dashboard header: **Graphite** (default), **Midnight** (near-black), or **Light**. Your choice is saved in this browser and applies to both screens. Existing dark-mode controls remain compatible.
 
 PROJECT D now has expandable **Filters**, a **Focus view**, **Export summary**, keyboard-accessible exception drill-downs and visible metric definitions. The fixed 85% target has been removed, future dates no longer count as completed events in executive KPIs, and mixed-case filters work correctly. See [the dashboard review](docs/PROJECT_D_REVIEW.md) for changes and scope limitations. No Firebase configuration changes are required for this appearance/dashboard update.
+
+## F-10 Offer Signing
+
+Open Documents → Offer Signing. Select the PDFs, attach separate authorized PNG/JPEG signature and stamp images, and review the sample-derived placement and page number. Prepare a preview for each template before exporting. Single files download as `original_signed.pdf`; batches download as `Signed_Offers.zip` with original filenames plus `_signed`. Duplicate names are rejected; unreadable or rotated PDFs are reported and skipped. The files and images are processed locally, never intentionally uploaded or persisted, and cleared on sign-out. Visual marks are not cryptographic digital signatures. Do not edit already certificate-signed offers without understanding signature invalidation. The preset assumes the provided sample layout; different templates require manual placement review.

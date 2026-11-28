@@ -39,11 +39,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 pdf-lib@1.17.1 jszip@3.10.1
       - run: npx playwright install --with-deps chromium
       - run: node tests/browser-smoke.cjs
       - run: node tests/ceo-browser.cjs
       - run: node tests/auth-browser.cjs
+      - run: node tests/offer-signing-browser.cjs
 
   deploy-hosting:
     name: Deploy Firebase Hosting after checks
