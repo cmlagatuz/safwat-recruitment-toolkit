@@ -12,7 +12,7 @@
   function outputName(name){
     if(typeof name!=='string'|| !/^[^\\/]+\.pdf$/i.test(name) || /[\x00-\x1f]/.test(name))
       throw Error('Choose a PDF with a valid filename.');
-    return name.replace(/(\.pdf)$/i,'_signed$1');
+    return name.replace(/(\.pdf)$/i,'_approved$1');
   }
   function fit(box, page, image){
     const {x,y,w,h}=box, {width,height}=page;

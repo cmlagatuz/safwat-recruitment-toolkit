@@ -2,8 +2,8 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {outputName,fit,defaults}=require('../public/js/offer-signing-core.js');
 test('offer names retain original filename and extension, reject path segments',()=>{
-  assert.equal(outputName('Offer - أحمد.pdf'),'Offer - أحمد_signed.pdf');
-  assert.equal(outputName('Offer.PDF'),'Offer_signed.PDF');
+  assert.equal(outputName('Offer - أحمد.pdf'),'Offer - أحمد_approved.pdf');
+  assert.equal(outputName('Offer.PDF'),'Offer_approved.PDF');
   assert.throws(()=>outputName('../offer.pdf'));
   assert.throws(()=>outputName('offer.docx'));
 });

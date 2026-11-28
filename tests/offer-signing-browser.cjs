@@ -66,7 +66,7 @@ const JSZip=require('jszip');
     const downloaded=await downloading;
     assert.equal(downloaded.suggestedFilename(),'Signed_Offers.zip');
     const zip=await JSZip.loadAsync(fs.readFileSync(await downloaded.path()));
-    assert.deepEqual(Object.keys(zip.files).sort(),['Offer A_signed.pdf','Offer B_signed.pdf']);
+    assert.deepEqual(Object.keys(zip.files).sort(),['Offer A_approved.pdf','Offer B_approved.pdf']);
     for(const entry of Object.values(zip.files)){
       const doc=await PDFDocument.load(await entry.async('uint8array'));
       assert.equal(doc.getPageCount(),2);
@@ -77,7 +77,7 @@ const JSZip=require('jszip');
     assert.match(await page.locator('#osResults').innerText(),/Rotated\.pdf — Skipped/);
     await page.locator('#osPdfs').setInputFiles([{name:'Single.pdf',mimeType:'application/pdf',buffer:original}]);
     await page.locator('#osConfirm').check();
-    const one=page.waitForEvent('download');await page.locator('#osExport').click();assert.equal((await one).suggestedFilename(),'Single_signed.pdf');
+    const one=page.waitForEvent('download');await page.locator('#osExport').click();assert.equal((await one).suggestedFilename(),'Single_approved.pdf');
     await page.evaluate(()=>document.body.classList.remove('ent-authenticated'));
     await page.waitForFunction(()=>document.getElementById('osCount').textContent==='0 PDFs attached');
     assert.ok(await page.locator('#osExport').isDisabled());
